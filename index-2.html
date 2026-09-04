@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strumenti AI — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 32px;
+    line-height: 1.5;
+  }
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 12px;
+  }
+  .tool-list {
+    list-style: none;
+    margin: 0 0 36px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tool-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+  .tool-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+  }
+  .tool-card-text h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--burgundy-dark);
+  }
+  .tool-card-text p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-soft);
+    line-height: 1.4;
+  }
+  .tool-card-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--burgundy-dark);
+    font-size: 15px;
+  }
+  .placeholder-card {
+    display: block;
+    background: transparent;
+    border: 1px dashed #d8d1c6;
+    border-radius: 10px;
+    padding: 18px 20px;
+    color: var(--text-soft);
+    font-size: 13.5px;
+    font-style: italic;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Strumenti AI del percorso</h1>
+    <p class="subtitle">Prompt e strumenti pronti all'uso per accompagnarti nelle diverse fasi del tuo percorso imprenditoriale.</p>
+
+    <p class="section-label">Modulo 0 — Fondamenta</p>
+    <ul class="tool-list">
+      <li>
+        <a class="tool-card" href="settimana-ideale.html">
+          <div class="tool-card-text">
+            <h3>Pianifica e crea spazio per il tuo business</h3>
+            <p>Un prompt guidato per costruire la tua pianificazione settimanale con il time boxing.</p>
+          </div>
+          <div class="tool-card-arrow">→</div>
+        </a>
+      </li>
+    </ul>
+
+    <p class="section-label">Modulo 1 — Visione</p>
+    <ul class="tool-list">
+      <li>
+        <a class="tool-card" href="vision-map.html">
+          <div class="tool-card-text">
+            <h3>Crea la tua Vision Map</h3>
+            <p>Un prompt guidato per esplorare la vita e il business che vuoi costruire, con una Vision Map visiva scaricabile.</p>
+          </div>
+          <div class="tool-card-arrow">→</div>
+        </a>
+      </li>
+    </ul>
+
+    <p class="section-label">Prossimi strumenti</p>
+    <ul class="tool-list">
+      <li>
+        <div class="placeholder-card">Nuovi strumenti verranno aggiunti qui man mano che il percorso prosegue.</div>
+      </li>
+    </ul>
+
+    <p class="footer-note">healthybusylife.com · @healthybusylife</p>
+  </div>
+</body>
+</html>

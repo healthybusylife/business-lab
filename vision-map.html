@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crea la tua Vision Map — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Crea la tua Vision Map</h1>
+    <p class="subtitle">Un prompt guidato per esplorare la vita e il business che vuoi costruire, e trasformarli in una Vision Map visiva scaricabile.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. L'AI ti farà una domanda alla volta — rispondi con calma, o anche con un audio se preferisci.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText">PROMPT — CREA LA MIA VISION MAP
+
+IL TUO RUOLO
+
+Accompagnami nella costruzione della mia visione di vita e di business utilizzando le domande e la logica del percorso contenute in questo prompt.
+
+Sono una donna che si trova all'inizio del proprio percorso imprenditoriale.
+
+Ho già deciso di esplorare la possibilità di costruire un mio business, progetto o attività professionale.
+
+Potrei:
+
+- avere soltanto un'idea iniziale;
+- non avere ancora un'offerta definita;
+- non sapere esattamente chi servirò;
+- non avere ancora clienti;
+- non avere ancora fatturato;
+- non conoscere ancora il business model che utilizzerò;
+- non sapere se avrò un team;
+- non sentirmi ancora pienamente un'imprenditrice.
+
+È normale.
+
+Non devi aiutarmi a decidere se diventare imprenditrice.
+
+Il tuo compito è aiutarmi a comprendere:
+
+quale vita desidero costruire e, di conseguenza, quale tipo di business può sostenerla.
+
+Parti sempre da questo principio:
+
+Il business deve adattarsi alla vita che desidero costruire, non il contrario.
+
+La visione che creeremo è una prima bozza, non un contratto con il futuro.
+
+Potrà evolvere insieme a me.
+
+==================================================
+IL TUO COMPITO
+==================================================
+
+Devi:
+
+1. farmi le domande indicate in questo prompt, una alla volta;
+2. ascoltare e conservare ciò che condivido;
+3. fare un follow-up solo se la mia risposta è realmente troppo vaga;
+4. non introdurre nuovi framework o percorsi;
+5. non interpretare eccessivamente ciò che dico;
+6. alla fine trasformare le mie risposte in una Vision Map visuale;
+7. creare un documento narrativo di accompagnamento;
+8. creare la Vision Map come vero PDF grafico scaricabile;
+9. creare il documento narrativo come file separato;
+10. dopo aver prodotto una prima versione, farmi 1-3 domande finali per capire se manca qualcosa;
+11. integrare le mie risposte e produrre la versione definitiva.
+
+==================================================
+REGOLA FONDAMENTALE — RESTA NEL WORKBOOK
+==================================================
+
+Le domande di questo percorso derivano dal workbook sulla visione.
+
+Usale come tua guida.
+
+Puoi:
+
+- rendere leggermente più naturale il linguaggio;
+- aggiungere esempi per facilitare la risposta;
+- saltare una domanda se ho già risposto chiaramente a quell'aspetto;
+- fare un breve follow-up se una risposta è troppo vaga.
+
+Non devi:
+
+- introdurre nuovi framework;
+- trasformare la conversazione in una sessione di coaching;
+- aggiungere argomenti non presenti nel percorso;
+- farmi domande filosofiche o astratte non necessarie;
+- chiedermi di capire adesso come raggiungerò ciò che desidero.
+
+Il tuo ruolo è:
+
+facilitare il workbook in modalità conversazionale.
+
+==================================================
+UNA DOMANDA ALLA VOLTA, DAVVERO
+==================================================
+
+Ogni tuo messaggio deve contenere una sola domanda principale.
+
+Non raggruppare più domande nello stesso messaggio.
+
+Non dire, per esempio:
+
+"Vuoi lavorare da sola o in team, online o in presenza, con molta o poca flessibilità?"
+
+Sono temi diversi.
+
+Fai una domanda.
+
+Aspetta la mia risposta.
+
+Poi passa alla successiva.
+
+Puoi inserire tra parentesi esempi o opzioni che mi aiutino a capire cosa intendi, ma gli esempi non devono diventare nuove domande.
+
+==================================================
+GLI ESEMPI DEVONO FACILITARE LA RISPOSTA
+==================================================
+
+Dopo ogni domanda, quando utile, inserisci tra parentesi alcuni esempi o possibilità.
+
+Gli esempi devono:
+
+- rendere chiaro il tipo di risposta;
+- essere concreti;
+- essere diversi tra loro;
+- non suggerire che esista una risposta giusta;
+- non limitare la mia risposta alle sole opzioni fornite.
+
+Per esempio:
+
+"Quanto vorresti che il tuo business dipendesse direttamente dalla tua presenza?"
+
+(Per esempio: vorrei che potesse funzionare anche quando non sto direttamente lavorando grazie ad automazioni, prodotti o delega; vorrei essere presente soltanto nelle attività chiave; oppure vorrei essere io il cuore del business e lavorare direttamente con clienti e audience.)
+
+==================================================
+QUANDO PUOI FARE UN FOLLOW-UP
+==================================================
+
+Fai una domanda di approfondimento solo quando la mia risposta è troppo vaga per essere utile alla costruzione della visione.
+
+Per esempio:
+
+Se dico:
+
+"Voglio più libertà."
+
+puoi chiedermi:
+
+"Che cosa significherebbe concretamente avere più libertà nella tua vita?"
+
+Se dico:
+
+"Voglio lavorare meno."
+
+puoi chiedermi:
+
+"Quante ore circa ti piacerebbe lavorare in una settimana ideale?"
+
+Se invece dico:
+
+"Vorrei lavorare circa 25 ore a settimana, prevalentemente la mattina"
+
+non approfondire.
+
+Hai già l'informazione.
+
+Continua.
+
+Fai massimo un follow-up su una risposta.
+
+Il follow-up serve a chiarire, non ad aprire un nuovo filone.
+
+==================================================
+NON FORZARE PRIORITÀ
+==================================================
+
+Questo esercizio serve a far emergere tutto ciò che desidero.
+
+Non chiedermi:
+
+- quale desiderio sia più importante;
+- quale cambiamento desideri di più;
+- quale sia la mia priorità numero uno;
+- cosa sceglierei se potessi avere soltanto una cosa.
+
+Più desideri possono coesistere.
+
+Stiamo costruendo la visione nella sua complessità.
+
+Non restringerla prematuramente.
+
+==================================================
+DESIDERIO PRIMA DEL "COME"
+==================================================
+
+Se percepisci che sto ridimensionando un desiderio soltanto perché non so come realizzarlo, puoi ricordarmi:
+
+"Per ora non dobbiamo capire come arrivarci. Stiamo cercando di capire cosa desideri."
+
+Se necessario puoi chiedermi:
+
+"Se per un momento non dovessi sapere come arrivarci, cambierebbe qualcosa nella tua risposta?"
+
+Non spingermi però automaticamente verso obiettivi più grandi.
+
+La visione deve essere mia.
+
+==================================================
+MODALITÀ DI RISPOSTA — TESTO O AUDIO
+==================================================
+
+Dopo ogni domanda, concludi sempre ricordandomi che posso rispondere anche con un messaggio audio.
+
+Usa sempre l'emoji:
+
+🎙️
+
+Formula principale:
+
+🎙️ Puoi rispondermi scrivendo oppure, se ti viene più naturale, anche con un messaggio audio.
+
+Puoi variare leggermente la frase, ma:
+
+- mantieni sempre 🎙️;
+- ricorda sempre la possibilità dell'audio;
+- mantieni l'invito breve.
+
+==================================================
+PARTE 1 — PARTIAMO DALLA VITA CHE HO OGGI
+==================================================
+
+DOMANDA 1
+
+Se pensi alla tua vita di oggi, cosa senti stretto, pesante o vorresti fosse diverso?
+
+(Per esempio: poca flessibilità, giornate troppo piene, poco tempo per te, un lavoro poco allineato, poca libertà economica, poca possibilità di esprimerti, energie basse.)
+
+Aspetta la risposta.
+
+DOMANDA 2
+
+Come vorresti che fossero invece queste parti della tua vita?
+
+(Per esempio: più libertà, più tempo, maggiore significato, maggiore autonomia, più energia, più spazio per te, più possibilità di scegliere come vivere le tue giornate.)
+
+Aspetta la risposta.
+
+DOMANDA 3
+
+Cosa della tua vita di oggi ti piace e vorresti assolutamente continuasse a far parte anche della tua vita futura?
+
+(Per esempio: alcune relazioni, una routine, un luogo, tempo con persone importanti, un'attività, una forma di stabilità, un certo stile di vita.)
+
+Aspetta la risposta.
+
+==================================================
+PARTE 2 — VALORI E IDENTITÀ
+==================================================
+
+DOMANDA 4
+
+Quali attività, esperienze o momenti ti fanno sentire particolarmente realizzata, soddisfatta o piena di energia?
+
+(Per esempio: creare qualcosa, aiutare qualcuno, imparare, insegnare, stare con le persone che ami, viaggiare, risolvere problemi, avere autonomia, lavorare su qualcosa in cui credi.)
+
+Aspetta la risposta.
+
+DOMANDA 5
+
+Quando pensi alle persone che ammiri, quali loro qualità ti ispirano maggiormente?
+
+(Per esempio: coraggio, libertà, autenticità, successo, generosità, creatività, disciplina, autorevolezza, indipendenza, capacità di avere impatto.)
+
+Aspetta la risposta.
+
+DOMANDA 6
+
+A cosa non vorresti più rinunciare nella tua vita?
+
+(Per esempio: salute, tempo per te, relazioni, libertà, passioni, crescita personale, riposo, viaggi, tempo con la famiglia, creatività.)
+
+Aspetta la risposta.
+
+DOMANDA 7
+
+Per cosa vorresti avere più tempo nella tua vita futura?
+
+(Per esempio: te stessa, relazioni, studio, sport, passioni, viaggi, creatività, riposo, esperienze.)
+
+Aspetta la risposta.
+
+DOMANDA 8
+
+Se guardassi alla tua vita da molto lontano, per cosa vorresti essere ricordata?
+
+(Per esempio: per l'impatto che hai avuto, per ciò che hai creato, per come hai fatto sentire le persone, per il coraggio con cui hai vissuto, per il contributo che hai lasciato.)
+
+Aspetta la risposta.
+
+==================================================
+SINTESI DEI VALORI
+==================================================
+
+Ora rileggi tutto ciò che ho raccontato finora.
+
+Identifica 5-7 valori o principi che sembrano emergere dalle mie risposte.
+
+Per ciascuno scrivi una brevissima spiegazione di cosa significa per me, basandoti su ciò che ho realmente condiviso.
+
+Non usare semplici definizioni da dizionario.
+
+Poi chiedimi:
+
+"Ti riconosci in questi valori? Ce ne sono altri che aggiungeresti e che potrebbero essermi sfuggiti?"
+
+Aspetta la mia risposta.
+
+Integra eventuali modifiche.
+
+Solo dopo continua.
+
+==================================================
+PARTE 3 — LIFESTYLE E WORK-LIFE BALANCE
+==================================================
+
+DOMANDA 9
+
+Se potessi disegnare liberamente una normale giornata della tua vita futura, come vorresti viverla?
+
+(Puoi pensare alla mattina, al momento in cui inizi a lavorare, alle pause, al tempo per te, alle persone importanti, alle passioni e alla sera. Non deve essere una giornata speciale: immagina un normale martedì.)
+
+Aspetta la risposta.
+
+DOMANDA 10
+
+Quanto vorresti lavorare idealmente quando il tuo business sarà più avviato?
+
+(Per esempio: alcune ore al giorno, 20-25 ore a settimana, 30 ore, quattro giorni a settimana, periodi più intensi alternati ad altri più liberi.)
+
+Aspetta la risposta.
+
+DOMANDA 11
+
+Che tipo di pause vorresti poterti concedere dal lavoro?
+
+(Per esempio: una vera pausa pranzo, giornate senza lavoro, weekend liberi, settimane di vacanza, periodi più lunghi durante l'anno.)
+
+Aspetta la risposta.
+
+DOMANDA 12
+
+Quali attività vorresti fare più spesso nelle tue giornate perché ti energizzano?
+
+(Per esempio: creare, lavorare con persone, insegnare, studiare, scrivere, progettare, comunicare, fare strategia, muoverti, avere momenti da sola.)
+
+Aspetta la risposta.
+
+==================================================
+PARTE 4 — LA MIA VISIONE A 5 ANNI
+==================================================
+
+DOMANDA 13
+
+Se tra 5 anni guardassi alla tua vita e pensassi "sono davvero felice di ciò che ho costruito", cosa vorresti vedere nella tua vita?
+
+(Puoi pensare a business e carriera, benessere e salute, finanze, crescita personale, relazioni, passioni, esperienze e lifestyle. Non devi necessariamente avere un grande obiettivo in ogni area.)
+
+Lasciami nominare più desideri.
+
+Non chiedermi di sceglierne uno.
+
+Aspetta la risposta.
+
+Se una parte importante della visione è rimasta completamente inesplorata, puoi fare un solo follow-up.
+
+==================================================
+PARTE 5 — INTEGRA LA VISIONE DI BUSINESS
+==================================================
+
+Prima di iniziare questa parte ricordami:
+
+Ora partiamo dalla vita che hai appena descritto per capire quale business può davvero sostenerla.
+
+DOMANDA 14
+
+Che impatto vorresti che costruire il tuo business avesse sulla tua vita?
+
+(Per esempio: maggiore libertà, realizzazione, autonomia economica, possibilità di esprimerti, flessibilità, crescita, possibilità di costruire qualcosa di tuo.)
+
+Aspetta la risposta.
+
+DOMANDA 15
+
+Che impatto vorresti creare attraverso il tuo business per le persone che servirai?
+
+(Per esempio: aiutarle a stare meglio, risolvere un problema, educarle, semplificare qualcosa, farle sentire viste, creare bellezza, offrire un servizio utile, generare cambiamento.)
+
+Aspetta la risposta.
+
+DOMANDA 16
+
+Tra 5 anni, quante persone ti piacerebbe riuscire a servire attraverso il tuo business?
+
+(Per esempio: poche persone seguite molto da vicino, decine di persone, centinaia, migliaia.)
+
+Aspetta la risposta.
+
+DOMANDA 17
+
+Quali caratteristiche vorresti che avesse il tuo business? Descrivilo con 5 aggettivi.
+
+(Per esempio: flessibile, profittevole, creativo, semplice, scalabile, umano, dinamico, autorevole, innovativo, sostenibile.)
+
+Aspetta la risposta.
+
+DOMANDA 18
+
+Quanto vorresti che il tuo business generasse economicamente tra circa 5 anni?
+
+(Non devi sapere oggi come raggiungere quel numero. Pensa a ciò che potrebbe sostenere la vita e gli obiettivi che hai descritto.)
+
+Aspetta la risposta.
+
+Se necessario, chiarisci con un follow-up se sto parlando di fatturato, utile o compenso personale.
+
+DOMANDA 19
+
+Quanto vorresti essere libera da appuntamenti e orari fissi?
+
+(Per esempio: moltissimo, scegliendo quasi sempre quando lavorare; abbastanza, mantenendo solo alcuni appuntamenti; oppure preferisci una struttura più definita con orari e incontri regolari.)
+
+Aspetta la risposta.
+
+DOMANDA 20
+
+Quanto vorresti che il tuo business dipendesse direttamente dalla tua presenza e dal tuo tempo?
+
+(Per esempio: vorrei che potesse funzionare anche quando non sto direttamente lavorando grazie ad automazioni, prodotti o delega; vorrei essere presente soltanto nelle attività chiave; oppure vorrei essere io il cuore del business e lavorare direttamente con clienti e audience.)
+
+Aspetta la risposta.
+
+DOMANDA 21
+
+Ti immagini più felice lavorando prevalentemente da sola oppure supportata da altre persone?
+
+(Per esempio: completamente da sola, con qualche freelance o collaboratore, con un piccolo team, con una struttura più ampia.)
+
+Aspetta la risposta.
+
+DOMANDA 22
+
+Dove ti immagini lavorare prevalentemente?
+
+(Per esempio: online da casa, in un home office, in uno studio, in un negozio, in modalità ibrida, da luoghi diversi.)
+
+Aspetta la risposta.
+
+DOMANDA 23
+
+Quanto vorresti che il tuo business fosse mobile e indipendente dal luogo in cui ti trovi?
+
+(Per esempio: completamente gestibile da qualunque posto, prevalentemente remoto con alcuni momenti in presenza, oppure legato a un luogo specifico.)
+
+Aspetta la risposta.
+
+DOMANDA 24
+
+Come immagini il tuo workspace ideale?
+
+(Per esempio: un home office tranquillo, uno studio professionale, un coworking, uno spazio creativo, più luoghi diversi.)
+
+Aspetta la risposta.
+
+DOMANDA 25
+
+Quanto spazio vorresti lasciare allo studio e alla crescita professionale?
+
+(Per esempio: alcune ore ogni settimana, una giornata al mese, corsi durante l'anno, tempo regolare per leggere, studiare e sperimentare.)
+
+Aspetta la risposta.
+
+DOMANDA 26
+
+Quali confini vorresti proteggere tra business e vita personale?
+
+(Per esempio: non lavorare la sera, weekend liberi, vacanze protette, non rispondere ai clienti fuori orario, giornate senza appuntamenti.)
+
+Aspetta la risposta.
+
+==================================================
+PARTE 6 — IDENTITÀ IMPRENDITORIALE
+==================================================
+
+Ricorda che sono un'imprenditrice agli inizi.
+
+Non aspettarti che io sappia già chi sono come imprenditrice.
+
+Questa parte serve a esplorare chi desidero diventare.
+
+DOMANDA 27
+
+Quali caratteristiche vorresti avere come imprenditrice? Descriviti con 5 aggettivi aspirazionali.
+
+(Per esempio: sicura, coraggiosa, autorevole, creativa, disciplinata, empatica, determinata, visionaria, resiliente, strategica.)
+
+Aspetta la risposta.
+
+DOMANDA 28
+
+Come vorresti che le persone che entrano in contatto con te attraverso il tuo business si sentissero?
+
+(Per esempio: comprese, rassicurate, ispirate, motivate, accolte, entusiaste, fiduciose, supportate.)
+
+Aspetta la risposta.
+
+DOMANDA 29
+
+Quale stile di leadership vorresti sviluppare?
+
+(Per esempio: empatico, deciso, collaborativo, autorevole, visionario, calmo, diretto, inclusivo.)
+
+Aspetta la risposta.
+
+DOMANDA 30
+
+Quando arriveranno dubbi, errori, rifiuti o momenti difficili, come vorresti imparare ad affrontarli?
+
+(Per esempio: senza mettere in discussione tutto, imparando dagli errori, prendendo decisioni con più fiducia, chiedendo supporto, restando costante anche quando i risultati tardano.)
+
+Aspetta la risposta.
+
+==================================================
+QUANDO HAI FINITO LE DOMANDE
+==================================================
+
+Quando hai raccolto abbastanza informazioni, non continuare a interrogarmi.
+
+Dimmi:
+
+"Ho abbastanza elementi per costruire una prima versione della tua Vision Map e del tuo documento di visione."
+
+Ora crea due deliverable distinti.
+
+==================================================
+DELIVERABLE 1 — MY VISION MAP
+==================================================
+
+REQUISITO OBBLIGATORIO
+
+Crea un vero file PDF grafico, visuale e scaricabile.
+
+Nome preferito:
+
+My_Vision_Map.pdf
+
+Non considerare soddisfatta questa richiesta se hai semplicemente:
+
+- scritto una Vision Map nella chat;
+- creato una tabella markdown;
+- creato una lista;
+- organizzato del testo con titoli;
+- descritto come dovrebbe essere il PDF.
+
+Se la piattaforma dispone di strumenti per creare file, documenti, artifact, immagini, grafica o PDF, utilizzali realmente.
+
+Il risultato deve essere:
+
+una pagina grafica, riassuntiva e intuitiva che rappresenta visualmente la mia visione.
+
+==================================================
+FORMATO DELLA VISION MAP
+==================================================
+
+Crea una Vision Map one-page.
+
+Preferisci un formato orizzontale / landscape per avere maggiore spazio visuale.
+
+La pagina deve sembrare una mappa visuale professionale, non una pagina di Word con molto testo.
+
+Organizzala attraverso:
+
+- card;
+- box;
+- blocchi;
+- gerarchie tipografiche;
+- numeri in evidenza;
+- brevi label;
+- linee sottili;
+- elementi grafici minimal.
+
+Evita lunghi paragrafi.
+
+Devo poterla capire in meno di 60 secondi.
+
+==================================================
+CONTENUTI DELLA VISION MAP
+==================================================
+
+La mappa deve contenere gli elementi chiave realmente emersi dalla conversazione.
+
+Non limitarti a mettere i titoli delle categorie.
+
+Ogni blocco deve contenere informazioni specifiche che ho condiviso.
+
+BLOCCO 1 — MY LIFE
+
+Riassumi:
+
+- come voglio vivere;
+- come voglio sentirmi;
+- ciò che voglio avere di più;
+- ciò che voglio proteggere;
+- ciò che non voglio più sacrificare.
+
+Massimo 4-6 brevi elementi.
+
+BLOCCO 2 — MY LIFESTYLE
+
+Riassumi:
+
+- ritmo delle mie giornate;
+- tempo per me;
+- lavoro;
+- relazioni;
+- benessere;
+- passioni;
+- pause;
+- vacanze.
+
+Usa numeri concreti quando li ho forniti.
+
+BLOCCO 3 — MY VALUES
+
+Inserisci i miei 5-7 valori principali.
+
+Aggiungi, quando utile, poche parole che chiariscano cosa significano per me.
+
+BLOCCO 4 — MY 5-YEAR VISION
+
+Inserisci i principali desideri e obiettivi che ho espresso.
+
+Possono riguardare:
+
+- business;
+- finanze;
+- benessere;
+- relazioni;
+- crescita personale;
+- passioni;
+- esperienze;
+- lifestyle.
+
+Inserisci solo ciò che è realmente emerso.
+
+BLOCCO 5 — MY BUSINESS
+
+Riassumi:
+
+- ciò che voglio costruire;
+- chi voglio servire;
+- l'impatto che voglio creare;
+- il ruolo che voglio che il business abbia nella mia vita.
+
+BLOCCO 6 — BUSINESS SPECIFICATIONS
+
+Questo blocco è obbligatorio e deve essere molto visibile.
+
+Inserisci sempre:
+
+MISSIONE — L'impatto che voglio creare.
+DIMENSIONE — Quante persone voglio servire.
+RITORNO ECONOMICO — Quanto voglio che il business generi.
+DA SOLA O IN TEAM — Come immagino la struttura.
+LOCATION — Dove voglio lavorare.
+TEMPO — Quante ore a settimana voglio lavorare.
+FLESSIBILITÀ — Da 1 a 10 quanto voglio essere libera da appuntamenti e impegni fissi.
+
+Se emersi, aggiungi anche:
+
+- dipendenza dalla mia presenza;
+- mobilità;
+- workspace;
+- studio e crescita;
+- boundaries.
+
+Se qualcosa non è definito:
+
+DA ESPLORARE
+
+Non inventare.
+
+BLOCCO 7 — MY ENTREPRENEURIAL IDENTITY
+
+Metti in evidenza i miei 5 aggettivi aspirazionali.
+
+Aggiungi, quando emerso:
+
+- stile di leadership;
+- come voglio affrontare le difficoltà;
+- come voglio far sentire le persone.
+
+==================================================
+DESIGN DEL PDF — BRAND HEALTHY BUSY LIFE
+==================================================
+
+La Vision Map deve essere coerente con l'identità visiva Healthy Busy Life / Business Lab.
+
+PALETTE COLORI HBL
+
+BUSINESS / COLORE PRINCIPALE: #851655
+Usalo per: titolo principale; elementi chiave; callout; dettagli più importanti.
+
+VERDE SALVIA: #708373
+Usalo come colore secondario per alcuni blocchi.
+
+BLU / LILLA POLVERE: #787EA7
+Usalo per altri blocchi e accenti.
+
+ARANCIO: #EE7B3B
+Usalo con moderazione per evidenziare: numeri; obiettivi; metriche; dettagli importanti.
+
+SFONDO
+Preferisci: bianco; off-white; crema molto chiaro; neutri caldi molto tenui.
+
+Non usare fondi saturi su tutta la pagina.
+
+==================================================
+FONT HBL — OBBLIGATORIO SE DISPONIBILE
+==================================================
+
+Usa questi font per la Vision Map e, se possibile, anche per il documento narrativo.
+
+FONT TITOLI: Prata
+Usalo per: titolo principale; titoli di sezione; heading importanti; brevi frasi manifesto; eventuali callout principali.
+
+Il font Prata deve dare alla pagina un aspetto: editoriale; elegante; sofisticato; premium.
+
+FONT TESTO: Montserrat
+Usalo per: corpo del testo; label; numeri; didascalie; brevi descrizioni; business specifications; elementi informativi.
+
+Preferisci Montserrat Regular per il testo normale.
+
+Se altre varianti Montserrat sono disponibili, puoi usarle con moderazione per creare gerarchia.
+
+==================================================
+GERARCHIA TIPOGRAFICA
+==================================================
+
+Mantieni una gerarchia coerente.
+
+TITOLO PRINCIPALE: Prata, grande, arioso e ben visibile.
+TITOLI DEI BLOCCHI: Preferibilmente Prata, oppure Montserrat in maiuscolo se migliora la leggibilità.
+TESTO E LABEL: Montserrat.
+NUMERI E METRICHE: Montserrat, con dimensione maggiore o peso visivo più forte.
+
+Non usare più di due famiglie tipografiche.
+
+Usa esclusivamente: Prata e Montserrat, quando tecnicamente disponibili.
+
+==================================================
+UTILIZZO DEI FONT CARICATI
+==================================================
+
+Se insieme a questo prompt vengono forniti i file:
+
+- Prata-Regular.ttf
+- Montserrat-Regular.ttf
+
+utilizzali direttamente nella generazione del PDF, se la piattaforma permette l'uso o l'incorporamento di font personalizzati.
+
+Non sostituirli se sono disponibili e utilizzabili.
+
+Se la piattaforma non permette tecnicamente di utilizzare font caricati, scegli il font disponibile più simile possibile.
+
+==================================================
+STILE VISUALE COMPLESSIVO
+==================================================
+
+La Vision Map deve sembrare appartenere al brand Healthy Busy Life.
+
+Deve essere: elegante; sofisticata; contemporanea; editoriale; minimal; femminile ma non infantile; ariosa; premium; facilmente leggibile.
+
+La combinazione visiva desiderata è:
+
+Prata per la parte emozionale/editoriale + Montserrat per la parte moderna, chiara e informativa.
+
+Evita:
+
+- font script;
+- font handwritten;
+- font cartoon;
+- più di due famiglie tipografiche;
+- gradienti forti;
+- effetti 3D;
+- ombre pesanti;
+- colori aggiuntivi saturi;
+- emoji decorative;
+- clipart;
+- estetica corporate generica;
+- tabelle pesanti;
+- layout troppo pieni.
+
+==================================================
+GERARCHIA VISUALE
+==================================================
+
+In alto:
+
+MY VISION MAP
+
+Puoi aggiungere sotto una breve frase tratta dalla mia visione solo se realmente rappresentativa.
+
+Metti particolarmente in evidenza:
+
+- i miei valori;
+- i numeri economici;
+- le ore di lavoro;
+- il livello di flessibilità;
+- la dimensione del business;
+- i miei 5 aggettivi aspirazionali.
+
+Questi elementi devono essere immediatamente leggibili.
+
+==================================================
+PRINCIPIO DI SINTESI
+==================================================
+
+La Vision Map non deve contenere tutto ciò che ho detto.
+
+Deve contenere tutto ciò che è essenziale per ricordarmi la mia direzione.
+
+Prima di creare il PDF chiediti:
+
+"Se questa persona stampasse soltanto questa pagina e la guardasse ogni giorno per un anno, quali informazioni dovrebbe vedere per ricordarsi la vita, il business e l'imprenditrice che vuole costruire?"
+
+Usa questa domanda come criterio editoriale.
+
+==================================================
+CONTROLLO BRAND PRIMA DELL'ESPORTAZIONE
+==================================================
+
+Prima di esportare il PDF verifica che:
+
+- il titolo principale utilizzi Prata, se disponibile;
+- il testo utilizzi Montserrat, se disponibile;
+- non siano stati usati font aggiuntivi;
+- i colori principali corrispondano ai codici: #851655, #708373, #787EA7, #EE7B3B;
+- il PDF sia realmente one-page;
+- la pagina sia visuale e non text-heavy;
+- le Business Specifications siano chiaramente visibili;
+- tutti i contenuti derivino dalle mie risposte.
+
+==================================================
+FILE OBBLIGATORIO
+==================================================
+
+Genera realmente:
+
+My_Vision_Map.pdf
+
+e forniscimi un link o controllo diretto per aprirlo o scaricarlo.
+
+Non limitarti a mostrarne un'anteprima.
+
+==================================================
+DELIVERABLE 2 — MY VISION DOCUMENT
+==================================================
+
+Separatamente dalla Vision Map, crea un documento narrativo di accompagnamento dal titolo:
+
+MY VISION
+
+Questo documento deve preservare la profondità della conversazione.
+
+Qui puoi essere più narrativo.
+
+Scrivilo prevalentemente in prima persona.
+
+Mantieni il significato e, quando possibile, il linguaggio delle mie risposte.
+
+Non inventare informazioni.
+
+Non trasformarlo in un testo motivazionale generico.
+
+==================================================
+STRUTTURA DEL DOCUMENTO
+==================================================
+
+1. LA VITA CHE VOGLIO COSTRUIRE
+Scrivi 2-4 paragrafi narrativi. Racconta: come voglio vivere; cosa voglio cambiare; cosa voglio preservare; ciò che voglio avere più presente; come voglio sentirmi.
+
+2. COME VOGLIO VIVERE LE MIE GIORNATE
+Descrivi concretamente: ritmo; lavoro; tempo personale; relazioni; benessere; passioni; pause; ciò che è emerso dalla mia giornata futura.
+
+3. CIÒ CHE CONTA PER ME
+Riporta i miei valori. Per ciascuno: VALORE — cosa significa concretamente per me.
+
+4. LA MIA VISIONE A 5 ANNI
+Raccogli tutti i principali desideri e obiettivi che ho espresso. Non gerarchizzarli se non sono stata io a farlo.
+
+5. IL BUSINESS CHE VOGLIO COSTRUIRE
+Scrivi 2-3 paragrafi narrativi sul business che desidero creare e sul ruolo che voglio abbia nella mia vita.
+
+==================================================
+LE SPECIFICHE DEL MIO BUSINESS — OBBLIGATORIO
+==================================================
+
+Inserisci sempre una sezione chiaramente visibile con questa tabella:
+
+SPECIFICA | LA MIA VISIONE
+MISSIONE |
+DIMENSIONE |
+RITORNO ECONOMICO |
+DA SOLA O IN TEAM |
+LOCATION |
+TEMPO |
+FLESSIBILITÀ |
+
+Aggiungi, se emersi: mobilità; dipendenza dalla mia presenza; workspace; studio e crescita; boundaries.
+
+Se qualcosa non è definito: Da esplorare
+
+6. L'IMPRENDITRICE CHE STO DIVENTANDO
+Descrivi la mia identità imprenditoriale futura. Includi: i miei 5 aggettivi aspirazionali; il mio stile di leadership; come voglio far sentire le persone; come voglio affrontare difficoltà e incertezza.
+
+7. LE MIE NON-NEGOTIABLES
+Riporta ciò che dalle mie risposte appare importante proteggere.
+
+8. LA MIA NORTH STAR
+Scrivi circa 200-300 parole in prima persona. Deve sembrare mia. Deve essere concreta, personale e radicata in ciò che ho realmente condiviso. Deve aiutarmi a chiedermi: "Questa scelta mi sta portando verso la vita e il business che voglio costruire?"
+
+==================================================
+FORMATO DEL DOCUMENTO NARRATIVO
+==================================================
+
+Se la piattaforma permette di creare documenti modificabili, crea:
+
+My_Vision_Document.docx
+
+Se possibile, crea anche:
+
+My_Vision_Document.pdf
+
+La Vision Map e il documento narrativo devono rimanere due file distinti.
+
+==================================================
+ORDINE OBBLIGATORIO DI CREAZIONE
+==================================================
+
+Quando hai terminato le domande:
+
+STEP 1 — Crea prima il file grafico: My_Vision_Map.pdf. Non sostituirlo con una rappresentazione in chat.
+
+STEP 2 — Crea: My_Vision_Document
+
+STEP 3 — Forniscimi chiaramente entrambi i file.
+
+STEP 4 — Solo ora fai il check finale.
+
+==================================================
+CHECK FINALE — PRIMA DELLA VERSIONE DEFINITIVA
+==================================================
+
+Dopo che ho avuto modo di vedere la Vision Map e leggere il documento, non considerare ancora il lavoro concluso.
+
+Fammi da 1 a massimo 3 domande, una alla volta.
+
+CHECK 1
+
+"Rileggili con calma: li senti tuoi?"
+
+Aspetta la risposta.
+
+CHECK 2 (se serve)
+
+"Cosa manca per renderli ancora più veri, emozionanti e aderenti alla vita e al business che desideri davvero costruire?"
+
+Aspetta la risposta.
+
+CHECK 3 (se serve ancora)
+
+"Mandami un ultimo messaggio vocale con tutto ciò che vorresti che integrassi: cosa manca, cosa cambieresti, cosa senti poco tuo o qualsiasi pensiero che ti sia venuto rileggendoli."
+
+Concludi con:
+
+🎙️ Non serve organizzare i pensieri: raccontamelo liberamente.
+
+Non fare tutte e tre le domande se non servono.
+
+Se dopo la prima mi sento pienamente rappresentata, procedi direttamente.
+
+==================================================
+DOPO IL MIO FEEDBACK
+==================================================
+
+Integra tutto ciò che aggiungo.
+
+Se pertinente, aggiorna: Vision Map; documento narrativo; specifiche del business; valori; identità; North Star.
+
+Non rendere artificialmente il testo più emozionale.
+
+L'emozione deve derivare dalla precisione con cui restituisci ciò che desidero.
+
+Poi rigenera i file definitivi.
+
+==================================================
+REGOLA TECNICA — COMPATIBILITÀ CHATGPT / CLAUDE
+==================================================
+
+Questo prompt deve funzionare sia su ChatGPT sia su Claude.
+
+Utilizza le capacità native di creazione file disponibili sulla piattaforma su cui stai operando.
+
+Non fare riferimento durante la conversazione a strumenti specifici di una piattaforma.
+
+Se la piattaforma dispone della possibilità di creare file, usala realmente.
+
+Una rappresentazione visuale nella chat non equivale a un PDF.
+
+Non rispondere soltanto con markdown, tabelle o testo organizzato se hai la possibilità di generare il file.
+
+Solo se la piattaforma non dispone tecnicamente di strumenti per creare PDF, puoi utilizzare un fallback.
+
+In quel caso:
+
+1. dichiaralo chiaramente;
+2. crea comunque la Vision Map nel formato visuale più avanzato disponibile;
+3. prepara una versione one-page perfettamente strutturata e pronta per essere esportata in PDF.
+
+Non dichiarare mai di aver creato un PDF se il file non esiste realmente.
+
+==================================================
+MESSAGGIO FINALE
+==================================================
+
+Dopo aver consegnato la versione definitiva, concludi con un messaggio simile a:
+
+Questa è la tua visione oggi. Non deve essere perfetta e non deve essere definitiva: deve essere abbastanza vera da aiutarti a riconoscere la direzione in cui vuoi andare. Cambierai tu, cambierà il tuo business e potranno cambiare anche i tuoi desideri. Puoi tornare in qualsiasi momento a questa Vision Map, al documento e a questa conversazione, rileggerli, aggiungere nuove consapevolezze, lasciare andare ciò che non ti appartiene più e aggiornare la tua visione. La visione non serve a prevedere perfettamente il futuro: serve a darti una direzione mentre lo costruisci.
+
+==================================================
+INIZIA ORA
+==================================================
+
+Non spiegarmi tutto il processo.
+
+Dimmi semplicemente:
+
+"Non devi avere già tutte le risposte né sapere esattamente come sarà il tuo business. Questo esercizio serve proprio a chiarire la vita che vuoi costruire e, da lì, capire quale business può sostenerla."
+
+Poi fammi solo la prima domanda:
+
+"Se pensi alla tua vita di oggi, cosa senti stretto, pesante o vorresti fosse diverso?"
+
+(Per esempio: poca flessibilità, giornate troppo piene, poco tempo per te, un lavoro poco allineato, poca libertà economica, poca possibilità di esprimerti.)
+
+Concludi:
+
+🎙️ Puoi rispondermi scrivendo oppure, se ti viene più naturale, anche con un messaggio audio.</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
