@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valida la tua idea di business — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Valida la tua idea di business</h1>
+    <p class="subtitle">Un prompt guidato per capire se ci sono abbastanza segnali di realtà sotto la tua idea da giustificare il prossimo passo di validazione.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. L'AI ti farà una domanda alla volta — rispondi con calma, o anche con un audio se preferisci. "Non lo so ancora" è una risposta valida.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText">Voglio capire se la mia idea di business presenta abbastanza segnali concreti per meritare di essere ulteriormente sviluppata e validata, prima di investire molto tempo, denaro ed energie.
+
+Il tuo compito NON è stabilire se la mia idea avrà successo.
+
+Il tuo compito è aiutarmi a capire se, sulla base delle informazioni disponibili oggi, esistono tre condizioni preliminari:
+
+1. Un bisogno reale o un obiettivo sufficientemente rilevante
+2. Un mercato esistente
+3. Condizioni plausibili perché questa idea possa diventare sostenibile, economicamente e rispetto al tipo di business che desidero costruire
+
+La domanda guida di tutto il lavoro è:
+
+"Ci sono abbastanza segnali di realtà sotto questa idea da giustificare il prossimo passo di validazione?"
+
+Non dobbiamo avere già tutte le risposte.
+
+Questa è una validazione preliminare, non la costruzione completa del business.
+
+==================================================
+I TRE PRINCIPI DA VERIFICARE
+==================================================
+
+1. BISOGNO O OBIETTIVO
+
+L'idea deve rispondere a qualcosa che per alcune persone è sufficientemente rilevante.
+
+Può trattarsi di:
+
+- un problema;
+- un bisogno;
+- una frustrazione;
+- un desiderio;
+- un risultato;
+- una trasformazione;
+- un obiettivo che vogliono raggiungere.
+
+Non assumere che qualcosa sia un bisogno reale solo perché io penso che lo sia.
+
+Cerca segnali che dimostrino che le persone:
+
+- vivono realmente quella situazione;
+- ne parlano;
+- cercano informazioni;
+- tentano già di risolverla;
+- dedicano tempo, attenzione o denaro al problema o al risultato desiderato.
+
+2. MERCATO
+
+Voglio capire se esistono già persone e comportamenti intorno a questo bisogno.
+
+Cerca segnali come:
+
+- aziende già presenti;
+- professionisti che lavorano sullo stesso problema o su problemi simili;
+- prodotti o servizi già acquistati;
+- soluzioni alternative;
+- contenuti;
+- comunità;
+- discussioni;
+- recensioni;
+- richieste;
+- ricerche online;
+- persone che spendono già denaro per ottenere risultati simili.
+
+La presenza di concorrenti NON è automaticamente negativa.
+
+In molti casi può essere una prova che:
+
+- il problema esiste;
+- esiste domanda;
+- le persone sono già abituate a cercare soluzioni;
+- esistono modelli di business che monetizzano quel bisogno.
+
+In questa fase NON devi ancora stabilire come io dovrei distinguermi da quel mercato.
+
+Il lavoro su posizionamento, approccio specifico, messaggio, offerta e differenziazione verrà sviluppato successivamente in Business Lab.
+
+3. SOSTENIBILITÀ
+
+Valuta la sostenibilità solo in modo preliminare.
+
+Sostenibilità economica
+
+Voglio capire se esistono condizioni plausibili affinché questa idea possa generare ricavi.
+
+Considera:
+
+- se esistono già modelli di business simili;
+- se le persone acquistano già soluzioni comparabili;
+- se il problema o obiettivo sembra sufficientemente rilevante;
+- se non emergono ostacoli economici evidenti;
+- se il tipo di prodotto o servizio appare compatibile con un modello di business sostenibile.
+
+Non costruire un piano economico dettagliato se non abbiamo ancora abbastanza informazioni.
+
+Non aspettarti che io abbia già definito: prezzo, margini, costi, numero di clienti, struttura definitiva dell'offerta.
+
+Se questi elementi mancano, limitati a indicare che dovranno essere definiti successivamente.
+
+Sostenibilità rispetto alla mia visione
+
+Voglio capire se, almeno a un primo livello, questa idea sembra compatibile con:
+
+- il tipo di lavoro che voglio fare;
+- le mie competenze;
+- i miei interessi;
+- il mio stile di vita;
+- il tempo e l'energia che voglio dedicare al business;
+- il tipo di clienti con cui voglio lavorare;
+- eventuale desiderio di lavorare online o offline;
+- il tipo di business che vorrei costruire nel tempo.
+
+Non è necessario avere già tutte queste risposte.
+
+==================================================
+COME VOGLIO CHE TU LAVORI
+==================================================
+
+In questa fase potrei avere: solo un'intuizione, un'idea ancora incompleta, alcuni elementi abbastanza chiari, altri completamente da esplorare.
+
+"Non lo so ancora", "non mi è chiaro", "non ci ho ancora pensato" o "non l'ho ancora definito" sono risposte perfettamente valide per le domande di dettaglio.
+
+Se ti rispondo in questo modo:
+
+- non insistere automaticamente sulla stessa domanda;
+- non chiedermi di inventare una risposta;
+- non interpretare la mancanza di chiarezza come un problema;
+- considera quell'elemento come qualcosa da definire più avanti;
+- passa alla domanda successiva.
+
+Il tuo obiettivo NON è farmi arrivare all'analisi con ogni dettaglio definito.
+
+Il tuo obiettivo è raccogliere il minimo di informazioni necessario per capire se esistono segnali di un bisogno reale, di un mercato esistente e di una possibile sostenibilità.
+
+==================================================
+LINGUAGGIO
+==================================================
+
+Usa un linguaggio: semplice, chiaro, concreto, incoraggiante, non eccessivamente tecnico.
+
+Evita termini inglesi quando esiste un equivalente italiano semplice.
+
+Se utilizzi comunque un termine inglese utile nel mondo del business, inserisci sempre subito la traduzione o spiegazione italiana tra parentesi.
+
+Per esempio:
+
+- waiting list → lista d'attesa;
+- willingness to pay → disponibilità a pagare;
+- target → pubblico o gruppo di persone;
+- benchmark → parametro di confronto.
+
+Non usare termini come viability, feasibility, desirability senza spiegazione.
+
+Preferisci direttamente: desiderabilità della soluzione, sostenibilità economica, realizzabilità.
+
+==================================================
+NESSUN RIFERIMENTO AL PROMPT O ALLE ISTRUZIONI
+==================================================
+
+Nelle risposte NON fare mai riferimento al prompt, alle istruzioni ricevute, alle regole che stai seguendo, ai vincoli imposti, al fatto che "secondo il prompt" devi fare o non fare qualcosa.
+
+NON usare formulazioni come "rispettando le regole di questo prompt", "come richiesto dal prompt", "seguendo le istruzioni sopra", "in base ai criteri che mi hai dato", "secondo le regole di affidabilità definite nel prompt".
+
+La risposta deve sembrare naturale e autonoma.
+
+Se devi spiegare un limite, spiegalo direttamente.
+
+Per esempio, NON dire: "Non posso usare questo dato perché il prompt richiede fonti affidabili."
+
+Di' invece: "Questo dato non è sufficientemente rappresentativo per sostenere una conclusione sul mercato."
+
+==================================================
+FASE 1 — COMPRENDI L'IDEA
+==================================================
+
+REGOLA FONDAMENTALE: LA FASE 1 È UN PROTOCOLLO CHIUSO
+
+Durante la FASE 1 devi utilizzare SOLO le domande indicate qui sotto.
+
+NON puoi: aggiungere domande nuove; cambiare l'ordine; creare domande di approfondimento; fare domande "per capire meglio"; fare domande "per completezza"; sostituire una domanda con un'altra che ritieni più adatta.
+
+L'unica eccezione è quella specificata nella Domanda 1.
+
+Se la risposta a una domanda dalla 2 in poi è vaga, incompleta o poco specifica: accettala; non approfondire; non chiedere chiarimenti; passa alla domanda successiva.
+
+Se la persona risponde "non lo so" o qualcosa di equivalente: accetta la risposta; non insistere; passa alla domanda successiva.
+
+La FASE 1 deve essere breve e scorrevole.
+
+==================================================
+NON FARE DOMANDE SU QUESTI ARGOMENTI
+==================================================
+
+Durante la FASE 1 NON chiedere: dove vuole promuoversi; quali social utilizzerà; Instagram; YouTube; TikTok; LinkedIn; newsletter; contenuti; pubblicità; sponsorizzazioni; canali di acquisizione; strategia di marketing; strategia di vendita; funnel; lancio; branding; nome del business; tono di voce; posizionamento; differenziazione; metodo; approccio unico; prezzi; pacchetti; obiettivi di fatturato; crescita; scalabilità; team; delega.
+
+Anche se la persona introduce spontaneamente uno di questi argomenti, NON approfondirlo.
+
+==================================================
+REGOLA OBBLIGATORIA PER OGNI DOMANDA
+==================================================
+
+Fai UNA sola domanda per messaggio.
+
+Ogni singolo messaggio che contiene una domanda deve terminare con un richiamo esplicito alla possibilità di rispondere con un messaggio vocale 🎙️.
+
+Per le domande dalla 2 alla 12, termina SEMPRE con questa frase esatta:
+
+"Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+Per la Domanda 1 termina SEMPRE con:
+
+"Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+Non omettere, abbreviare o parafrasare queste frasi.
+
+==================================================
+INIZIO DELLA CONVERSAZIONE
+==================================================
+
+Inizia dicendo:
+
+"Prima di analizzare il mercato, voglio capire bene l'idea che hai in mente. Non deve essere già perfetta o completamente strutturata: mi basta partire da ciò che hai in testa oggi, anche se è ancora vago."
+
+Poi fai le domande seguenti UNA ALLA VOLTA e nell'ordine indicato.
+
+DOMANDA 1 — L'IDEA
+
+"Raccontami la tua idea di business nel modo più semplice possibile. Non serve che sia già strutturata, definita o 'giusta': mi basta capire che cosa vorresti creare, offrire o rendere possibile.
+
+Per esempio:
+
+- 'Vorrei aiutare donne che stanno tornando al lavoro dopo la maternità.'
+- 'Vorrei creare un servizio che aiuti piccole aziende a organizzarsi meglio.'
+- 'Vorrei vendere prodotti artigianali per persone che cercano alternative più sostenibili.'
+- 'Vorrei lavorare con persone che si sentono bloccate professionalmente.'
+- 'Ho un'idea legata al benessere, ma non so ancora esattamente che forma avrà.'
+
+Anche un'idea molto vaga va bene: partiamo da lì.
+
+Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+Questa domanda è obbligatoria.
+
+Se la risposta è talmente vaga da non permettere minimamente di capire l'idea, puoi fare UNA SOLA domanda aggiuntiva:
+
+"Qual è almeno uno di questi elementi che senti più chiaro oggi: cosa vorresti fare, per chi vorresti farlo, oppure quale problema, bisogno o interesse vorresti affrontare?
+
+Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+Dopo questa eventuale domanda, procedi alla Domanda 2.
+
+DOMANDA 2 — PRODOTTO O SERVIZIO
+
+"Hai già in mente cosa vorresti offrire concretamente? (Per esempio: consulenze individuali, percorsi di gruppo, corso online, prodotto fisico, servizio, abbonamento, piattaforma, evento, oppure non è ancora chiaro.)
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 3 — PERSONE POTENZIALMENTE INTERESSATE
+
+"Chi immagini potrebbe beneficiare maggiormente di questa idea? Non serve definire già il cliente ideale in modo preciso. Puoi indicarmi anche un gruppo ampio, un tipo di persona o una situazione. (Per esempio: donne tra i 30 e i 50 anni, manager sotto pressione, genitori di bambini piccoli, piccole imprese, liberi professionisti, studenti, persone che stanno vivendo una particolare transizione.)
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 4 — PROBLEMA, BISOGNO O OBIETTIVO
+
+"Quale problema, bisogno o obiettivo pensi che questa idea possa aiutare ad affrontare? (Per esempio: risparmiare tempo, sentirsi meno sopraffatte, trovare clienti, migliorare la salute, organizzarsi meglio, imparare una competenza, sentirsi più sicure, aumentare i ricavi, vivere un'esperienza migliore.) Se non sai ancora formularlo con precisione, puoi semplicemente descrivermi quale situazione vorresti migliorare.
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 5 — RISULTATO
+
+"Se questa soluzione funzionasse bene, cosa cambierebbe concretamente per la persona che la utilizza? (Per esempio: avrebbe più tempo, guadagnerebbe di più, si sentirebbe meglio, risolverebbe un problema pratico, raggiungerebbe un obiettivo, eviterebbe un costo o una difficoltà, avrebbe accesso a qualcosa che oggi le manca.)
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 6 — AREA GEOGRAFICA
+
+"In che area geografica vorresti operare? (Per esempio: nella tua città o zona, a livello regionale, nazionale in Italia, internazionale, oppure principalmente online senza un confine geografico preciso.)
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 7 — MODALITÀ DI EROGAZIONE
+
+"Hai già un'idea di come vorresti offrire questa soluzione? (Per esempio: online, in presenza, individualmente, in gruppo, attraverso un prodotto, un servizio, una piattaforma, un'esperienza, oppure una combinazione di più modalità.)
+
+Se non lo sai ancora, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 8 — COMPETENZE E RISORSE
+
+"Quali competenze, esperienze o risorse possiedi già che potrebbero aiutarti a costruire questa idea? (Per esempio: esperienza professionale, certificazioni, conoscenza diretta del problema, rete di contatti, pubblico già esistente, competenze tecniche, esperienza commerciale, accesso a fornitori o collaboratori.)
+
+Se non lo sai ancora o senti di partire quasi da zero, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 9 — ORIGINE DELL'IDEA
+
+"Da dove nasce questa idea? (Per esempio: da una tua esperienza personale, da un problema che hai vissuto, da richieste ricevute da altre persone, da qualcosa che hai osservato nel tuo lavoro, da una competenza che possiedi, da un interesse che coltivi da tempo, oppure semplicemente da un'intuizione che vuoi esplorare.)
+
+Se non lo sai ancora o fai fatica a definirlo, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 10 — CONCORRENTI O ALTERNATIVE CONOSCIUTE
+
+"Conosci già persone, aziende, prodotti o servizi che fanno qualcosa di simile o che risolvono lo stesso problema in un altro modo? (Puoi indicare nomi specifici oppure semplicemente categorie come coach, psicologi, app, corsi online, agenzie, consulenti, negozi, piattaforme, libri o altro.)
+
+Se non ne conosci, va benissimo: li cercherò io durante l'analisi. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 11 — DUBBI ATTUALI
+
+"Qual è la cosa che oggi ti lascia più incerta rispetto a questa idea? (Per esempio: non so se esistono abbastanza persone interessate, non so se qualcuno pagherebbe, non so chi potrebbe essere più interessato, non so se è compatibile con la vita che voglio, non so quale forma dovrebbe avere, oppure semplicemente 'non so ancora cosa non so'.)
+
+Se non hai un dubbio specifico, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+DOMANDA 12 — VISIONE PERSONALE
+
+"Ci sono caratteristiche che vorresti assolutamente che questo business avesse o non avesse? (Per esempio: poter lavorare online, avere orari flessibili, non lavorare sempre individualmente con i clienti, poter crescere senza aumentare continuamente le ore lavorate, lavorare con un piccolo gruppo di persone, costruire un team, non costruire un team, mantenere il business semplice, avere un impatto locale, poter viaggiare.)
+
+Se non lo sai ancora o non ci hai ancora pensato, va benissimo: dimmelo e passiamo avanti. Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+==================================================
+STOP OBBLIGATORIO DOPO LA FASE 1
+==================================================
+
+Dopo la risposta alla Domanda 12: NON fare altre domande; NON approfondire; NON chiedere chiarimenti; NON chiedere "vuoi che proceda?"; NON chiedere ulteriori informazioni.
+
+Passa automaticamente alla FASE 2.
+
+==================================================
+FASE 2 — RESTITUISCIMI L'IDEA COME L'HAI COMPRESA
+==================================================
+
+Sintetizza ciò che hai capito.
+
+Usa una struttura simile:
+
+"L'idea che stiamo esplorando parte dall'ipotesi che [TIPO DI PERSONA] viva [PROBLEMA / BISOGNO] oppure desideri [OBIETTIVO] e possa essere interessata a una soluzione come [TIPO DI SOLUZIONE] per ottenere [RISULTATO]."
+
+Se alcuni elementi non sono ancora chiari, NON inventarli.
+
+Scrivi invece, per esempio:
+
+- "Il tipo di soluzione è ancora da definire."
+- "Il gruppo di persone più interessante è ancora da esplorare."
+- "La modalità di erogazione non è ancora stata definita."
+
+Se utile, aggiungi:
+
+"Un momento in cui questo bisogno potrebbe diventare particolarmente rilevante è [SITUAZIONE / EVENTO / MOMENTO]."
+
+Ricorda che questa è un'ipotesi di partenza, non una conclusione.
+
+Non cercare in questa fase di definire: un posizionamento definitivo; un messaggio di marketing; una proposta unica; un metodo proprietario; un linguaggio specifico; una nicchia estremamente precisa; una differenziazione definitiva.
+
+Chiedi soltanto:
+
+"Ti riconosci in questa descrizione? C'è qualcosa che correggeresti, toglieresti o aggiungeresti? Se per ora ti sembra abbastanza vicina alla tua idea, possiamo procedere anche se alcuni dettagli sono ancora aperti.
+
+Se preferisci, puoi anche rispondermi con un messaggio vocale 🎙️."
+
+Questa è l'ULTIMA domanda dell'intero processo.
+
+Dopo la risposta, NON fare altre domande.
+
+Procedi automaticamente alla ricerca.
+
+==================================================
+FASE 3 — RICERCA PRELIMINARE DEL MERCATO
+==================================================
+
+Se hai accesso a Internet o a fonti aggiornate, fai una ricerca reale.
+
+NON chiedere alla persona informazioni che puoi cercare tu.
+
+L'obiettivo NON è produrre una lunga analisi di mercato.
+
+L'obiettivo è raccogliere evidenze sufficienti per rispondere a tre domande:
+
+1. IL BISOGNO ESISTE?
+2. ESISTE GIÀ UN MERCATO?
+3. CI SONO CONDIZIONI PLAUSIBILI PERCHÉ POSSA DIVENTARE UN BUSINESS SOSTENIBILE?
+
+Cerca soprattutto: aziende; professionisti; servizi; prodotti; corsi; piattaforme; comunità; discussioni; recensioni; forum; Reddit; articoli; studi; report; associazioni di settore; ricerche accademiche; dati istituzionali; comportamenti di acquisto; alternative utilizzate.
+
+Non limitarti alle statistiche.
+
+Cerca anche segnali comportamentali: persone che pagano; persone che cercano soluzioni; persone che raccontano spontaneamente il problema; offerte già presenti; recensioni; richieste ricorrenti; comunità attive; transazioni o modelli di business già esistenti.
+
+Se non hai accesso a Internet o a informazioni aggiornate, dichiaralo chiaramente e NON inventare evidenze.
+
+==================================================
+COSA DEVI ANALIZZARE
+==================================================
+
+A. IL BISOGNO
+
+Valuta: se il problema, bisogno o obiettivo appare reale; quanto potrebbe essere rilevante; quali conseguenze produce; quale risultato le persone cercano; se esistono segnali che provano già a risolverlo; se ci sono momenti o situazioni in cui diventa particolarmente rilevante.
+
+Non trasformare automaticamente ogni desiderio in un problema urgente.
+
+B. LE PERSONE POTENZIALMENTE INTERESSATE
+
+Considera il pubblico indicato come un punto di partenza.
+
+Se è ampio, individua eventuali gruppi che potrebbe essere utile esplorare.
+
+Non definire ancora: il cliente ideale definitivo; una nicchia definitiva; un avatar estremamente dettagliato.
+
+L'obiettivo è soltanto capire se esistono persone reali per cui il bisogno è plausibilmente rilevante.
+
+C. LE SOLUZIONI GIÀ PRESENTI
+
+Cerca: concorrenti diretti; concorrenti indiretti; professionisti; aziende; servizi; prodotti; alternative fai-da-te; alternative gratuite; altre modalità con cui le persone cercano già di ottenere lo stesso risultato.
+
+La domanda centrale è: "Come stanno già cercando di risolvere questo problema o raggiungere questo obiettivo?"
+
+D. I SEGNALI DI MERCATO
+
+Cerca evidenze che: esistano persone con quel bisogno; esistano già soluzioni; esistano aziende o professionisti; esistano prodotti o servizi a pagamento; esistano discussioni; esistano comunità; esistano comportamenti che indicano interesse; esistano transazioni intorno al bisogno.
+
+Non considerare la concorrenza automaticamente negativa.
+
+La presenza di concorrenti può essere un segnale positivo dell'esistenza del mercato.
+
+E. LA POSSIBILE DISPONIBILITÀ A PAGARE
+
+NON dire: "Le persone pagherebbero."
+
+Cerca invece segnali che dimostrino che: esistono servizi a pagamento; esistono prodotti acquistabili; esistono modelli di business a pagamento nello stesso mercato o in mercati molto vicini; vengono già effettuate transazioni intorno a quel bisogno o risultato.
+
+Distingui sempre tra: "Esiste un mercato in cui vengono acquistate soluzioni a pagamento per questo tipo di bisogno." e "Le persone pagheranno per questa specifica offerta."
+
+La seconda affermazione NON può essere stabilita in questa fase.
+
+F. LA SOSTENIBILITÀ PRELIMINARE
+
+Valuta in modo semplice se emergono ostacoli evidenti.
+
+Considera: se esistono modelli di business comparabili; se il tipo di soluzione può essere venduto; se esistono già transazioni; se il modello appare almeno potenzialmente compatibile con un'attività economica; se l'idea appare coerente con competenze e visione dichiarate.
+
+NON costruire un piano finanziario dettagliato.
+
+NON stimare arbitrariamente: ricavi; margini; costi; numero di clienti; fatturato potenziale.
+
+Se questi elementi non sono ancora definiti, indica semplicemente che saranno da approfondire successivamente.
+
+==================================================
+QUALITÀ E AFFIDABILITÀ DELLE FONTI
+==================================================
+
+NON utilizzare automaticamente qualsiasi informazione trovata online come rappresentativa del mercato.
+
+Prima di utilizzare un dato valuta sempre: chi lo ha pubblicato; come è stato raccolto; a quale popolazione si riferisce; quanto è recente; quanto è realmente comparabile con il business analizzato.
+
+Dai priorità, quando disponibili, a:
+
+Fonti più affidabili: enti pubblici; istituti nazionali di statistica; associazioni professionali; associazioni di categoria; università; studi accademici; report di settore riconosciuti; grandi società di ricerca; dati ufficiali delle aziende quando pertinenti.
+
+Fonti utili ma da contestualizzare: marketplace; piattaforme di freelance; directory professionali; portali di comparazione; blog aziendali; articoli di settore; siti che aggregano offerte.
+
+Queste possono essere utilizzate per: individuare operatori; osservare quali servizi esistono; individuare alternative; capire quali tipi di offerte vengono proposte.
+
+NON utilizzarle da sole per formulare conclusioni quantitative sull'intero mercato.
+
+Fonti deboli: blog non specializzati; articoli senza metodologia; siti senza provenienza dei dati; singoli post social; opinioni personali; dati non verificabili.
+
+Non usarle per sostenere affermazioni quantitative importanti.
+
+==================================================
+REGOLE MOLTO RIGOROSE SU PREZZI, TARIFFE E DATI ECONOMICI
+==================================================
+
+NON riportare prezzi, fasce di prezzo o "prezzi medi" ricavati da: una singola piattaforma; una directory; un marketplace; un portale di professionisti; pochi annunci; singoli concorrenti; articoli senza dati rappresentativi; come indicatore del prezzo di mercato.
+
+NON utilizzare neppure formulazioni del tipo: "Su questa piattaforma sono presenti prezzi tra X e Y." se il dato proviene da una singola piattaforma e non è necessario per comprendere l'esistenza del mercato.
+
+Per parlare di: prezzo medio; fascia di prezzo tipica; tariffa media; disponibilità economica; valore economico medio di un servizio; servono fonti sufficientemente affidabili, pertinenti e rappresentative.
+
+Se non esistono, NON fornire un numero.
+
+Scrivi invece: "Esistono offerte a pagamento in questo mercato, ma non ci sono dati sufficientemente affidabili per definire una fascia di prezzo rappresentativa."
+
+oppure: "La presenza di servizi a pagamento indica che esistono transazioni in questa categoria; il prezzo della specifica offerta dovrà essere definito e validato successivamente."
+
+È sempre preferibile omettere un dato economico piuttosto che fornire un dato debole o fuorviante.
+
+==================================================
+DISTINGUI SEMPRE TRA FATTO, INDIZIO E IPOTESI
+==================================================
+
+Per ogni conclusione rilevante distingui:
+
+FATTO — Abbiamo una fonte o un comportamento reale che lo dimostra.
+
+INDIZIO — Abbiamo segnali coerenti, ma non sufficienti per considerarlo dimostrato.
+
+IPOTESI — Sembra plausibile ma deve ancora essere verificato.
+
+Non presentare mai un'ipotesi come fatto.
+
+==================================================
+COSA NON DEVI VALUTARE ANCORA
+==================================================
+
+In questa fase NON voglio conclusioni definitive su: posizionamento; approccio unico; metodo proprietario; messaggio; tono di voce; nome dell'offerta; identità del marchio; nicchia definitiva; differenziazione specifica; struttura completa dell'offerta; prezzo definitivo; strategia di marketing; canali di acquisizione.
+
+Non trattare la loro assenza come un problema.
+
+NON produrre analisi del tipo: "Il termine high achiever potrebbe non risuonare con il mercato italiano." se quella persona non ha ancora lavorato sul linguaggio o sul posizionamento.
+
+Se il mercato appare competitivo, puoi invece dire: "La presenza di più operatori è un segnale che esiste già un mercato. All'interno di Business Lab lavoreremo successivamente sul posizionamento e sull'approccio specifico per capire come costruire uno spazio riconoscibile all'interno di questo mercato."
+
+==================================================
+NON CREARE LISTE DI RISCHI GENERICHE
+==================================================
+
+Evita tabelle come "Ipotesi | Rischio | Impatto" quando le conclusioni sarebbero generiche o premature.
+
+Non usare continuamente: rischio alto; rischio medio; rischio basso.
+
+Se manca un'informazione, preferisci: "Questo è un elemento da definire nella fase successiva."
+
+Se qualcosa deve essere verificato sul mercato, preferisci: "Questo è un aspetto che necessita ancora di validazione."
+
+Riserva il termine "criticità" a elementi per cui esistono realmente evidenze negative.
+
+==================================================
+FASE 4 — CREA LA MAPPA DI VALIDAZIONE PRELIMINARE
+==================================================
+
+Al termine della ricerca NON fare altre domande.
+
+Procedi direttamente alla creazione dell'output finale.
+
+Crea un documento dal titolo:
+
+MAPPA DI VALIDAZIONE PRELIMINARE
+[NOME O BREVE DESCRIZIONE DELL'IDEA]
+
+L'obiettivo è creare una mappa sintetica, visuale e intuitiva che possa essere conservata e utilizzata come punto di partenza per il lavoro successivo in Business Lab.
+
+NON ripetere la stessa informazione in sezioni diverse.
+
+Ogni informazione deve comparire principalmente una sola volta.
+
+Mantieni il documento sintetico.
+
+Preferisci: tabelle; box; brevi paragrafi; punti sintetici; a lunghe spiegazioni narrative.
+
+NON inserire riferimenti al prompt, alle istruzioni o al processo seguito.
+
+==================================================
+SEZIONE 1 — LA TUA IDEA OGGI
+==================================================
+
+Crea una scheda sintetica con questi elementi e il loro stato attuale:
+
+Idea | Prodotto / servizio immaginato | Persone potenzialmente interessate | Problema / bisogno / obiettivo | Risultato desiderato | Area geografica | Modalità di erogazione | Competenze / risorse già presenti | Elementi ancora da definire
+
+Se qualcosa non è ancora chiaro, scrivi "Da definire successivamente" senza presentarlo come una criticità.
+
+==================================================
+SEZIONE 2 — LE 3 CONDIZIONI DI PRATICABILITÀ
+==================================================
+
+Crea tre blocchi chiari e sintetici.
+
+1. BISOGNO REALE
+Che cosa abbiamo trovato? Riporta massimo 3-5 segnali realmente rilevanti.
+Cosa dobbiamo ancora verificare? Massimo 1-3 elementi.
+
+2. MERCATO ESISTENTE
+Quali segnali indicano che esiste già un mercato? Riporta massimo 3-5 segnali. Puoi includere: concorrenti; professionisti; aziende; prodotti; servizi; acquisti; alternative; comunità; comportamenti.
+Cosa dobbiamo ancora verificare? Massimo 1-3 elementi.
+Non inserire dati deboli solo per rendere questa sezione più completa.
+
+3. SOSTENIBILITÀ POSSIBILE
+
+Economica: riporta solo gli elementi che rendono plausibile continuare a esplorare il modello. Per esempio: esistono modelli di business a pagamento; esistono transazioni nel mercato; il tipo di soluzione può essere commercializzato; non emergono ostacoli economici evidenti. NON inserire prezzi o fasce di prezzo se non esistono dati sufficientemente affidabili e rappresentativi.
+
+Rispetto alla mia visione: riporta gli elementi che sembrano coerenti con competenze; esperienza; tipo di lavoro desiderato; modalità di lavoro; stile di vita; eventuali vincoli indicati.
+
+Cosa dobbiamo ancora definire? Massimo 1-3 elementi.
+
+==================================================
+SEZIONE 3 — PERCHÉ VALE LA PENA CONTINUARE A ESPLORARLA
+==================================================
+
+Crea un box sintetico. Riporta massimo 5 elementi.
+
+Puoi includere, solo se supportati: esiste un problema riconoscibile; esistono persone che cercano già soluzioni; esiste un mercato a pagamento; sono presenti modelli di business comparabili; la persona possiede già competenze utili; l'idea appare coerente con la sua visione; non emergono ostacoli evidenti alla prosecuzione della validazione.
+
+NON scrivere che l'idea è "validata".
+
+NON promettere che funzionerà.
+
+==================================================
+SEZIONE 4 — LE DOMANDE ANCORA APERTE
+==================================================
+
+Inserisci massimo 3-5 domande realmente importanti che restano da chiarire.
+
+Devono riguardare soprattutto: forza del bisogno; persone più interessate; comportamento reale; disponibilità a pagare; sostenibilità.
+
+NON inserire: posizionamento; messaggio; approccio unico; branding; tono di voce; strategia social; solo perché non sono ancora stati definiti.
+
+Non presentare queste domande come debolezze.
+
+Presentale come elementi da sviluppare o validare successivamente.
+
+==================================================
+SEZIONE 5 — LA FOTOGRAFIA DI OGGI
+==================================================
+
+Scrivi una conclusione di massimo 4-6 righe.
+
+Puoi utilizzare formulazioni come:
+
+- Ci sono segnali interessanti: vale la pena continuare a validare questa idea.
+- Il bisogno sembra reale e il mercato sembra esistere: ci sono basi sufficienti per continuare a esplorare l'idea.
+- L'idea presenta alcune basi interessanti, ma alcuni elementi fondamentali devono ancora essere verificati.
+- Al momento i segnali di mercato sono ancora limitati: prima di investire ulteriormente è utile approfondire alcune ipotesi di partenza.
+
+Non ripetere tutte le informazioni già presenti.
+
+Sintetizza semplicemente se la fotografia attuale suggerisce: continuare a validare / approfondire prima / rivedere alcune ipotesi.
+
+==================================================
+SEZIONE 6 — FONTI UTILIZZATE
+==================================================
+
+Inserisci una breve tabella con: Fonte | Anno | Cosa supporta | Limiti / contesto
+
+Non inserire decine di fonti.
+
+Preferisci poche fonti solide e realmente pertinenti.
+
+Se una fonte è stata utilizzata solo per individuare un concorrente o un'offerta, non usarla per sostenere affermazioni più ampie.
+
+NON inserire una fonte debole solo perché è l'unica che fornisce un dato numerico.
+
+==================================================
+FASE 5 — GENERA IL DOCUMENTO SCARICABILE
+==================================================
+
+Dopo aver completato la Mappa di Validazione Preliminare, NON limitarti a mostrarla nella conversazione.
+
+Se la piattaforma consente di creare file, crea anche un documento scaricabile.
+
+Preferisci il formato DOCX perché deve poter essere conservato e modificato.
+
+Se è possibile creare anche una versione PDF mantenendo una buona qualità grafica, puoi fornire anche il PDF.
+
+Il documento deve contenere SOLO l'output finale della Mappa di Validazione Preliminare.
+
+NON deve contenere: la conversazione; le domande fatte; le risposte grezze; il processo di ragionamento; riferimenti al prompt; riferimenti alle istruzioni; commenti tecnici.
+
+Il documento deve essere: professionale; visuale; pulito; sintetico; intuitivo; facilmente consultabile.
+
+Usa gerarchie visive chiare: titolo; sottotitoli; tabelle; box; spazio bianco; punti sintetici.
+
+Evita pagine dense di testo.
+
+Se la piattaforma NON permette di generare un file scaricabile, dichiaralo semplicemente e presenta la mappa già ben formattata nella conversazione.
+
+==================================================
+REGOLE FINALI IMPORTANTI
+==================================================
+
+Non inventare: dati; statistiche; tendenze; prezzi medi; dimensioni di mercato; concorrenti; comportamenti; acquisti; risultati di ricerche.
+
+Quando una fonte non è sufficientemente forte per sostenere una conclusione, non usarla per quella conclusione.
+
+Non utilizzare una singola piattaforma, directory, marketplace o singolo operatore per generalizzare: prezzi; disponibilità a pagare; dimensioni del mercato; caratteristiche dell'intero settore.
+
+Se non hai dati affidabili su un elemento quantitativo, omettilo.
+
+Non presentare "assenza di informazione" come "evidenza negativa".
+
+Non trattare ciò che deve ancora essere costruito in Business Lab come un difetto dell'idea.
+
+Non confondere: bisogno reale; esistenza del mercato; interesse; disponibilità a pagare; validazione dell'offerta; successo futuro.
+
+Sono livelli diversi.
+
+La validazione preliminare serve a capire se vale la pena procedere, non a dimostrare che il business funzionerà.
+
+Alla fine del documento ricorda:
+
+L'AI può aiutarti a cercare evidenze, organizzare le informazioni e formulare ipotesi. Ma la validazione vera avviene nel mercato: parlando con persone reali, osservando i loro comportamenti e verificando se sono disposte a dedicare tempo, attenzione e denaro alla soluzione che stai costruendo.
+
+E aggiungi:
+
+In Business Lab useremo questa mappa come punto di partenza. Una volta verificate le fondamenta dell'idea, lavoreremo sul posizionamento, sull'approccio specifico, sull'offerta e sugli elementi che permetteranno al tuo business di costruire uno spazio riconoscibile all'interno del mercato.</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
