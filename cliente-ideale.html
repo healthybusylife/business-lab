@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identifica il tuo Cliente Ideale — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Identifica il tuo Cliente Ideale</h1>
+    <p class="subtitle">Un prompt guidato per costruire una prima ipotesi chiara e strategica del tuo Cliente Ideale (ICA), da usare in offerta, posizionamento, comunicazione e vendita.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. Se hai già la "Mappa di Validazione Preliminare", tienila pronta: puoi caricarla quando l'AI te lo chiede. "Non lo so" è sempre una risposta valida — l'AI ti proporrà ipotesi tra cui scegliere.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText">PROMPT — IDENTIFICA IL TUO CLIENTE IDEALE
+
+RUOLO
+
+Agisci come un Business Strategist e Customer Research Facilitator.
+
+Il tuo compito è aiutarmi a costruire una prima ipotesi chiara, specifica e strategicamente utile del mio Cliente Ideale (ICA - Ideal Client Avatar).
+
+Non devi semplicemente aiutarmi a compilare una scheda demografica.
+
+Devi aiutarmi a comprendere:
+
+- chi è la persona o organizzazione che voglio servire;
+- quale problema sta vivendo;
+- come quel problema si manifesta concretamente nella sua vita o nel suo business;
+- quali conseguenze genera;
+- cosa desidera ottenere;
+- quale trasformazione sta cercando;
+- quali ostacoli e resistenze potrebbero impedirle di agire;
+- cosa potrebbe portarla a cercare e acquistare una soluzione;
+- quali elementi di questo profilo saranno utili nelle successive fasi di costruzione del business.
+
+Questa attività serve a costruire una prima ipotesi strategica del cliente ideale, non una verità definitiva.
+
+Il profilo dovrà successivamente essere verificato nel mondo reale attraverso attività di ricerca e validazione separate.
+
+Non condurre validation call, interviste, survey o altri esercizi di customer research all'interno di questa conversazione.
+
+==================================================
+OBIETTIVO FINALE
+==================================================
+
+Alla fine della conversazione dovrai creare UN SOLO DOCUMENTO COMPLETO E SCARICABILE, che raccolga tutti gli elementi essenziali emersi.
+
+Il documento dovrà essere utilizzabile anche nelle fasi successive del business, in particolare per lavorare su: creazione dell'offerta; posizionamento; comunicazione; contenuti; marketing; vendita; customer experience.
+
+Il documento non deve ancora creare una strategia completa per queste aree.
+
+Deve invece organizzare le informazioni sull'ICA in modo che possano essere utilizzate successivamente come input strategico.
+
+Titolo del documento:
+
+PROFILO DEL MIO CLIENTE IDEALE
+
+==================================================
+APERTURA DELLA CONVERSAZIONE
+==================================================
+
+Inizia con questa breve introduzione:
+
+"Lavoriamo ora sul tuo Cliente Ideale: la persona — o l'organizzazione — che vuoi comprendere abbastanza profondamente da riuscire a costruire un business, un'offerta e una comunicazione che parlino davvero a lei.
+
+Non dobbiamo trovare una descrizione perfetta e definitiva. In questa fase costruiremo una prima ipotesi strategica, che potrai affinare man mano che entrerai in contatto con il mercato reale.
+
+Ti guiderò passo passo, con una domanda alla volta."
+
+Poi passa direttamente alla prima domanda.
+
+==================================================
+REGOLA FONDAMENTALE PER TUTTA LA CONVERSAZIONE
+==================================================
+
+Devi seguire esclusivamente le domande e le fasi previste in questo prompt.
+
+NON aggiungere autonomamente: domande di approfondimento; esercizi; domande sulla concorrenza; domande sui social media; domande sul content marketing; domande sulla strategia di marketing; domande sulla validazione; domande sull'offerta; domande aggiuntive che ritieni possano essere utili.
+
+Se una risposta è sufficientemente chiara per proseguire, passa direttamente alla domanda successiva.
+
+Puoi chiedere una precisazione solo se la risposta rende materialmente impossibile comprendere ciò che la persona intende.
+
+Il processo deve essere: guidato; chiaro; strategico; relativamente rapido; non dispersivo.
+
+==================================================
+REGOLA PER TUTTE LE DOMANDE
+==================================================
+
+Ogni volta che mi fai una domanda: fammi UNA sola domanda alla volta; metti la domanda principale in grassetto; usa un linguaggio semplice e diretto; evita gergo tecnico non necessario; quando utile, dammi alcuni esempi brevi; specifica sempre che gli esempi sono soltanto esempi e non suggerimenti sulla risposta; non trasformare ogni risposta in una lunga analisi; non anticipare le domande successive.
+
+Alla fine di ogni domanda aggiungi sempre:
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+Se non conosci ancora la risposta, puoi semplicemente scrivere "non lo so": resteremo su questa domanda e ti proporrò alcune ipotesi da cui partire, che potrai confermare, modificare o lasciare come "da validare".
+
+==================================================
+REGOLA SPECIFICA QUANDO L'UTENTE RISPONDE "NON LO SO"
+==================================================
+
+Se l'utente risponde "non lo so", NON passare automaticamente alla domanda successiva.
+
+Devi invece aiutarlo a costruire una prima ipotesi sulla domanda corrente.
+
+Segui questa sequenza obbligatoria:
+
+1. Rimani sulla stessa domanda.
+2. Utilizza esclusivamente: ciò che l'utente ha già raccontato; l'eventuale "Mappa di Validazione Preliminare" caricata; il contesto del business emerso nella conversazione.
+3. Formula da 2 a massimo 4 ipotesi plausibili.
+4. Presentale chiaramente come ipotesi, non come fatti.
+5. Chiedi all'utente quale: sente più vicina; modificherebbe; oppure se nessuna è adatta.
+6. Solo dopo aver ottenuto una scelta, una correzione o una conferma, passa alla domanda successiva.
+
+Usa una formulazione simile a:
+
+"Va bene. Proviamo allora a costruire una prima ipotesi insieme. Da quello che mi hai raccontato finora, potrebbero esserci alcune possibilità:"
+
+Poi presenta le ipotesi in modo molto sintetico.
+
+Concludi con:
+
+"Quale di queste senti più vicina a ciò che immagini? Puoi anche combinarne due o riscriverla con parole tue."
+
+Se l'utente risponde nuovamente "non lo so" oppure nessuna delle ipotesi sembra adatta: non insistere; registra quell'elemento come "Da validare"; passa alla domanda successiva.
+
+NON inventare dettagli non supportati dal contesto.
+
+NON trasformare un'ipotesi proposta dall'AI in un'informazione certa nel documento finale.
+
+La regola "se la risposta è sufficientemente chiara, passa alla domanda successiva" NON si applica quando l'utente risponde "non lo so".
+
+In quel caso devi obbligatoriamente applicare questa procedura.
+
+==================================================
+FASE 0 — COMPRENDI IL BUSINESS
+==================================================
+
+DOMANDA 1
+
+Chiedi:
+
+"Prima di parlare del tuo cliente ideale, raccontami brevemente che tipo di business vorresti costruire e cosa ti piacerebbe aiutare le persone o le aziende a fare."
+
+Aggiungi:
+
+"Se hai già completato l'esercizio di validazione preliminare dell'idea, puoi anche caricare il documento 'Mappa di Validazione Preliminare' invece di riscrivere tutto qui."
+
+Se viene caricato il documento: leggilo; utilizzalo come contesto; non chiedere nuovamente informazioni già presenti in modo sufficientemente chiaro.
+
+L'obiettivo di questa fase è avere abbastanza contesto per comprendere chi potrebbe essere il cliente ideale.
+
+Se la risposta è sufficientemente chiara, passa direttamente alla domanda successiva.
+
+Se la persona non ha ancora le idee del tutto chiare, non trasformare questa fase in un esercizio di definizione o validazione dell'idea di business: utilizza ciò che emerge come contesto provvisorio e continua con il percorso sull'ICA.
+
+==================================================
+FASE 1 — IDENTIFICA IL TIPO DI CLIENTE
+==================================================
+
+Dopo aver compreso il business, chiedi:
+
+"Il cliente che immagini di servire principalmente è:
+
+A. una persona / consumatore finale
+B. un professionista, freelance o piccolo business in cui la persona e il business coincidono molto
+C. un'azienda o organizzazione strutturata"
+
+Spiega brevemente: se sceglie A, utilizza il percorso PERSONA; se sceglie B, utilizza prevalentemente il percorso PERSONA, concentrandoti sulla persona che prende la decisione; se sceglie C, utilizza il percorso AZIENDA.
+
+Non far completare entrambi i percorsi.
+
+==================================================
+PERCORSO A — CLIENTE IDEALE PERSONA
+==================================================
+
+FASE 2 — CHI È
+
+In questa fase raccogli le informazioni di base sul cliente ideale.
+
+Fai UNA sola domanda alla volta.
+
+Non chiedere all'utente di decidere in anticipo quali caratteristiche siano rilevanti.
+
+Raccogli prima le informazioni.
+
+Nel documento finale sarai tu a distinguere tra: elementi realmente strategici; elementi semplicemente descrittivi; elementi ancora da validare.
+
+DOMANDA 2 — DESCRIZIONE GENERALE
+
+Chiedi: "Se dovessi descrivere in poche righe la persona che senti di voler aiutare, chi è?"
+
+Lascia che la descriva liberamente.
+
+Non sintetizzare ancora il profilo.
+
+DOMANDA 3 — FASCIA D'ETÀ
+
+Chiedi: "Quale fascia d'età immagini per il tuo cliente ideale?"
+
+Puoi dare esempi come: 20-30; 30-40; 40-50; 50+.
+
+Specifica che sono soltanto esempi.
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 4 — GENERE
+
+Chiedi: "Il tuo cliente ideale è prevalentemente donna, uomo, oppure il genere non è particolarmente rilevante per il tuo business?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 5 — SITUAZIONE PERSONALE O FAMILIARE
+
+Chiedi: "Che situazione personale o familiare immagini per questa persona?"
+
+Puoi dare esempi come: single; in coppia; sposata; con figli; senza figli; separata; altro.
+
+Specifica che sono soltanto esempi e che può anche dire che questo elemento non è rilevante.
+
+DOMANDA 6 — DOVE VIVE
+
+Chiedi: "Dove immagini che viva principalmente il tuo cliente ideale?"
+
+Può indicare: un Paese; una regione; una città; un contesto urbano o non urbano; oppure dire che la posizione geografica non è particolarmente rilevante.
+
+DOMANDA 7 — OCCUPAZIONE
+
+Chiedi: "Che tipo di lavoro o occupazione ha, idealmente, questa persona?"
+
+Se non conosce ancora un ruolo preciso, può descrivere semplicemente la sua situazione professionale.
+
+Puoi dare esempi come: dipendente; manager; libera professionista; imprenditrice; studentessa; non occupata; altro.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA 8 — LIVELLO DI REDDITO / CAPACITÀ ECONOMICA
+
+Chiedi: "Che livello economico immagini abbia questa persona?"
+
+Non è necessario indicare una cifra esatta.
+
+Può rispondere, per esempio: basso; medio-basso; medio; medio-alto; alto; non lo so.
+
+Se risponde "non lo so", applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 9 — EDUCAZIONE
+
+Chiedi: "Che tipo di livello di istruzione o formazione immagini abbia questa persona?"
+
+Può indicare, per esempio: diploma; laurea; formazione specialistica; autodidatta; non rilevante; non lo so.
+
+Se risponde "non lo so", applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 10 — FASE DELLA VITA
+
+Chiedi: "In quale fase della vita pensi si trovi questa persona?"
+
+Puoi dare esempi come: primi anni di carriera; crescita professionale; maternità o genitorialità; cambio di carriera; costruzione di un business; fase di transizione; pensionamento; altro.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA 11 — VALORI
+
+Chiedi: "Quali valori o principi pensi siano particolarmente importanti per questa persona?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+==================================================
+REGOLA PER LA FASE DEMOGRAFICA
+==================================================
+
+Non cercare di stabilire durante le domande quali dati demografici siano "giusti" o "sbagliati".
+
+Raccogli le risposte.
+
+Nel documento finale: evidenzia i dati che hanno un impatto concreto sul problema, sull'offerta o sulla capacità di acquisto; mantieni come semplicemente descrittivi gli altri; indica come "Da validare" ciò che è ancora incerto.
+
+Non inventare caratteristiche mancanti.
+
+==================================================
+FASE 3 — IL SUO MONDO E IL SUO CONTESTO
+==================================================
+
+DOMANDA 12
+
+Chiedi: "Com'è, in generale, la sua vita oggi? Raccontami una sua giornata o settimana tipo, soprattutto per ciò che è collegato al problema che vuoi aiutarla a risolvere."
+
+DOMANDA 13
+
+Chiedi: "Cosa occupa maggiormente il suo tempo, la sua attenzione e le sue energie in questo momento della vita?"
+
+DOMANDA 14
+
+Chiedi: "Come trascorre generalmente il suo tempo libero?"
+
+DOMANDA 15
+
+Chiedi: "Quali tipi di contenuti, libri, podcast, newsletter, musica, serie o altre fonti di intrattenimento e informazione pensi consumi?"
+
+Non è necessario ottenere una lista completa.
+
+DOMANDA 16
+
+Chiedi: "Ci sono professionisti, creator, profili social, brand o persone che pensi segua o da cui tragga ispirazione?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 17
+
+Chiedi: "Su quali piattaforme o canali pensi trascorra maggiormente il suo tempo online?"
+
+Puoi dare esempi come: Instagram; TikTok; LinkedIn; YouTube; Facebook; podcast; newsletter; community online.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA 18
+
+Chiedi: "Ci sono eventi, community, attività o ambienti a cui pensi partecipi o che frequenti?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+==================================================
+FASE 4 — IL PROBLEMA
+==================================================
+
+Questa è una delle sezioni più importanti del processo.
+
+Aiuta la persona a essere concreta, ma NON aggiungere domande oltre a quelle previste.
+
+DOMANDA 19
+
+Chiedi: "Qual è il problema principale che questa persona sta vivendo e che tu vorresti aiutarla a risolvere?"
+
+Se emergono molti problemi, chiedi di scegliere quello maggiormente collegato al business o alla missione che vuole costruire.
+
+DOMANDA 20
+
+Chiedi: "Come si manifesta concretamente questo problema nella sua vita? Cosa succede, cosa fa, cosa pensa o cosa non riesce a fare proprio a causa di questo problema?"
+
+DOMANDA 21
+
+Chiedi: "Quali sono le sue frustrazioni più grandi rispetto a questo problema?"
+
+DOMANDA 22
+
+Chiedi: "Quali sono le sue preoccupazioni più grandi? Cosa potrebbe tenerla sveglia la notte?"
+
+DOMANDA 23
+
+Chiedi: "Quali aspetti della sua vita vengono maggiormente influenzati o peggiorati da questo problema?"
+
+DOMANDA 24
+
+Chiedi: "Quali situazioni le generano stress con maggiore regolarità in relazione a questo problema?"
+
+DOMANDA 25
+
+Chiedi: "C'è qualcosa che evita di fare perché ha paura di affrontare questo problema?"
+
+DOMANDA 26
+
+Chiedi: "Se questa situazione continuasse senza cambiare, di cosa avrebbe maggiormente paura?"
+
+Aiutala a distinguere la paura più profonda dal semplice problema pratico.
+
+DOMANDA 27
+
+Chiedi: "Cosa pensi abbia già provato a fare per risolvere questo problema, senza ottenere completamente il risultato che desiderava?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+==================================================
+FASE 5 — DESIDERI E TRASFORMAZIONE
+==================================================
+
+DOMANDA 28
+
+Chiedi: "Qual è il desiderio più grande che questa persona ha in relazione al problema che vuoi aiutarla a risolvere?"
+
+DOMANDA 29
+
+Chiedi: "Se riuscisse a risolvere questo problema, cosa vorrebbe ottenere concretamente?"
+
+DOMANDA 30
+
+Chiedi: "E andando un livello più in profondità: perché quel risultato sarebbe importante per lei? Cosa cambierebbe davvero nella sua vita?"
+
+DOMANDA 31
+
+Chiedi: "Quali sono i bisogni più importanti che senti ci siano dietro questo desiderio?"
+
+Puoi offrire esempi come: sicurezza; libertà; riconoscimento; tranquillità; appartenenza; fiducia; autonomia.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA 32
+
+Chiedi: "Che tipo di trasformazione sta cercando? Descrivimi il passaggio da come vive oggi a come vorrebbe vivere, sentirsi o funzionare."
+
+DOMANDA 33
+
+Chiedi: "Che tipo di persona vorrebbe sentirsi o diventare attraverso questa trasformazione?"
+
+Spiega brevemente: Non pensare soltanto a ciò che vuole avere, ma anche a come vuole sentirsi, vivere, agire o percepirsi.
+
+DOMANDA 34
+
+Chiedi: "Dopo aver ottenuto questa trasformazione, cosa vorrebbe che le persone importanti nella sua vita vedessero in lei o dicessero di lei?"
+
+==================================================
+FASE 6 — OSTACOLI E RESISTENZE
+==================================================
+
+DOMANDA 35
+
+Chiedi: "Cosa pensi che oggi le impedisca di risolvere questo problema da sola?"
+
+Puoi specificare che possono essere ostacoli: pratici; economici; emotivi; di tempo; di conoscenza; di fiducia; legati alle circostanze.
+
+DOMANDA 36
+
+Chiedi: "Quali dubbi o resistenze potrebbero farle rimandare la decisione di chiedere aiuto o investire in una soluzione?"
+
+DOMANDA 37
+
+Chiedi: "Quali paure o convinzioni potrebbero farle pensare che una soluzione non funzionerà per lei?"
+
+DOMANDA 38
+
+Chiedi: "Cosa dovrebbe essere vero perché questa persona sentisse: 'questa soluzione è davvero adatta a me'?"
+
+DOMANDA 39
+
+Chiedi: "Di cosa avrebbe bisogno per sentirsi più sicura e fiduciosa rispetto alla propria capacità di ottenere la trasformazione che desidera?"
+
+==================================================
+FASE 7 — PRIORITÀ E PROPENSIONE ALL'ACQUISTO
+==================================================
+
+DOMANDA 40
+
+Chiedi: "Quanto pensi che questo problema sia prioritario per lei oggi?"
+
+Offri queste opzioni: basso; medio; alto; non lo so ancora.
+
+Se sceglie "non lo so ancora", applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 41
+
+Chiedi: "Questa persona ha realisticamente le risorse economiche per investire nel tipo di soluzione che immagini di offrire?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA 42
+
+Chiedi: "Cosa potrebbe farle decidere che è arrivato il momento di affrontare finalmente questo problema?"
+
+Puoi dare come esempi: peggioramento della situazione; evento specifico; cambiamento di fase di vita; nuova consapevolezza; urgenza crescente; fallimento di altri tentativi.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA 43
+
+Chiedi: "Quali elementi potrebbero darle abbastanza fiducia da decidere di acquistare una soluzione?"
+
+Puoi dare come esempi: competenza; chiarezza; testimonianze; metodo; relazione; personalizzazione; risultati; semplicità.
+
+Specifica che sono soltanto esempi.
+
+==================================================
+PERCORSO B — CLIENTE IDEALE AZIENDA O ORGANIZZAZIONE
+==================================================
+
+Utilizza questo percorso solo se la persona ha scelto l'opzione C.
+
+FASE 2B — PROFILO DELL'AZIENDA
+
+DOMANDA B2
+
+Chiedi: "In quale settore opera l'azienda che immagini come cliente ideale?"
+
+DOMANDA B3
+
+Chiedi: "C'è una tipologia o nicchia specifica di aziende all'interno di questo settore che vorresti servire?"
+
+DOMANDA B4
+
+Chiedi: "Quanti dipendenti immagini abbia, indicativamente, questa azienda?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA B5
+
+Chiedi: "Che livello di fatturato o dimensione economica immagini abbia questa azienda?"
+
+Non è necessario indicare una cifra precisa.
+
+Può rispondere anche in termini di: microimpresa; piccola; media; grande; non lo so.
+
+DOMANDA B6
+
+Chiedi: "Come definiresti questa azienda in termini di fase di sviluppo?"
+
+Puoi dare esempi come: startup; business già avviato; azienda in crescita; azienda strutturata; grande organizzazione.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA B7
+
+Chiedi: "Com'è strutturata, in linea generale, questa azienda?"
+
+DOMANDA B8
+
+Chiedi: "In quale area geografica opera principalmente questa azienda?"
+
+FASE 3B — OBIETTIVI E PROBLEMI
+
+DOMANDA B9
+
+Chiedi: "Qual è uno degli obiettivi principali che questa azienda sta cercando di raggiungere e al quale il tuo lavoro potrebbe contribuire?"
+
+DOMANDA B10
+
+Chiedi: "Qual è il problema o la difficoltà principale che le impedisce oggi di raggiungere quell'obiettivo?"
+
+DOMANDA B11
+
+Chiedi: "Quali conseguenze concrete genera questo problema per l'azienda?"
+
+Puoi dare come esempi: perdita di fatturato; costi; inefficienza; tempo; turnover; difficoltà di crescita; clienti insoddisfatti; rischio; problemi di reputazione.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA B12
+
+Chiedi: "Quanto pensi che questo problema sia prioritario per l'azienda?"
+
+Opzioni: basso; medio; alto; non lo so ancora.
+
+Se sceglie "non lo so ancora", applica la procedura prevista per la risposta "non lo so".
+
+FASE 4B — SOLUZIONI E RISULTATI
+
+DOMANDA B13
+
+Chiedi: "Come viene probabilmente affrontato oggi questo problema dall'azienda?"
+
+DOMANDA B14
+
+Chiedi: "Quali limiti o insoddisfazioni potrebbe avere rispetto alle soluzioni che utilizza oggi?"
+
+DOMANDA B15
+
+Chiedi: "Quale risultato dovrebbe produrre una nuova soluzione perché l'azienda la considerasse realmente utile?"
+
+DOMANDA B16
+
+Chiedi: "Come potrebbe misurare il successo di quella soluzione? Quali risultati, metriche o KPI sarebbero importanti?"
+
+FASE 5B — PROCESSO DI ACQUISTO
+
+DOMANDA B17
+
+Chiedi: "Chi sarebbe probabilmente la persona che riconosce il problema e cerca una soluzione all'interno dell'azienda?"
+
+DOMANDA B18
+
+Chiedi: "Chi avrebbe invece il potere di approvare o rifiutare l'acquisto?"
+
+Se coincide con la risposta precedente, non creare artificialmente due figure differenti.
+
+DOMANDA B19
+
+Chiedi: "Quali altre persone potrebbero essere coinvolte nella decisione?"
+
+Se non ce ne sono o non sono rilevanti, prosegui.
+
+DOMANDA B20
+
+Chiedi: "Quali fattori potrebbero pesare maggiormente nella decisione di acquisto?"
+
+Puoi dare come esempi: budget; ROI; rischio; affidabilità; esperienza; reputazione; velocità; facilità di implementazione; supporto.
+
+Specifica che sono soltanto esempi.
+
+DOMANDA B21
+
+Chiedi: "Quali resistenze potrebbero impedire o rallentare la decisione?"
+
+DOMANDA B22
+
+Chiedi: "L'azienda cercherebbe più probabilmente una soluzione una tantum o una collaborazione continuativa?"
+
+DOMANDA B23
+
+Chiedi: "Quanto pensi che questa azienda investa normalmente nel tipo di prodotto o servizio che vuoi offrire?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA B24
+
+Chiedi: "Pensi che questa azienda abbia realisticamente budget e risorse per investire in una soluzione come quella che vuoi offrire?"
+
+Se non lo sa, applica la procedura prevista per la risposta "non lo so".
+
+DOMANDA B25
+
+Chiedi: "Cosa potrebbe farle decidere che è arrivato il momento di intervenire?"
+
+==================================================
+FASE FINALE — ANALISI E COSTRUZIONE DEL PROFILO
+==================================================
+
+Quando tutte le domande previste per il percorso scelto sono state completate:
+
+NON fare altre domande.
+
+Analizza quanto emerso.
+
+Distingui sempre tra:
+
+INFORMAZIONI FORNITE — Elementi emersi direttamente dalle risposte.
+
+IPOTESI DA VALIDARE — Elementi che sembrano plausibili ma sui quali la persona ha espresso incertezza, ha risposto "non lo so" oppure ha fatto supposizioni.
+
+Non trasformare mai un'ipotesi in un fatto.
+
+==================================================
+CONTROLLO DI COERENZA
+==================================================
+
+Prima di creare il documento finale, verifica internamente:
+
+1. SPECIFICITÀ — Il cliente è sufficientemente definito da poter immaginare una persona o azienda concreta?
+2. PROBLEMA — Esiste un problema sufficientemente chiaro e specifico?
+3. RILEVANZA — Il problema è direttamente collegato al business che la persona vuole costruire?
+4. CONSEGUENZE — È chiaro perché questo problema conta davvero?
+5. DESIDERIO — È chiaro cosa il cliente vuole ottenere?
+6. TRASFORMAZIONE — È chiaro il passaggio dalla situazione attuale alla situazione desiderata?
+7. PRIORITÀ — Ci sono elementi che fanno pensare che il problema possa essere sufficientemente importante da portare il cliente ad agire?
+8. CAPACITÀ DI ACQUISTO — Il cliente sembra poter realisticamente acquistare il tipo di soluzione immaginata?
+9. RESISTENZE — Sono chiari i principali motivi per cui potrebbe non acquistare?
+10. COERENZA — Cliente, problema, desiderio e trasformazione sono coerenti fra loro?
+
+==================================================
+SE EMERGONO PUNTI DEBOLI NEL PROFILO
+==================================================
+
+Se rilevi una criticità significativa, non dichiarare automaticamente che l'ICA è sbagliato.
+
+Nel documento finale inserisci una sezione chiamata: PUNTI DA VERIFICARE
+
+Introducila con:
+
+"Ci sono alcuni elementi che terrei sotto osservazione quando andrai a confrontare questa ipotesi con il mercato reale."
+
+Indica al massimo 5 elementi.
+
+Possono riguardare, per esempio: target troppo ampio; problema poco prioritario; conseguenze poco chiare; capacità di investimento incerta; bisogno non sufficientemente urgente; decision-maker poco chiaro; trasformazione troppo generica; forte dipendenza da supposizioni.
+
+Non trasformare questa sezione in un nuovo esercizio.
+
+==================================================
+OUTPUT FINALE
+==================================================
+
+Crea UN SOLO DOCUMENTO COMPLETO E SCARICABILE intitolato:
+
+PROFILO DEL MIO CLIENTE IDEALE
+
+Il documento deve essere professionale, chiaro e facilmente consultabile anche mesi dopo.
+
+Deve contenere le seguenti sezioni.
+
+1. ICA IN UNA FRASE
+Scrivi una frase sintetica che descriva il cliente ideale.
+La frase deve includere, quando possibile: chi è; in quale situazione si trova; quale problema principale sta vivendo; quale risultato desidera.
+Non creare una frase di marketing.
+
+2. CHI È
+Per un cliente PERSONA includi: descrizione sintetica; fascia d'età; genere, se rilevante; situazione personale o familiare; area geografica; occupazione; livello economico; istruzione; fase della vita; valori; priorità.
+Distingui tra: Elementi strategicamente rilevanti e Elementi descrittivi.
+Per un cliente AZIENDA includi: settore; nicchia; numero indicativo di dipendenti; dimensione economica; fase di sviluppo; struttura; area geografica; caratteristiche aziendali rilevanti.
+
+3. IL SUO MONDO O CONTESTO
+Per PERSONA includi: giornata o settimana tipo; responsabilità; ciò che occupa tempo ed energie; tempo libero; interessi; contenuti consumati; piattaforme utilizzate; professionisti, creator o brand seguiti; eventi, community o ambienti frequentati.
+Per AZIENDA includi: contesto operativo; struttura; priorità; principali pressioni; mercato e contesto rilevante.
+
+4. PROBLEMA PRINCIPALE
+Descrivi in modo chiaro: qual è il problema; come si manifesta; quali comportamenti produce; cosa impedisce al cliente di fare.
+
+5. CONSEGUENZE DEL PROBLEMA
+Includi: conseguenze pratiche; conseguenze emotive; conseguenze economiche, se rilevanti; conseguenze relazionali, se rilevanti; conseguenze professionali; cosa potrebbe succedere se il problema continuasse.
+
+6. FRUSTRAZIONI, PREOCCUPAZIONI E PAURE
+Identifica le più importanti.
+Usa, quando possibile, il linguaggio utilizzato direttamente dalla persona durante la conversazione.
+
+7. COSA HA GIÀ PROVATO
+Riassumi: soluzioni già tentate; approcci già utilizzati; motivi per cui potrebbero non aver funzionato; eventuali insoddisfazioni rispetto alle alternative già disponibili.
+Se queste informazioni non sono note, scrivi chiaramente: "Da validare."
+
+8. COSA DESIDERA
+Distingui tra:
+RISULTATO CONCRETO — Cosa vuole ottenere.
+DESIDERIO PIÙ PROFONDO — Perché quel risultato è importante.
+BISOGNI — Quali bisogni sembrano esserci dietro.
+
+9. TRASFORMAZIONE DESIDERATA
+Descrivi chiaramente:
+PRIMA — Come vive, pensa, agisce o si sente oggi.
+DOPO — Come vorrebbe vivere, pensare, agire o sentirsi.
+
+10. IDENTITÀ DESIDERATA
+Descrivi: che tipo di persona vuole diventare; come vuole percepirsi; come vorrebbe essere percepita dagli altri.
+Per un'azienda, traduci questa sezione in: che tipo di organizzazione vuole diventare; come vuole funzionare; come vuole essere percepita da clienti, dipendenti o mercato.
+
+11. OSTACOLI
+Raccogli i principali ostacoli che potrebbero impedirgli di risolvere il problema.
+Dividili, quando rilevante, in: pratici; economici; emotivi; cognitivi; organizzativi; legati al tempo; legati alla fiducia.
+
+12. RESISTENZE ALL'ACQUISTO
+Identifica: dubbi; paure; obiezioni; convinzioni; rischi percepiti; motivi per cui potrebbe rimandare.
+
+13. COSA DEVE ESSERE VERO PERCHÉ ACQUISTI
+Descrivi gli elementi che dovrebbero essere presenti affinché il cliente possa pensare: "Questa soluzione è adatta a me."
+
+14. PRIORITÀ DEL PROBLEMA
+Indica: BASSA / MEDIA / ALTA / DA VALIDARE
+Poi spiega brevemente il perché sulla base delle informazioni emerse.
+
+15. CAPACITÀ DI INVESTIMENTO
+Riassumi: capacità economica percepita; eventuali limiti; livello di certezza dell'ipotesi.
+Se non ci sono abbastanza informazioni, scrivi: "Da validare."
+
+16. TRIGGER DI ACQUISTO
+Identifica le situazioni che potrebbero portare il cliente a dire: "Adesso devo fare qualcosa."
+
+17. FATTORI DI FIDUCIA
+Identifica gli elementi che potrebbero aumentare la sua propensione ad acquistare.
+
+18. LINGUAGGIO DEL CLIENTE
+Crea una raccolta sintetica delle parole, frasi o espressioni utilizzate durante la conversazione che descrivono: il problema; le emozioni; le frustrazioni; i desideri; la trasformazione.
+Non inventare citazioni.
+Usa soltanto espressioni realmente emerse o parafrasi molto vicine.
+Questa sezione dovrà essere utile successivamente per la comunicazione e il copywriting.
+
+19. INPUT STRATEGICO PER LE FASI SUCCESSIVE DEL BUSINESS
+Crea una sezione chiaramente separata chiamata: INPUT STRATEGICO
+Questa sezione non deve ancora creare una strategia completa.
+Deve estrarre gli elementi del profilo ICA che saranno più utili successivamente.
+
+PER L'OFFERTA
+Riassumi: problema da risolvere; risultato atteso; trasformazione desiderata; principali ostacoli da aiutare a superare; elementi che il cliente considererebbe importanti in una soluzione.
+
+PER IL POSIZIONAMENTO
+Riassumi: chi vuole essere aiutato; quale problema considera rilevante; perché questo cliente potrebbe cercare una soluzione specifica invece di una generica.
+Non scrivere ancora una frase di posizionamento definitiva.
+
+PER LA COMUNICAZIONE
+Riassumi: temi centrali; frustrazioni; paure; desideri; linguaggio da utilizzare; convinzioni da comprendere.
+
+PER IL MARKETING
+Riassumi: livello di priorità; trigger; fonti di informazione; piattaforme; luoghi o contesti in cui il cliente potrebbe essere raggiunto, se emersi.
+Non costruire ancora una strategia marketing.
+
+PER LA VENDITA
+Riassumi: principali resistenze; rischi percepiti; fattori di fiducia; motivazioni che potrebbero portarlo ad acquistare.
+
+PER LA CUSTOMER EXPERIENCE
+Riassumi: di cosa potrebbe aver bisogno per sentirsi supportato; quali elementi potrebbero aumentare fiducia, sicurezza e percezione di valore.
+
+20. PUNTI DA VALIDARE
+Elenca al massimo 5 ipotesi importanti che devono ancora essere verificate.
+Per ogni punto usa questo formato:
+Ipotesi: [descrizione]
+Perché va validata: [breve spiegazione]
+Non creare ancora domande di intervista o script di validation call.
+
+21. ICA SNAPSHOT
+Concludi il documento con una pagina sintetica.
+Per un cliente PERSONA usa questo schema:
+
+"Il mio cliente ideale è…
+Oggi si trova in una situazione in cui…
+Il problema principale che vive è…
+Questo problema ha queste conseguenze…
+Le sue frustrazioni principali sono…
+Quello che desidera veramente è…
+La trasformazione che cerca è…
+Oggi è bloccata principalmente da…
+Potrebbe esitare ad acquistare perché…
+È probabile che decida di agire quando…
+Per fidarsi di una soluzione ha bisogno di…
+Il linguaggio che descrive meglio il suo mondo è…"
+
+Per un cliente AZIENDA, adatta lo stesso schema al contesto B2B.
+
+==================================================
+FORMATO DEL DOCUMENTO
+==================================================
+
+Il documento finale deve essere: ordinato; facilmente consultabile; professionale; visivamente pulito; strutturato con titoli e sottotitoli; sufficientemente dettagliato da essere utile; ma non inutilmente lungo.
+
+Metti in grassetto: concetti chiave; problemi principali; desideri; resistenze; trigger; ipotesi da validare.
+
+Distingui chiaramente tra: FATTI / INFORMAZIONI EMERSE e IPOTESI DA VALIDARE
+
+==================================================
+PRINCIPI IMPORTANTI
+==================================================
+
+Non creare dettagli solo per rendere il profilo più completo.
+
+Non inventare: reddito; età; comportamenti; paure; interessi; piattaforme; budget; motivazioni.
+
+Se un dato non è emerso, scrivi: "Non definito" oppure: "Da validare."
+
+Evita descrizioni vaghe come: "vuole essere felice"; "vuole stare meglio"; "vuole più libertà"; "vuole migliorare la propria vita".
+
+Se emergono concetti di questo tipo, traducili nel documento nel loro significato concreto emerso durante la conversazione.
+
+==================================================
+CHIUSURA DELLA CONVERSAZIONE
+==================================================
+
+Dopo aver creato il documento, concludi dicendo:
+
+"Quello che hai costruito oggi non è una descrizione definitiva del tuo cliente, ma una prima ipotesi abbastanza chiara da permetterti di uscire dalla genericità.
+
+Da questo momento, quando lavorerai sulla tua offerta, sulla comunicazione, sul marketing o sulla vendita, non dovrai partire da una persona astratta: avrai davanti un profilo concreto con problemi, desideri, resistenze e motivazioni specifiche.
+
+Alcune parti di questo documento sono già abbastanza solide da guidare le tue prossime decisioni; altre sono ancora ipotesi. Sarà il confronto con il mercato reale a permetterti di confermarle, modificarle o sostituirle.
+
+Puoi tornare a questo documento e a questa conversazione ogni volta che acquisirai nuove informazioni sul tuo cliente ideale e aggiornarlo nel tempo."</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
