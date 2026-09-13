@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crea la tua Validation Call — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Crea la tua Validation Call</h1>
+    <p class="subtitle">Un prompt guidato per costruire una lista di domande personalizzata da usare in una Validation Call con un potenziale Cliente Ideale.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. Se hai già il "Profilo del Cliente Ideale" della lezione precedente, tienilo pronto: puoi caricarlo quando l'AI te lo chiede. Riceverai un documento Word scaricabile, pronto da avere davanti durante la call.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText">PROMPT — CREA LA TUA VALIDATION CALL DEL CLIENTE IDEALE
+
+IL TUO RUOLO
+
+Agisci come un esperto di customer research, validazione del cliente ideale e strategia di business.
+
+Il tuo compito è aiutarmi a creare una lista di domande personalizzata da utilizzare durante una Validation Call con un potenziale Cliente Ideale.
+
+La Validation Call NON è una call di vendita.
+
+Il suo obiettivo è raccogliere informazioni reali dal mercato per verificare e approfondire le ipotesi che ho già costruito sul mio Cliente Ideale.
+
+La conversazione deve aiutarmi a comprendere meglio:
+
+- quali problemi e difficoltà il mio Cliente Ideale vive realmente;
+- come vive e descrive questi problemi;
+- quali conseguenze hanno nella sua vita o nel suo lavoro;
+- quanto sono importanti e prioritari;
+- cosa ha già fatto per affrontarli;
+- quali prodotti, servizi o soluzioni ha già utilizzato;
+- cosa ha funzionato e cosa non ha funzionato;
+- cosa desidera realmente ottenere;
+- quali risultati considera importanti;
+- quali dubbi, paure, ostacoli o resistenze possono impedirgli di agire;
+- quali fattori influenzano la scelta di una soluzione;
+- quali possibili resistenze potrebbero rendere più difficile, in futuro, la decisione di acquistare un prodotto o servizio come quello che potrei offrire;
+- quali parole utilizza spontaneamente per descrivere problemi, desideri, frustrazioni e bisogni.
+
+Queste informazioni potranno aiutarmi successivamente a costruire in modo più coerente: prodotti e servizi; proposta di valore; posizionamento; comunicazione; contenuti; marketing; processo di vendita.
+
+==================================================
+PRINCIPIO FONDAMENTALE
+==================================================
+
+Non dobbiamo cercare di far confermare al Cliente Ideale ciò che pensiamo già.
+
+Dobbiamo capire: "Che cosa è realmente vero per questa persona o organizzazione?"
+
+Per questo motivo, privilegia domande relative a: esperienze realmente vissute; episodi specifici; comportamenti passati; decisioni già prese; soluzioni già cercate o acquistate; risorse già investite; problemi realmente sperimentati.
+
+Evita il più possibile domande puramente ipotetiche.
+
+NON costruire domande come: "Compreresti questo prodotto?" "Ti piacerebbe una soluzione che…?" "Pensi che questa idea possa esserti utile?" "Quanto pagheresti per…?" "Come ti sentiresti se esistesse un prodotto che…?" "Non trovi che…?" "Il tuo problema principale è X, giusto?"
+
+Preferisci invece formulazioni come: "Raccontami l'ultima volta che ti è successo." "Cosa hai fatto in quella situazione?" "Che cosa hai già provato?" "Cosa ti ha spinto a cercare una soluzione?" "Come hai scelto cosa provare?" "Cosa ha funzionato?" "Cosa non ha funzionato?" "Che conseguenze ha avuto?" "Cosa ti ha impedito di fare qualcosa di diverso?"
+
+==================================================
+REGOLA CRITICA — NON SUGGERIRE LE RISPOSTE
+==================================================
+
+Quando costruisci le domande della Validation Call, NON inserire nella domanda esempi, alternative, interpretazioni o possibili risposte che possano orientare il cliente.
+
+Evita formulazioni come: "Temi che diventi un altro impegno invece che un sollievo?" "Ti blocca di più il tempo o il prezzo?" "Vorresti sentirti più libera, sicura o organizzata?" "La difficoltà principale è la costanza?" "Ti preoccupa che sia troppo impegnativo?" "Per te conta di più il supporto o la flessibilità?" "Il problema è che non hai abbastanza tempo?"
+
+Queste formulazioni possono indurre la persona a scegliere tra opzioni che non avrebbe nominato spontaneamente.
+
+Preferisci domande aperte come: "Cosa ti preoccuperebbe di più?" "Quali dubbi avresti?" "Cosa potrebbe farti esitare?" "Cosa ti ha frenato finora?" "Cosa vorresti fosse diverso?" "Qual è la parte più difficile per te?" "Cosa conta di più quando scegli una soluzione?" "Cosa ti farebbe sentire che questa soluzione è adatta a te?"
+
+Se la risposta è troppo generica, utilizza un follow-up aperto come: "Mi racconti meglio?" "Cosa intendi esattamente?" "Mi fai un esempio?" "Perché questo è importante per te?" "Cosa succede in quella situazione?" "Cos'altro?"
+
+Solo DOPO che il cliente ha nominato spontaneamente un tema, puoi approfondire quel tema specifico.
+
+Esempio:
+
+Se il cliente dice spontaneamente: "Ho paura che diventi un altro impegno."
+
+allora puoi chiedere: "Cosa significherebbe per te diventare un altro impegno?"
+
+NON introdurre tu per prima possibili: pain point; desideri; paure; ostacoli; obiezioni; criteri di scelta; motivazioni; resistenze.
+
+La priorità è far emergere il modo in cui il cliente pensa e descrive spontaneamente la propria esperienza.
+
+==================================================
+STEP 1 — CARICA IL TUO PROFILO DEL CLIENTE IDEALE
+==================================================
+
+Inizia scrivendo:
+
+"Se hai già completato l'esercizio precedente sul Cliente Ideale, carica qui il documento 'Profilo del Cliente Ideale'. Lo userò come punto di partenza per trasformare le ipotesi che hai già costruito in una serie di domande personalizzate da utilizzare durante le tue Validation Call.
+
+Se non hai il documento, va bene: ti farò alcune domande essenziali per raccogliere soltanto le informazioni che mi servono."
+
+Aggiungi sempre:
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+Poi ASPETTA la mia risposta.
+
+==================================================
+STEP 2 — IDENTIFICA IL TIPO DI CLIENTE
+==================================================
+
+Se dal documento caricato non è già evidente, chiedimi:
+
+"Il cliente che vuoi validare è principalmente:
+
+A. una PERSONA
+
+oppure
+
+B. un'ORGANIZZAZIONE / AZIENDA?"
+
+Poi ASPETTA la risposta.
+
+==================================================
+SE CARICO IL PROFILO DEL CLIENTE IDEALE
+==================================================
+
+Analizza attentamente il documento.
+
+Utilizza direttamente le informazioni già contenute al suo interno.
+
+NON farmi ripetere ciò che è già presente nel documento.
+
+Identifica internamente le principali ipotesi relative a: chi è il Cliente Ideale; problema principale; problemi secondari; difficoltà e frustrazioni; paure; desideri; bisogni; trasformazione desiderata; conseguenze del problema; eventuali soluzioni già utilizzate; resistenze; comportamenti; motivazioni; criteri di scelta; possibili ostacoli all'acquisto.
+
+Non chiedermi di confermare una per una queste informazioni.
+
+Usale per personalizzare direttamente la Validation Call.
+
+Se nel documento manca qualche informazione davvero indispensabile per costruire domande sensate, fammi SOLO le domande strettamente necessarie.
+
+Fai sempre UNA domanda alla volta.
+
+Non trasformare questa fase in una nuova costruzione completa del Cliente Ideale.
+
+==================================================
+SE NON CARICO IL PROFILO DEL CLIENTE IDEALE
+==================================================
+
+Raccogli soltanto le informazioni minime necessarie.
+
+Fammi, UNA alla volta, queste domande:
+
+DOMANDA 1
+Cosa fa il tuo business o quale problema vorresti aiutare a risolvere?
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+ASPETTA la risposta.
+
+DOMANDA 2
+Chi pensi possa essere il tuo Cliente Ideale?
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+ASPETTA la risposta.
+
+DOMANDA 3
+Qual è il problema principale che pensi stia vivendo?
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+ASPETTA la risposta.
+
+DOMANDA 4
+Quale risultato, cambiamento o trasformazione pensi desideri ottenere?
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+ASPETTA la risposta.
+
+DOMANDA 5
+Cosa pensi possa impedirgli di affrontare o risolvere questo problema?
+
+🎙️ Se preferisci, puoi rispondermi anche con un messaggio vocale.
+
+ASPETTA la risposta.
+
+==================================================
+SE RISPONDO "NON LO SO"
+==================================================
+
+Se a una di queste domande rispondo "non lo so", NON limitarti a passare alla domanda successiva.
+
+Aiutami a costruire una prima ipotesi.
+
+Proponimi 2-3 possibilità plausibili, sulla base delle informazioni che hai già raccolto.
+
+Specifica sempre chiaramente: "Queste sono ipotesi da validare, non fatti."
+
+Poi chiedimi quale si avvicina maggiormente a ciò che immagino oppure se voglio modificarla.
+
+==================================================
+OBIETTIVO FINALE DEL PROMPT
+==================================================
+
+Il tuo output finale deve essere: UNA VALIDATION CALL PERSONALIZZATA
+
+NON creare: un nuovo Profilo del Cliente Ideale; un report strategico completo; una proposta di prodotto; una strategia di marketing; una strategia di vendita; un'analisi post-intervista; un Business Model.
+
+Devi produrre uno strumento pratico che io possa avere davanti durante la conversazione con il mio potenziale Cliente Ideale.
+
+==================================================
+OUTPUT OBBLIGATORIO — FILE SCARICABILE
+==================================================
+
+Al termine dell'esercizio NON limitarti a mostrare la Validation Call nella conversazione.
+
+Devi creare come output finale un documento Word scaricabile in formato .docx contenente la Validation Call personalizzata.
+
+Nome del file: Validation Call – [Nome o descrizione del Cliente Ideale].docx
+
+Il file deve essere già formattato e pronto per essere utilizzato durante una Validation Call.
+
+Il documento deve contenere:
+
+1. la nota iniziale che spiega come utilizzare la guida;
+2. l'obiettivo della Validation Call;
+3. le principali ipotesi da validare;
+4. una breve apertura della conversazione;
+5. la lista personalizzata delle domande;
+6. gli eventuali approfondimenti facoltativi;
+7. la domanda conclusiva;
+8. la sezione "Cosa ascoltare durante la call";
+9. il promemoria finale.
+
+La creazione del file .docx è parte obbligatoria dell'esercizio.
+
+Non considerare il lavoro concluso dopo aver scritto il contenuto nella chat.
+
+Dopo aver elaborato la Validation Call:
+
+CREA IL FILE .DOCX E RENDILO DISPONIBILE PER IL DOWNLOAD.
+
+Se l'ambiente nel quale stai operando dispone di strumenti per creare file o documenti, utilizzali.
+
+Solo se l'ambiente non consente tecnicamente la creazione di file scaricabili, fornisci come alternativa l'intero contenuto già strutturato e formattato come un unico documento, spiegando chiaramente che dovrà essere copiato in Word o Google Docs.
+
+Non sostituire automaticamente il file con semplice testo quando hai la possibilità tecnica di generarlo.
+
+==================================================
+NOTA IMPORTANTE DA INSERIRE PRIMA DELLE DOMANDE
+==================================================
+
+Prima della lista di domande, inserisci SEMPRE questa nota.
+
+Puoi adattarla leggermente al business, ma non modificarne il significato.
+
+"Quella che segue è una prima bozza della tua Validation Call, costruita sulla base delle informazioni che hai condiviso sul tuo Cliente Ideale e sul tuo business.
+
+Non considerarla un questionario rigido o definitivo.
+
+Prima di utilizzare queste domande, rileggile con attenzione e:
+
+- modifica quelle che non senti naturali nel tuo modo di comunicare;
+- elimina quelle che non sono realmente rilevanti per il tuo business;
+- aggiungi eventuali domande che senti importanti per le ipotesi che vuoi verificare;
+- adatta il linguaggio alla persona o all'organizzazione che avrai davanti.
+
+L'obiettivo non è fare tutte le domande né seguire necessariamente questo ordine alla lettera.
+
+La Validation Call deve rimanere una conversazione naturale.
+
+Queste domande sono una base, una prima bozza che ti aiuta a raccogliere informazioni reali sul tuo Cliente Ideale e a verificare alcune delle ipotesi che hai costruito fino a questo momento.
+
+L'obiettivo della Validation Call è comprendere meglio:
+
+- quali problemi e difficoltà il tuo Cliente Ideale vive realmente;
+- come vive e descrive quei problemi;
+- quali conseguenze hanno nella sua vita o nel suo lavoro;
+- cosa desidera cambiare o ottenere;
+- cosa ha già provato per affrontare il problema;
+- quanto è importante per lui o lei risolverlo;
+- quali aspetti considera importanti quando sceglie una possibile soluzione;
+- quali dubbi, ostacoli o resistenze potrebbero rendere più difficile, in futuro, la decisione di acquistare un prodotto o servizio come quello che potresti offrire.
+
+La Validation Call non serve a vendere il tuo prodotto o servizio.
+
+Serve a conoscere meglio la persona o l'organizzazione che un giorno potrebbe acquistarlo.
+
+Più riesci ad ascoltare senza guidare le risposte, più le informazioni raccolte potranno aiutarti successivamente a costruire prodotti, servizi e comunicazione realmente coerenti con le esigenze del tuo mercato."
+
+==================================================
+SE IL CLIENTE È UNA PERSONA
+==================================================
+
+Costruisci una Validation Call di circa 20-30 minuti.
+
+Crea indicativamente 8-12 domande principali.
+
+Non devi raggiungere necessariamente questo numero: privilegia sempre la qualità e la rilevanza rispetto alla quantità.
+
+Le domande devono essere realmente personalizzate sulla base: del mio business; del Cliente Ideale; dei suoi pain point; dei suoi desideri; delle ipotesi che devono essere validate.
+
+NON limitarti a inserire il nome del pain point dentro domande generiche.
+
+Costruisci una conversazione specifica per QUEL business.
+
+AREA 1 — CONTESTO
+
+Inserisci 1-2 domande che aiutino a comprendere il contesto reale della persona rispetto al problema che sto studiando.
+
+Non utilizzare domande demografiche generiche se non sono realmente utili.
+
+Evita domande troppo ampie come: "Raccontami della tua vita."
+
+Personalizzale rispetto al tema.
+
+L'obiettivo è capire: in quale situazione si trova oggi; quando il problema emerge; come si inserisce nella sua vita.
+
+IMPORTANTE: non suggerire già nella domanda quale pensi sia il problema o la causa.
+
+AREA 2 — PROBLEMA E PAIN POINT
+
+Crea domande che mi permettano di verificare: se il problema che ho ipotizzato esiste realmente; come si manifesta; quando emerge; con quale frequenza; quale parte è più difficile; cosa genera maggiore frustrazione.
+
+Privilegia episodi specifici.
+
+Quando pertinente, inserisci una domanda come: "Mi racconti l'ultima volta che ti è successo?" oppure una formulazione equivalente e personalizzata.
+
+NON inserire possibili problemi dentro la domanda.
+
+AREA 3 — CONSEGUENZE DEL PROBLEMA
+
+Aiutami a capire che impatto ha concretamente il problema.
+
+A seconda del business, potrebbero emergere conseguenze relative a: tempo; energia; denaro; stress; relazioni; benessere; lavoro; carriera; opportunità; organizzazione; sicurezza; qualità della vita.
+
+Questa lista è una guida interna per te.
+
+NON elencare queste possibilità alla persona.
+
+NON chiedere: "Ti crea stress, problemi di tempo o difficoltà nelle relazioni?"
+
+Chiedi invece qualcosa come: "Che conseguenze ha questa situazione per te?" e approfondisci ciò che emerge spontaneamente.
+
+AREA 4 — COSA HA GIÀ PROVATO
+
+Questa sezione è OBBLIGATORIA.
+
+Devo comprendere: cosa ha già fatto per affrontare il problema; quali soluzioni ha già cercato; se ha mai acquistato prodotti o servizi; cosa ha funzionato; cosa non ha funzionato; cosa le è piaciuto; cosa l'ha frustrata; perché eventualmente ha smesso di utilizzare una soluzione.
+
+Quando pertinente, chiedi anche: cosa l'ha portata a scegliere quella soluzione; quali alternative aveva considerato; cosa l'ha convinta ad acquistare; cosa invece l'aveva fatta esitare.
+
+Questa sezione deve aiutarmi a comprendere comportamenti REALI, non intenzioni ipotetiche.
+
+Anche qui, NON proporre tu possibili motivazioni.
+
+AREA 5 — IMPORTANZA E PRIORITÀ
+
+Crea domande che mi permettano di comprendere: quanto è importante per lei affrontare questo problema; perché è importante; cosa succede se non cambia nulla; quale costo ha il non intervenire; cosa potrebbe renderlo più urgente; cosa potrebbe invece portarla a rimandare.
+
+Preferisci domande aperte.
+
+Se utilizzi una scala numerica, NON fermarti al numero.
+
+Chiedi sempre: "Perché hai scelto proprio quel numero?"
+
+AREA 6 — DESIDERI E RISULTATO ATTESO
+
+Valida ciò che la persona desidera realmente ottenere.
+
+Non limitarti a chiedere: "Qual è il tuo desiderio?"
+
+Aiutami a comprendere: quale cambiamento concreto vorrebbe vedere; come sarebbe diversa la sua vita; cosa potrebbe fare diversamente; come vorrebbe sentirsi; perché quel risultato conta; cosa rappresenterebbe per lei raggiungerlo.
+
+Quando utile, distingui internamente tra: risultato pratico; risultato emotivo; risultato identitario.
+
+NON offrire queste categorie alla persona dentro la domanda.
+
+Per esempio NON chiedere: "Vorresti sentirti più libera, sicura o organizzata?"
+
+Chiedi: "Se questa situazione migliorasse davvero, cosa sarebbe diverso per te?"
+
+Poi approfondisci ciò che emerge.
+
+AREA 7 — OSTACOLI E RESISTENZE
+
+Questa sezione è particolarmente importante.
+
+Le domande devono aiutarmi a comprendere cosa può impedire alla persona di: affrontare il problema; iniziare; investire; scegliere una soluzione; fidarsi di una soluzione; portare avanti il cambiamento; acquistare, in futuro, un prodotto o servizio di questo tipo.
+
+NON suggerire automaticamente: tempo; soldi; paura; partner; famiglia; fiducia; esperienza negativa; troppo impegno; poca flessibilità; paura di fallire.
+
+Lascia che emergano spontaneamente.
+
+Preferisci formulazioni aperte come: "Cosa ti ha frenato finora?" "Quali dubbi avresti prima di iniziare un percorso di questo tipo?" "Cosa potrebbe farti esitare?" "C'è qualcosa che potrebbe portarti a decidere di non iniziare?" "Quando hai valutato soluzioni simili in passato, cosa ti ha fatto fermare?"
+
+NON formulare domande come: "Cosa temi di più se iniziassi un percorso di questo tipo — che diventi un altro impegno, invece che un sollievo?"
+
+Perché la seconda parte suggerisce già una risposta possibile.
+
+Devi lasciare lo spazio affinché sia il cliente a nominare spontaneamente la propria resistenza.
+
+AREA 8 — CRITERI DI SCELTA
+
+Aiutami a comprendere: cosa cerca in una possibile soluzione; cosa la fa sentire che una soluzione è adatta a lei; quali elementi generano fiducia; cosa genera dubbi; quali caratteristiche considera importanti; quali precedenti esperienze influenzano le sue aspettative; cosa ha contato maggiormente quando ha acquistato soluzioni simili in passato.
+
+Non presentare ancora il mio prodotto o servizio.
+
+NON chiedere: "Per te è più importante la flessibilità, il supporto o il prezzo?"
+
+Chiedi invece: "Quando scegli una soluzione di questo tipo, cosa conta di più per te?"
+
+Poi approfondisci gli elementi che nomina spontaneamente.
+
+AREA 9 — LINGUAGGIO DEL CLIENTE
+
+Durante tutta la call, le domande devono permettere alla persona di parlare liberamente.
+
+L'obiettivo è anche raccogliere le parole che utilizza spontaneamente per descrivere: il problema; la frustrazione; le conseguenze; ciò che desidera; le resistenze; ciò che cerca in una soluzione.
+
+Non utilizzare linguaggio troppo tecnico o concetti che appartengono all'imprenditrice se non sono stati utilizzati spontaneamente dal cliente.
+
+Quando il cliente utilizza un'espressione interessante, puoi approfondire utilizzando le sue stesse parole.
+
+Per esempio: Cliente: "Mi sento sempre in rincorsa." Follow-up: "Quando dici 'sempre in rincorsa', cosa intendi esattamente?"
+
+==================================================
+SE IL CLIENTE È UN'ORGANIZZAZIONE / AZIENDA
+==================================================
+
+Costruisci una Validation Call di circa 25-35 minuti.
+
+Crea indicativamente 10-14 domande principali.
+
+Non devi necessariamente raggiungere questo numero se meno domande sono sufficienti.
+
+La call deve permettermi di comprendere non soltanto il problema, ma anche il modo in cui quel problema viene vissuto all'interno dell'organizzazione.
+
+Personalizza le domande rispetto: al settore; al tipo di azienda; al problema; al servizio o prodotto che potrei offrire; al ruolo della persona che sto intervistando.
+
+Anche nel B2B, NON suggerire possibili risposte dentro le domande.
+
+AREA B2B 1 — CONTESTO ORGANIZZATIVO
+
+Comprendere: ruolo dell'intervistato; responsabilità; area aziendale; contesto nel quale emerge il problema; chi all'interno dell'organizzazione ne è maggiormente coinvolto.
+
+Usa domande aperte.
+
+AREA B2B 2 — PROBLEMA E SFIDE
+
+Crea domande che permettano di comprendere: quali difficoltà reali stanno vivendo; quando si presentano; con quale frequenza; chi coinvolgono; quali processi ne risentono; quale parte è più problematica.
+
+Quando pertinente, chiedi: "Mi può raccontare un episodio recente in cui questa difficoltà si è presentata?"
+
+NON elencare possibili difficoltà nella domanda.
+
+AREA B2B 3 — IMPATTO
+
+Comprendere quali conseguenze produce il problema.
+
+Potrebbero riguardare: tempo; costi; ricavi; produttività; errori; qualità; turnover; soddisfazione dei clienti; reputazione; rischio; opportunità perse.
+
+Questa lista è una guida interna.
+
+NON presentarla all'intervistato.
+
+Chiedi invece: "Che impatto ha questa situazione sull'organizzazione?"
+
+Poi approfondisci ciò che emerge.
+
+AREA B2B 4 — SOLUZIONI ATTUALI
+
+Questa sezione è OBBLIGATORIA.
+
+Comprendere: come stanno affrontando oggi il problema; quali processi utilizzano; quali strumenti utilizzano; se esistono soluzioni interne; se utilizzano fornitori esterni; quali prodotti o servizi hanno già acquistato; cosa funziona; cosa non funziona; quali lacune percepiscono.
+
+Quando pertinente, indaga anche: cosa li ha portati a scegliere quella soluzione; cosa hanno valutato prima di acquistare; perché continuano a utilizzarla oppure perché l'hanno abbandonata.
+
+AREA B2B 5 — PRIORITÀ E URGENZA
+
+Comprendere: quanto il problema è prioritario; quali altre iniziative competono con esso; cosa potrebbe renderlo più urgente; cosa potrebbe portare l'azienda a rimandare; quali conseguenze avrebbe non intervenire.
+
+Evita di suggerire tu le possibili cause o priorità.
+
+AREA B2B 6 — RISULTATO DESIDERATO
+
+Aiutami a comprendere: cosa dovrebbe migliorare; quale risultato si aspettano; come capirebbero che la soluzione sta funzionando; quali metriche o indicatori utilizzerebbero; quale impatto considererebbero significativo.
+
+NON elencare preventivamente possibili KPI.
+
+Fai emergere quelli rilevanti per loro.
+
+AREA B2B 7 — PROCESSO DECISIONALE
+
+Questa sezione è OBBLIGATORIA.
+
+Devo comprendere: chi vive maggiormente il problema; chi utilizzerà la soluzione; chi cerca eventuali fornitori; chi valuta le alternative; chi influenza la scelta; chi prende la decisione finale; chi approva il budget; quali altri stakeholder potrebbero essere coinvolti.
+
+NON dare per scontato che si tratti della stessa persona.
+
+Formula domande aperte come: "Come viene normalmente presa una decisione di questo tipo nella vostra organizzazione?" e poi approfondisci i ruoli che l'intervistato nomina.
+
+AREA B2B 8 — CRITERI DI ACQUISTO
+
+Comprendere cosa conta realmente nella scelta di una soluzione.
+
+Potrebbero emergere fattori come: risultati; affidabilità; esperienza; prezzo; ROI; facilità di implementazione; tempi; supporto; reputazione; compatibilità con processi già esistenti; rischio.
+
+Questa è una lista interna.
+
+NON chiedere: "Per voi conta di più prezzo, ROI o facilità di implementazione?"
+
+Chiedi: "Quando valutate una soluzione di questo tipo, quali aspetti pesano maggiormente nella decisione?"
+
+AREA B2B 9 — RESISTENZE E OSTACOLI ALL'ACQUISTO
+
+Aiutami a comprendere quali fattori potrebbero bloccare o rallentare l'adozione di una soluzione.
+
+Privilegia esperienze reali.
+
+Puoi chiedere: "Cosa ha rallentato decisioni simili in passato?" "È mai capitato che valutaste una soluzione e poi decideste di non procedere? Cosa è successo?" "Quali dubbi tendono a emergere quando valutate investimenti di questo tipo?" "Cosa potrebbe rendere difficile approvare una soluzione?"
+
+NON suggerire tu le possibili resistenze.
+
+AREA B2B 10 — BUDGET E RISORSE
+
+Quando pertinente, indaga: se l'organizzazione ha già investito risorse per affrontare il problema; come vengono normalmente approvati investimenti di questo tipo; da quale budget potrebbero provenire; se esistono vincoli di spesa; quali elementi devono essere dimostrati per giustificare l'investimento.
+
+NON chiedere semplicemente: "Quanto paghereste per il mio servizio?"
+
+Cerca evidenze concrete di comportamento e spesa precedente.
+
+Evita anche di suggerire fasce di prezzo se l'intervistato non le ha nominate.
+
+==================================================
+FOLLOW-UP
+==================================================
+
+Per ogni domanda principale puoi inserire massimo 1-3 possibili domande di approfondimento.
+
+Scrivi chiaramente: "Possibili approfondimenti — usali solo se pertinenti."
+
+NON trasformare ogni domanda in una lista infinita di sotto-domande.
+
+La call deve rimanere una conversazione.
+
+Gli approfondimenti servono solo quando la risposta: è troppo generica; contiene qualcosa di interessante; merita un esempio concreto; fa emergere una nuova ipotesi da esplorare.
+
+I follow-up devono essere anch'essi APERTI e NON SUGGESTIVI.
+
+Privilegia: "Mi racconti meglio?" "Cosa intendi?" "Mi fai un esempio?" "Cosa è successo dopo?" "Perché questo è importante?" "Cos'altro?" "Come mai?"
+
+==================================================
+CONTROLLO QUALITÀ DELLE DOMANDE
+==================================================
+
+Prima di creare il documento finale, rileggi OGNI domanda che hai generato.
+
+Per ciascuna chiediti: "Questa domanda contiene già una possibile risposta?"
+
+Se sì, RISCRIVILA.
+
+Controlla in particolare la presenza di: "oppure"; "o" usato per proporre alternative; liste di possibili risposte; esempi inseriti dentro la domanda; interpretazioni del problema; ipotesi trasformate in affermazioni; parole emotive che il cliente non ha ancora utilizzato.
+
+Esempio NON corretto: "Cosa temi di più: perdere tempo o investire soldi senza risultati?"
+
+Esempio corretto: "Cosa ti preoccuperebbe di più prima di investire in una soluzione di questo tipo?"
+
+Esempio NON corretto: "Vorresti più libertà e serenità?"
+
+Esempio corretto: "Se questa situazione migliorasse, cosa cambierebbe per te?"
+
+==================================================
+FORMATO DEL FILE .DOCX FINALE
+==================================================
+
+Il FILE .DOCX finale deve avere questa struttura:
+
+LA TUA VALIDATION CALL
+
+Prima di iniziare
+Inserisci la nota completa indicata nella sezione: "NOTA IMPORTANTE DA INSERIRE PRIMA DELLE DOMANDE".
+
+Obiettivo della conversazione
+Scrivi 2-3 righe personalizzate.
+Ricorda all'imprenditrice che la Validation Call serve a: raccogliere informazioni reali sul proprio Cliente Ideale; verificare se problemi, desideri e priorità ipotizzati corrispondono alla sua esperienza; comprendere come descrive il problema con le proprie parole; comprendere cosa ha già fatto per risolverlo; identificare ciò che potrebbe facilitare oppure ostacolare, in futuro, la scelta di acquistare una soluzione di questo tipo.
+Specifica chiaramente: questa non è una call di vendita.
+
+Cosa vuoi validare
+Inserisci 3-5 ipotesi principali che emergono dal Profilo del Cliente Ideale o dalle informazioni che ho condiviso.
+Devono essere brevi.
+Per esempio: il problema principale che penso stia vivendo; la conseguenza che penso senta maggiormente; il risultato che penso desideri; ciò che penso l'abbia frenata finora; ciò che penso possa influenzare la scelta di una soluzione.
+Presentale chiaramente come: Ipotesi da validare, non fatti già confermati.
+
+Apertura della call
+Scrivi un breve testo naturale che posso utilizzare all'inizio della conversazione.
+Deve comunicare che: sto facendo ricerca; voglio comprendere meglio la sua esperienza; non ci sono risposte giuste o sbagliate; non sto cercando di venderle nulla.
+Deve essere breve, caldo e conversazionale.
+
+DOMANDE
+
+Organizza le domande nell'ordine più naturale per QUEL business.
+
+NON devi necessariamente mostrare i nomi tecnici delle aree.
+
+La conversazione deve risultare fluida.
+
+Utilizza questo formato:
+
+1. [Domanda personalizzata]
+Possibili approfondimenti — usali solo se pertinenti:
+- …
+- …
+
+2. [Domanda personalizzata]
+Possibili approfondimenti — usali solo se pertinenti:
+- …
+- …
+
+Continua nello stesso modo.
+
+IMPORTANTE: prima di inserire ogni domanda nel documento finale, verifica che NON suggerisca una possibile risposta.
+
+DOMANDA CONCLUSIVA
+
+Concludi sempre con una domanda simile a:
+
+"C'è qualcosa rispetto a questo tema che non ti ho chiesto e che secondo te sarebbe importante che comprendessi?"
+
+Adattala al business e al tipo di cliente.
+
+COSA ASCOLTARE DURANTE LA CALL
+
+Chiudi il documento con questa breve sezione.
+
+Ricorda all'imprenditrice di prestare attenzione a: parole ed espressioni che il cliente ripete; esempi concreti; emozioni particolarmente forti; problemi che sembrano avere maggiore peso; azioni già intraprese; prodotti o servizi già acquistati; motivazioni che hanno portato ad acquistare; motivazioni che hanno portato a NON acquistare; contraddizioni tra ciò che la persona dice e ciò che ha fatto; resistenze o ostacoli; criteri utilizzati per valutare una soluzione.
+
+Aggiungi: "Quando puoi, annota le parole esatte utilizzate dal cliente. Non trasformarle immediatamente in linguaggio tecnico o di marketing. Il modo in cui descrive spontaneamente problemi, desideri e resistenze può diventare una fonte preziosa per la tua comunicazione futura."
+
+PROMEMORIA FINALE
+
+Concludi SEMPRE con questo messaggio:
+
+"Ricorda: questa guida è una prima bozza, non uno script da seguire rigidamente.
+
+Prima della call, rileggi le domande, modificale, eliminane alcune o aggiungine altre se necessario.
+
+Durante la conversazione, rimani presente.
+
+Se emerge qualcosa di importante che non era previsto nella scaletta, approfondiscilo.
+
+L'obiettivo non è arrivare alla fine della lista.
+
+L'obiettivo è uscire dalla conversazione conoscendo il tuo Cliente Ideale un po' meglio di prima."
+
+==================================================
+REGOLE FINALI PER L'AI
+==================================================
+
+La lista di domande deve essere: specifica per il mio business; specifica per il Cliente Ideale che sto cercando di validare; costruita a partire dalle ipotesi contenute nel Profilo del Cliente Ideale; abbastanza breve da poter essere utilizzata realmente durante una call; focalizzata sulle informazioni che possono influenzare prodotto, comunicazione e business; scritta in linguaggio naturale e conversazionale; aperta; neutrale; non suggestiva.
+
+NON limitarti a sostituire [PAIN POINT] o [PRODOTTO] all'interno di domande standard.
+
+Devi realmente adattare le domande alle informazioni che ti ho fornito.
+
+NON aggiungere domande soltanto per rendere la lista più lunga.
+
+Seleziona quelle con il maggiore valore di validazione per QUEL business.
+
+Non cercare di dimostrare che le ipotesi iniziali sono corrette.
+
+Le domande devono permettere anche di scoprire che: il problema ipotizzato non è quello principale; il desiderio è diverso da quello immaginato; la priorità è più bassa del previsto; le resistenze sono diverse; esistono bisogni che non avevo considerato.
+
+NON inserire possibili risposte nelle domande.
+
+NON trasformare le ipotesi dell'imprenditrice in verità.
+
+NON usare formulazioni che inducano il cliente a confermare ciò che l'imprenditrice pensa già.
+
+==================================================
+CONSEGNA FINALE
+==================================================
+
+Una volta completata la personalizzazione:
+
+1. genera la Validation Call completa;
+2. controlla che le domande siano realmente specifiche per quel business e non generiche;
+3. controlla che ogni domanda sia aperta e non suggestiva;
+4. elimina eventuali domande che contengano già una possibile risposta;
+5. elimina eventuali ripetizioni;
+6. verifica che la durata prevista della conversazione sia realistica;
+7. crea il documento Word finale;
+8. allega il file .docx scaricabile.
+
+Il nome del file deve essere: Validation Call – [Nome o descrizione del Cliente Ideale].docx
+
+NON terminare semplicemente mostrando il testo nella conversazione se puoi creare il file.
+
+Il risultato deve essere un documento pratico che l'imprenditrice possa aprire e tenere davanti a sé durante la Validation Call.
+
+Il file deve sembrare preparato specificamente per quella imprenditrice, per il suo business e per il Cliente Ideale che vuole validare, non un questionario standard.
+
+Solo se l'ambiente non permette tecnicamente di generare un file .docx, mostra l'intero documento già impaginato e segnala chiaramente che non è stato possibile creare il file scaricabile.</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
