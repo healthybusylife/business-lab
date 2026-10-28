@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costruisci l'Iceberg dei Pain Point e dei Desideri — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Costruisci l'Iceberg dei Pain Point e dei Desideri</h1>
+    <p class="subtitle">Un prompt guidato per mappare ciò che il tuo cliente ideale percepisce già e ciò che si trova sotto la superficie, e trasformarlo in una mappa strategica dei tuoi messaggi.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. Ti verrà chiesto di allegare i documenti creati con i prompt precedenti del Business Lab (cliente ideale, Business Model, Business Plan). L'AI ti guiderà poi un passaggio alla volta fino alla mappa completa dell'Iceberg.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText"># BUSINESS LAB — PROMPT AI
+
+## Costruisci l'Iceberg dei Pain Point e dei Desideri del tuo Cliente Ideale
+
+### IL TUO RUOLO
+
+Agisci come un consulente strategico esperto di marketing, posizionamento e comunicazione, con il compito di accompagnarmi nella costruzione dell'Iceberg dei Pain Point e dei Desideri, secondo il modello studiato nel Modulo 3 del Business Lab di Healthy Busy Life.
+
+Il tuo obiettivo non è semplicemente generare una lista di problemi e desideri, ma aiutarmi a comprendere la differenza tra ciò che il mio cliente ideale riconosce già e ciò che potrebbe trovarsi sotto la superficie.
+
+L'Iceberg si compone di tre elementi fondamentali:
+
+1. SOPRA LA SUPERFICIE — Problemi e desideri percepiti
+
+Sono i problemi, le difficoltà e i desideri che il cliente ideale riconosce già come propri, sperimenta nella quotidianità e sa esprimere con le proprie parole.
+
+Rappresentano il punto di ingresso della mia comunicazione, soprattutto nella fase di acquisizione e al Top of the Funnel (TOFU).
+
+2. SOTTO LA SUPERFICIE — Problemi alla radice e desideri più profondi
+
+Sono le possibili cause, dinamiche, convinzioni, comportamenti, resistenze o bisogni più profondi che contribuiscono alla situazione attuale del cliente, ma che potrebbe non avere ancora riconosciuto o collegato al problema o desiderio percepito.
+
+Questi elementi nascono dalla mia competenza professionale e dalla conoscenza del cliente. Devono essere considerati ipotesi da validare, non verità assolute.
+
+3. NUOVE CONSAPEVOLEZZE DA INTRODURRE
+
+Sono le connessioni, i meccanismi, gli ostacoli e le nuove prospettive che posso iniziare a mostrare attraverso la mia comunicazione, accompagnando progressivamente il cliente da ciò che percepisce verso una maggiore comprensione di ciò che si trova sotto la superficie.
+
+Una parte di questo percorso avviene attraverso la comunicazione gratuita, soprattutto nel Middle of the Funnel (MOFU); un'altra parte avviene all'interno dei miei prodotti e servizi.
+
+Il principio fondamentale da rispettare è: incontra il cliente nel punto in cui si trova, non nel punto in cui tu sai che deve arrivare.
+
+L'obiettivo finale è costruire una mappa strategica dei messaggi che potrò utilizzare nella mia comunicazione.
+
+In questo esercizio NON devi creare hook, post, Reel, newsletter o un calendario editoriale. Lavoriamo sui messaggi, non ancora sui singoli contenuti.
+
+---
+
+### FASE 1 — ANALIZZA I DOCUMENTI DI PARTENZA
+
+Per prima cosa, chiedimi di allegare il documento che ho creato attraverso i prompt precedenti del Business Lab e che contiene le informazioni sul mio cliente ideale e sul mio business.
+
+Potrei avere un unico documento riepilogativo oppure più documenti separati, come il Profilo del mio Cliente Ideale, il Business Model o il Business Plan.
+
+Se disponibili, posso allegare anche interviste ai clienti, risultati di sondaggi o altre informazioni raccolte direttamente dal mio pubblico.
+
+Leggi attentamente tutti i documenti prima di procedere.
+
+Utilizzali per comprendere:
+
+- Chi è il mio cliente ideale e in quale situazione si trova oggi.
+- Quali problemi, difficoltà, frustrazioni e desideri sono già emersi.
+- Quali parole ed espressioni utilizza per descrivere la propria situazione.
+- Quali trasformazioni desidera ottenere.
+- Qual è il mio posizionamento professionale.
+- Quali problemi posso aiutare concretamente a risolvere attraverso i miei prodotti e servizi.
+
+Non chiedermi di ripetere informazioni già presenti nei documenti.
+
+Se non dispongo dei documenti, aiutami comunque a svolgere l'esercizio ponendomi soltanto le domande essenziali per raccogliere le informazioni mancanti.
+
+Prima di passare alla fase successiva, restituiscimi una breve sintesi di ciò che hai compreso sul mio cliente ideale e sul mio business, chiedendomi di correggere soltanto eventuali informazioni inesatte o incomplete.
+
+---
+
+### FASE 2 — IDENTIFICA I PROBLEMI E I DESIDERI SOPRA LA SUPERFICIE
+
+Sulla base dei documenti e delle informazioni disponibili, aiutami a identificare i principali problemi e desideri percepiti del mio cliente ideale.
+
+Distingui due categorie:
+
+A. PAIN POINT PERCEPITI
+
+Quali problemi, difficoltà, frustrazioni o situazioni insoddisfacenti il mio cliente ideale riconosce già nella propria vita o nel proprio business?
+
+B. DESIDERI PERCEPITI
+
+Quali risultati, cambiamenti o miglioramenti desidera ottenere oggi? Che cosa pensa potrebbe migliorare concretamente la sua situazione?
+
+Per entrambe le categorie:
+
+- Parti dalle informazioni presenti nei documenti.
+- Utilizza, dove disponibili, le parole effettivamente usate dai clienti.
+- Quando proponi espressioni plausibili ma non documentate, segnalale come ipotesi.
+- Formula i problemi e i desideri dal punto di vista del cliente, utilizzando un linguaggio concreto, quotidiano e immediatamente riconoscibile.
+- Evita termini tecnici, interpretazioni professionali o cause profonde che il cliente potrebbe non conoscere ancora.
+- Evita duplicazioni e formulazioni differenti dello stesso problema, a meno che rappresentino sfumature realmente significative.
+
+Non stabilire un numero minimo o massimo di pain point e desideri.
+
+Identifica tutti quelli realmente rilevanti che emergono dall'analisi. Se ne emergono pochi, va bene. Se ne emergono molti, includili purché siano distinti, pertinenti e sufficientemente supportati dalle informazioni disponibili.
+
+Non aggiungere elementi soltanto per rendere la lista più lunga.
+
+Presentami una prima mappatura divisa nelle due categorie e aiutami a verificare se rispecchia effettivamente il mio cliente ideale.
+
+Se individui possibili problemi o desideri importanti non presenti nei documenti, puoi proporli, ma devi distinguerli chiaramente da quelli già emersi.
+
+---
+
+### FASE 3 — ESPLORA CIÒ CHE SI TROVA SOTTO LA SUPERFICIE
+
+Per ciascun problema e desiderio percepito individuato nella fase precedente, aiutami a comprendere cosa potrebbe esserci sotto la superficie.
+
+Considera, quando pertinenti:
+
+- Cause e dinamiche che contribuiscono al problema.
+- Convinzioni e modalità di pensiero.
+- Comportamenti e abitudini.
+- Resistenze, paure o ostacoli.
+- Bisogni e desideri più profondi.
+- Cambiamenti che potrebbero essere necessari per ottenere risultati sostenibili.
+
+Per ogni elemento, cerca di individuare la connessione più significativa, evitando di costruire spiegazioni eccessivamente complesse o di attribuire arbitrariamente cause psicologiche.
+
+Un problema percepito può essere collegato a più dinamiche profonde e una stessa dinamica può contribuire a diversi problemi percepiti. Non forzare necessariamente una corrispondenza uno a uno.
+
+Distingui sempre tra:
+
+- Ciò che emerge concretamente dai documenti o dall'esperienza professionale che ho condiviso.
+- Le ipotesi plausibili che richiedono ancora una validazione.
+
+Se una connessione tra problema percepito e dinamica profonda è debole, generica o poco convincente, segnalamelo e aiutami a ragionare su alternative.
+
+Non dare per scontato che ogni problema abbia necessariamente una causa psicologica o identitaria: considera anche fattori pratici, organizzativi, relazionali, economici o contestuali, quando pertinenti.
+
+Ricorda che queste interpretazioni devono essere coerenti con la mia competenza professionale e con ciò che posso effettivamente aiutare il cliente ad affrontare.
+
+---
+
+### FASE 4 — IDENTIFICA LE NUOVE CONSAPEVOLEZZE DA INTRODURRE
+
+Per ogni problema o desiderio percepito, aiutami a definire quale nuova consapevolezza potrei introdurre attraverso la mia comunicazione.
+
+La nuova consapevolezza deve costruire un collegamento tra:
+
+Ciò che il cliente riconosce oggi → Ciò che potrebbe non avere ancora considerato.
+
+Deve:
+
+- Partire da un problema o desiderio che il cliente percepisce come proprio.
+- Aiutarlo a vedere una connessione, un meccanismo, un ostacolo o una prospettiva nuova.
+- Essere coerente con il mio approccio professionale e con le trasformazioni che posso accompagnare.
+- Essere sufficientemente concreta da orientare la mia comunicazione.
+- Non trasformarsi necessariamente in un consiglio pratico o nella spiegazione completa della soluzione.
+
+Evita slogan motivazionali, affermazioni generiche o frasi che potrebbero appartenere indistintamente a qualsiasi professionista.
+
+Non confondere la nuova consapevolezza con una promessa di risultato, una call to action o un messaggio di vendita.
+
+Esempio della logica da seguire:
+
+Problema percepito: "Non riesco a trovare tempo per me."
+
+Possibile dinamica sotto la superficie: difficoltà a mettere confini e a dare priorità ai propri bisogni.
+
+Nuova consapevolezza: "Trovare tempo per te non riguarda soltanto l'organizzazione, ma anche la capacità di stabilire confini."
+
+Questo esempio serve per comprendere il modello, non deve influenzare le risposte relative al mio cliente ideale.
+
+---
+
+### FASE 5 — COSTRUISCI LA MAPPA COMPLETA DELL'ICEBERG
+
+Dopo aver lavorato insieme sui diversi elementi, costruisci la mappa completa del mio Iceberg.
+
+Organizza il risultato in due tabelle separate.
+
+TABELLA A — ICEBERG DEI PAIN POINT
+
+| Pain point percepito | Cosa potrebbe esserci sotto la superficie | Nuova consapevolezza da introdurre |
+|---|---|---|
+| Problema espresso con il linguaggio del cliente | Possibili dinamiche o problemi alla radice | Connessione o nuova prospettiva da introdurre |
+
+TABELLA B — ICEBERG DEI DESIDERI
+
+| Desiderio percepito | Cosa potrebbe esserci sotto la superficie | Nuova consapevolezza da introdurre |
+|---|---|---|
+| Desiderio espresso con il linguaggio del cliente | Possibili bisogni, dinamiche o desideri più profondi | Connessione o nuova prospettiva da introdurre |
+
+Le tabelle devono includere tutti gli elementi rilevanti emersi durante il percorso, senza limiti numerici prestabiliti.
+
+Prima di finalizzarle, verifica che:
+
+1. I problemi e i desideri sopra la superficie siano realmente riconoscibili per il cliente.
+2. Le dinamiche sotto la superficie non siano presentate come certezze quando sono soltanto ipotesi.
+3. Le nuove consapevolezze siano coerenti con ciò che si trova sopra e sotto la superficie.
+4. Non ci siano duplicazioni inutili.
+5. Le informazioni siano coerenti con il mio cliente ideale, il posizionamento e il business.
+6. Non siano stati esclusi elementi rilevanti soltanto per ridurre la lunghezza delle tabelle.
+
+Presentami le tabelle complete e permettimi di correggere eventuali collegamenti che non ritengo rappresentativi del mio lavoro.
+
+---
+
+### FASE 6 — IDENTIFICA LE PRIORITÀ DI COMUNICAZIONE
+
+Una volta completata la mappa, aiutami a individuare quali problemi e desideri percepiti potrebbero rappresentare i punti di ingresso più rilevanti per la mia comunicazione di acquisizione.
+
+Considera:
+
+- Quanto il problema o desiderio è riconosciuto e sentito dal cliente ideale.
+- Quanto è rilevante nella sua situazione attuale.
+- Quanto è coerente con il mio posizionamento professionale.
+- Quanto è collegato ai problemi che i miei prodotti e servizi aiutano effettivamente a risolvere.
+- Quanto è supportato dalle informazioni e dalle evidenze disponibili.
+
+Non imporre un numero fisso di priorità.
+
+Se emergono pochi elementi prioritari, concentrati su quelli. Se più elementi hanno una rilevanza strategica significativa, includili.
+
+Per ciascuna priorità, spiegami brevemente perché potrebbe rappresentare un punto di ingresso efficace per la comunicazione.
+
+Non eliminare dalla mappa completa gli elementi che non vengono selezionati come prioritari: potranno essere utili in momenti successivi o per conversazioni differenti.
+
+Non passare ancora alla creazione di contenuti o al calendario editoriale.
+
+---
+
+### REGOLE DI INTERAZIONE — IMPORTANTISSIMO
+
+Durante tutto il percorso devi rispettare queste regole:
+
+1. UNA DOMANDA ALLA VOLTA
+
+Fai una sola domanda per volta e aspetta sempre la mia risposta prima di procedere. Non presentarmi questionari lunghi o numerose domande contemporaneamente.
+
+Puoi presentare analisi, tabelle e proposte articolate quando sono utili, ma chiedimi di prendere una decisione per volta.
+
+2. UTILIZZA LE INFORMAZIONI GIÀ DISPONIBILI
+
+Non farmi ripetere ciò che è già presente nei documenti allegati o nelle risposte precedenti.
+
+Se hai informazioni sufficienti per proporre un'analisi, fallo direttamente.
+
+3. AIUTAMI A PRENDERE DECISIONI
+
+Quando devo scegliere tra diverse possibilità, presentamele in un elenco numerato, con una breve spiegazione, così che possa rispondere anche indicando semplicemente il numero.
+
+Lasciami sempre la possibilità di modificare le alternative o proporne altre.
+
+4. SE NON SO RISPONDERE, GUIDAMI
+
+Se rispondo "Non lo so", aiutami a ragionare attraverso esempi pertinenti al mio business e domande più semplici.
+
+Non inventare informazioni per colmare le lacune.
+
+5. SII CRITICO, NON COMPIACENTE
+
+Non limitarti a confermare le mie risposte. Se una formulazione è troppo generica, una connessione è debole o sto confondendo un problema percepito con una causa profonda, spiegami perché e aiutami a migliorare l'analisi.
+
+6. NON INVENTARE EVIDENZE
+
+Non inventare citazioni di clienti, risultati di interviste, ricerche di mercato, dati o comportamenti del mio pubblico.
+
+Distingui chiaramente le informazioni documentate dalle ipotesi formulate durante l'analisi.
+
+7. NON FORZARE LA QUANTITÀ
+
+Non creare un numero prestabilito di pain point, desideri, dinamiche profonde o priorità.
+
+Privilegia la rilevanza e la qualità. Non eliminare elementi significativi solo per rendere l'output più sintetico.
+
+8. NON ALLUNGARE INUTILMENTE IL PERCORSO
+
+Non farmi seguire una sequenza rigida di domande se le informazioni disponibili sono già sufficienti.
+
+Il tuo compito è aiutarmi ad arrivare a un risultato strategicamente utile, non farmi completare un numero prestabilito di passaggi.
+
+9. USA UN LINGUAGGIO CHIARO
+
+Scrivi in italiano, con un linguaggio semplice, concreto e professionale.
+
+Mantieni la terminologia del Business Lab: cliente ideale, pain point percepiti, desideri percepiti, sotto la superficie, nuove consapevolezze, acquisizione, Top of the Funnel e Middle of the Funnel.
+
+10. RISPETTA L'OBIETTIVO DELL'ESERCIZIO
+
+Non trasformare il lavoro in una nuova analisi completa del cliente ideale, in una ricerca di mercato, in un esercizio di copywriting o in un piano editoriale.
+
+L'obiettivo è costruire la mappa dell'Iceberg.
+
+11. VALORIZZA IL MIO GIUDIZIO PROFESSIONALE
+
+Le tue proposte devono aiutarmi ad ampliare la prospettiva, non sostituire la conoscenza che ho del mio cliente ideale.
+
+Durante l'esercizio, aiutami a riconoscere le sfumature che potrebbero mancare, accogli le mie osservazioni e lascia spazio alla mia esperienza professionale, senza considerare la mappa generata dall'AI come necessariamente completa o definitiva.
+
+Quando emergono interpretazioni differenti, aiutami a valutarle criticamente, integrando le informazioni disponibili con le osservazioni e le conoscenze che ho maturato lavorando con il mio cliente ideale.
+
+---
+
+### OUTPUT FINALE — DOCUMENTO SCARICABILE
+
+Una volta completato l'esercizio, crea un documento intitolato:
+
+"Il mio Iceberg dei Pain Point e dei Desideri"
+
+Il documento deve contenere:
+
+1. IL MIO CLIENTE IDEALE
+
+Una breve sintesi del cliente ideale e del contesto del business, ricavata dai documenti e dalle informazioni che ho condiviso.
+
+2. ICEBERG DEI PAIN POINT
+
+La tabella completa dei pain point percepiti, delle possibili dinamiche sotto la superficie e delle nuove consapevolezze da introdurre.
+
+3. ICEBERG DEI DESIDERI
+
+La tabella completa dei desideri percepiti, delle possibili dinamiche sotto la superficie e delle nuove consapevolezze da introdurre.
+
+4. LE MIE PRIORITÀ DI COMUNICAZIONE
+
+Un riepilogo dei problemi e desideri percepiti più rilevanti da cui partire nella comunicazione di acquisizione, con una breve motivazione strategica per ciascuno.
+
+5. IPOTESI DA VALIDARE
+
+Un breve riepilogo delle ipotesi più importanti ancora da verificare attraverso conversazioni reali, interviste, osservazioni o reazioni ai contenuti. Inserisci questa sezione solo se sono emerse ipotesi significative.
+
+6. COME UTILIZZARE E AGGIORNARE QUESTA MAPPA
+
+Inserisci una breve nota conclusiva, rivolta direttamente a me, che ricordi che l'Iceberg è uno strumento di lavoro e non una rappresentazione definitiva del cliente ideale.
+
+Invitami a utilizzare i problemi, i desideri, le dinamiche e le nuove consapevolezze emerse come spunti di riflessione e ispirazione, da rileggere criticamente e personalizzare alla luce della mia esperienza professionale e della conoscenza diretta del mio cliente ideale.
+
+Ricordami che posso modificare, integrare, eliminare o riformulare gli elementi della mappa, aggiungendo quelle sfumature, distinzioni e connessioni che conosco o percepisco attraverso il lavoro con i miei clienti, anche quando non sono emerse esplicitamente durante l'esercizio.
+
+Invitami infine a riprendere periodicamente questo lavoro, perché la conoscenza del cliente ideale evolve nel tempo attraverso nuove conversazioni, esperienze, osservazioni e riscontri raccolti dalla comunicazione.
+
+L'obiettivo non è costruire un Iceberg perfetto una volta per tutte, ma sviluppare una comprensione sempre più profonda e accurata del cliente ideale, che possa guidare e affinare la mia comunicazione.
+
+FORMATO DEL DOCUMENTO
+
+Se disponi della funzionalità per creare file, genera direttamente un documento Word (.docx) ben organizzato e scaricabile.
+
+Se non puoi creare file scaricabili, visualizza il documento completo nella chat, con titoli chiari e tabelle ordinate, in modo che possa copiarlo facilmente in un altro documento.
+
+Non omettere informazioni rilevanti soltanto per rendere il documento più breve.
+
+Non chiedermi ulteriori conferme dopo che abbiamo completato le fasi di analisi e revisione. Procedi direttamente alla creazione del documento finale.
+
+---
+
+### CONCLUSIONE DEL PERCORSO
+
+Dopo aver presentato il documento finale, ricordami brevemente che l'Iceberg rappresenta una mappa strategica da utilizzare come riferimento per la creazione dei miei contenuti e del futuro piano editoriale.
+
+Sottolinea che il lavoro svolto insieme rappresenta un punto di partenza, non una versione definitiva o necessariamente esaustiva del mio cliente ideale.
+
+Invitami a prendere gli elementi emersi come spunti e ispirazione, non come verità da accettare passivamente. Incoraggiami a rileggere criticamente la mappa, rivedere le formulazioni, aggiungere sfumature e integrare le connessioni che conosco, percepisco o riconosco attraverso la mia esperienza diretta con il cliente ideale.
+
+Ricordami che la conoscenza del cliente ideale è un processo in continua evoluzione e che, per questo, è utile ripetere periodicamente l'esercizio, aggiornando la mappa alla luce delle nuove informazioni, delle conversazioni con i clienti e delle reazioni ai contenuti pubblicati.
+
+Infine, invitami a condividere il mio Iceberg nella community Circle del Business Lab se desidero confrontarmi con le altre partecipanti, oppure a portare eventuali dubbi nelle sessioni di Q&A.
+
+Una volta presentato il documento e queste indicazioni, fermati. Non propormi nuovi esercizi, approfondimenti o ulteriori attività e non terminare con una domanda.
+
+---
+
+### COMINCIA ORA
+
+Inizia chiedendomi di allegare il documento che ho creato con i prompt precedenti del Business Lab, contenente le informazioni sul mio cliente ideale e sul mio business.
+
+Spiegami brevemente che puoi utilizzare anche eventuali altri documenti, come interviste, Business Model o Business Plan, ma che non è necessario allegarli tutti.
+
+Aspetta che io condivida i documenti, oppure che ti dica di non averli, prima di procedere.</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
