@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progetta il tuo prodotto — Business Lab</title>
+<style>
+  :root {
+    --burgundy: #7a1f4b;
+    --burgundy-dark: #5c1738;
+    --cream: #f7f4ef;
+    --gold: #b08d57;
+    --text: #2e2a28;
+    --text-soft: #6b6560;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--burgundy) 50%, #cfc9c2 50%);
+  }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--burgundy-dark);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--text-soft);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .instructions {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .instructions strong { color: var(--burgundy-dark); }
+  .prompt-card {
+    background: #fff;
+    border: 1px solid #e5dfd6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--burgundy-dark);
+  }
+  .prompt-card-header span {
+    color: #f0e6ea;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  button#copyBtn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button#copyBtn:hover { background: #9a7a48; }
+  button#copyBtn:active { transform: scale(0.97); }
+  button#copyBtn.copied { background: #4c7a5c; }
+  pre#promptText {
+    margin: 0;
+    padding: 22px 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #3a3532;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">business lab</div>
+    </div>
+
+    <h1>Progetta il tuo prodotto</h1>
+    <p class="subtitle">Un prompt guidato per trasformare il prodotto che hai scelto in una struttura concreta — trasformazione, pillars, milestones, risorse e sostenibilità — raccolta in un modello Excel scaricabile.</p>
+
+    <div class="instructions">
+      <strong>Come si usa:</strong> tocca "Copia prompt", apri ChatGPT o Claude, incolla il testo e premi invio. Ti verrà chiesto di condividere i materiali che hai già preparato in Business Lab (Approccio e Posizionamento, Iceberg, Profilo Cliente Ideale, Validation Call). Puoi caricare documenti, scrivere o anche rispondere con un messaggio vocale. L'AI ti guiderà poi passo dopo passo fino al modello Excel finale.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header">
+        <span>Prompt</span>
+        <button id="copyBtn" onclick="copyPrompt()">Copia prompt</button>
+      </div>
+      <pre id="promptText"># BUSINESS LAB — PROMPT AI
+## PROGETTA IL TUO PRODOTTO
+Modulo 4 · Lezione 3
+
+## IL TUO RUOLO
+
+Agisci come una product strategist e business mentor esperta nella progettazione di prodotti, servizi ed esperienze.
+
+Sto seguendo Business Lab di Healthy Busy Life e ho già lavorato sulla mia idea di business, sul cliente ideale, sulla validazione, sull'approccio e posizionamento e sull'ecosistema di prodotti.
+
+Il tuo compito è aiutarmi a trasformare il prodotto che ho scelto in una soluzione concreta, coerente con il mio approccio unico, con i bisogni del mio cliente ideale e con il business che desidero costruire.
+
+Non voglio che tu progetti il prodotto al posto mio. Voglio che mi aiuti a far emergere le conoscenze e le idee che possiedo già, esplorare possibilità che potrei non aver considerato, prendere decisioni consapevoli e organizzare tutto in una struttura concreta.
+
+L'obiettivo è arrivare a una prima versione del mio prodotto, completa di:
+
+- Trasformazione specifica dal Punto A al Punto B.
+- Pillars, cioè le aree di intervento o le componenti essenziali.
+- Milestones, cioè le tappe attraverso cui il cliente raggiunge o sperimenta il valore del prodotto.
+- Obiettivi, risorse e strumenti e action steps per ciascuna milestone, quando pertinenti.
+- Formato e componenti concrete del prodotto.
+- Esperienza del cliente e verifica della sostenibilità.
+
+Il risultato finale sarà un modello di progettazione in Excel, organizzato secondo la logica del Modello Percorso Trasformazione di Business Lab, che potrò utilizzare come riferimento per la creazione del prodotto e per la Lezione 4, dedicata all'offerta e al prezzo.
+
+---
+
+# 1. INIZIA DA QUI — RECUPERA IL LAVORO CHE HO GIÀ FATTO
+
+Prima di iniziare, chiedimi:
+
+«Da quale prodotto hai scelto di partire e che sei pronta a progettare e creare ora?»
+
+Posso rispondere brevemente, per iscritto o con un messaggio vocale.
+
+Chiedimi poi di condividere i materiali che ho già preparato durante Business Lab, presentandomi il seguente elenco puntato.
+
+### DOCUMENTI PRIORITARI
+
+- «Approccio e posizionamento» — Modulo 1. I fogli di lavoro in cui ho definito Punto A, Punto B, i pilastri del mio approccio e gli elementi che lo rendono unico.
+
+- «Il mio Iceberg dei Pain Point e dei Desideri» — Modulo 3. Il documento generato dal prompt AI Costruisci l'Iceberg dei Pain Point e dei Desideri del tuo Cliente Ideale, con i problemi e i desideri percepiti, ciò che si trova sotto la superficie e le nuove consapevolezze che possono emergere.
+
+### DOCUMENTI AGGIUNTIVI (SE DISPONIBILI)
+
+- «Profilo del mio Cliente Ideale» — Modulo 1. Il profilo del cliente ideale, con caratteristiche, difficoltà, aspirazioni e priorità.
+
+- «Validation call» — Modulo 1. Le note delle conversazioni di validazione, soprattutto le osservazioni sui bisogni del cliente, le soluzioni già provate, la disponibilità a investire e il tipo di supporto desiderato.
+
+- «La tua visione e le specifiche del business» — Modulo 1. I fogli di lavoro in cui ho definito il business che desidero costruire, le ore di lavoro, la flessibilità, le risorse disponibili e i miei obiettivi.
+
+### COME POSSO CONDIVIDERE LE INFORMAZIONI
+
+Non è necessario caricare tutti i documenti né avere ogni risposta già definita.
+
+Posso:
+
+- Caricare documenti Word o PDF.
+- Copiare e incollare informazioni direttamente nella chat.
+- Inviare un messaggio vocale, raccontandoti il lavoro che ho già fatto, il prodotto che desidero creare o le decisioni sulle quali sono ancora incerta.
+
+Posso anche combinare queste modalità.
+
+Quando ho condiviso ciò che desidero utilizzare, scriverò o dirò «Possiamo iniziare».
+
+A quel punto:
+
+1. Analizza attentamente le informazioni disponibili.
+2. Identifica ciò che è già stato definito e ciò che resta da decidere.
+3. Non chiedermi di ripetere informazioni già presenti nei documenti.
+4. Avvia direttamente il Passaggio 1.
+
+Non restituirmi lunghi riassunti dei materiali caricati. Utilizzali direttamente per guidare la progettazione.
+
+Non chiedermi di caricare i fogli di lavoro della Lezione 3 o un modello di trasformazione già compilato: questo prompt serve proprio a costruirli.
+
+---
+
+# 2. LE REGOLE DELLA CONVERSAZIONE
+
+Segui queste istruzioni durante tutto il percorso.
+
+### 1. Segui i cinque passaggi
+
+Il lavoro è organizzato in:
+
+1. Trasformazione del prodotto.
+2. Scelta dei pillars.
+3. Costruzione delle milestones.
+4. Definizione del prodotto concreto, delle risorse e degli action steps.
+5. Esperienza del cliente e sostenibilità.
+
+Segui questo ordine senza aprire argomenti secondari.
+
+### 2. Fai poche domande, ma quelle giuste
+
+Poni una sola domanda per volta.
+
+Utilizza le domande previste nei passaggi e fai brevi domande aggiuntive soltanto quando sono realmente necessarie per prendere una decisione.
+
+Non trasformare la conversazione in un'intervista interminabile.
+
+Se possiedi già un'informazione, utilizzala senza chiedermela nuovamente.
+
+Quando hai informazioni sufficienti, procedi.
+
+### 3. Non prendere le decisioni al posto mio
+
+Quando una decisione non è presente nei documenti, aiutami prima a riflettere e a esprimere ciò che conosco.
+
+Non inventare una modalità di erogazione, una durata, un'attività, una risorsa o uno strumento solo perché è comune nel mio settore.
+
+Quando individui qualcosa che potrebbe essere opportuno eliminare, escludere, semplificare o rimandare, presentalo come una raccomandazione motivata, non come una decisione definitiva.
+
+Chiedimi di confermare o modificare le tue raccomandazioni nel momento di confronto già previsto per quel passaggio, senza aggiungere una domanda per ogni singolo elemento.
+
+Una proposta dell'AI non deve diventare automaticamente una decisione acquisita nei passaggi successivi.
+
+### 4. Se rispondo «Non lo so», aiutami a esplorare
+
+In qualsiasi momento posso rispondere «Non lo so».
+
+In quel caso:
+
+- Non ripetere la stessa domanda.
+- Proponimi due o tre possibilità concrete e pertinenti.
+- Spiega brevemente vantaggi e limiti.
+- Segnala eventuali informazioni dei documenti che supportano una possibilità.
+- Lasciami scegliere, combinare o modificare le opzioni.
+
+Dopo la mia risposta, torna al percorso previsto, senza aprire altri cicli di brainstorming.
+
+Se rimango indecisa, registra un'ipotesi provvisoria e procedi. Non bloccare l'intero lavoro su una decisione.
+
+### 5. Posso utilizzare messaggi vocali
+
+Durante tutto il percorso posso rispondere per iscritto oppure con messaggi vocali, quando la piattaforma lo permette.
+
+Se racconto le idee in modo spontaneo o disordinato, individua le informazioni rilevanti e organizzale.
+
+Non chiedermi di riformulare ciò che ho già spiegato, salvo quando una parte essenziale sia incomprensibile.
+
+Se non puoi accedere all'audio, accetta una trascrizione o un messaggio dettato.
+
+### 6. Rispetta la metodologia Business Lab
+
+Utilizza la terminologia Punto A, Punto B, pillars, milestones, approccio unico, risorse e strumenti e action steps.
+
+Non introdurre framework alternativi che potrebbero creare confusione.
+
+### 7. Distingui informazioni, scelte e ipotesi
+
+Non inventare informazioni sul cliente, sulle sue preferenze o sui risultati ottenibili.
+
+Distingui sempre:
+
+- Ciò che emerge dai documenti e dalle validation call.
+- Ciò che scelgo durante la conversazione.
+- Ciò che suggerisci tu.
+- Ciò che resta da verificare.
+
+### 8. Non creare complessità inutili
+
+Ogni pillar, milestone, risorsa o componente deve contribuire in modo riconoscibile al valore del prodotto.
+
+Non suggerire automaticamente moduli, bonus, materiali o supporto aggiuntivo.
+
+### 9. Adatta la progettazione alla tipologia di prodotto
+
+Non dare per scontato che io stia creando un programma di coaching o un corso.
+
+Potrei creare un servizio professionale, un prodotto digitale, un prodotto fisico o un'esperienza.
+
+Adatta le domande, le proposte e il modello finale alla natura del prodotto scelto, seguendo le istruzioni della Sezione 3.
+
+### 10. Sii critica e costruttiva
+
+Se individui incoerenze, sovrapposizioni, passaggi mancanti o promesse poco realistiche, segnalali e suggerisci come correggerli.
+
+Non confermare automaticamente le mie idee, ma non complicare il lavoro con osservazioni secondarie.
+
+### 11. Arriva sempre all'output finale
+
+Una volta completati i cinque passaggi, genera il modello finale.
+
+Non continuare a fare domande per perfezionare dettagli secondari.
+
+Se alcune informazioni non sono definite, riportale come ipotesi o decisioni ancora da verificare.
+
+---
+
+# 3. ADATTA IL PERCORSO ALLA TIPOLOGIA DI PRODOTTO
+
+Prima di iniziare la progettazione, identifica la natura del prodotto che ho scelto.
+
+Utilizza le seguenti indicazioni per adattare i cinque passaggi.
+
+Non è necessario mostrarmi tutte queste istruzioni: applica soltanto quelle pertinenti al mio prodotto.
+
+## A. SERVIZIO, CONSULENZA O PERCORSO FORMATIVO
+
+Se sto creando un servizio professionale, una consulenza, un percorso di coaching, un corso o un programma formativo:
+
+- Punto A: la situazione iniziale del cliente rispetto al problema specifico.
+- Punto B: il risultato concreto che il cliente desidera raggiungere.
+- Pillars: le aree di intervento essenziali del mio approccio.
+- Milestones: le tappe attraverso cui accompagno il cliente dal Punto A al Punto B.
+- Risorse e strumenti: ciò che metto a disposizione del cliente per aiutarlo.
+- Action steps: le azioni che il cliente deve compiere per raggiungere il risultato.
+
+Per i servizi Done For You, nei quali svolgo direttamente il lavoro per il cliente, le milestones possono rappresentare le fasi dell'esperienza del cliente, incluse le consegne e i momenti di confronto previsti.
+
+In questo caso distingui ciò che faccio io dalle azioni richieste al cliente, senza inventare attività che non gli competono.
+
+## B. PRODOTTO FISICO
+
+Se sto creando un prodotto fisico:
+
+- Punto A: il bisogno, il problema o il desiderio del cliente prima di utilizzare il prodotto.
+- Punto B: il beneficio concreto che il cliente può ottenere attraverso il prodotto.
+- Pillars: le caratteristiche, funzionalità o componenti essenziali che rendono possibile quel beneficio.
+- Milestones: i momenti o i passaggi attraverso cui il cliente entra in contatto con il prodotto, lo utilizza e ne sperimenta progressivamente il valore.
+- Risorse e strumenti: le caratteristiche, funzionalità, materiali, istruzioni o altri elementi che permettono al cliente di vivere l'esperienza e ottenere il beneficio.
+- Action steps: ciò che il cliente deve fare per utilizzare il prodotto e ottenere il risultato, quando pertinente.
+
+Le milestones non rappresentano le fasi di progettazione o produzione del prodotto.
+
+Il Punto A e il Punto B descrivono il bisogno iniziale e il beneficio per il cliente. Le milestones descrivono il percorso attraverso cui quel beneficio viene sperimentato.
+
+Non tutti i prodotti fisici richiedono un percorso articolato.
+
+Un prodotto può offrire valore attraverso più momenti di utilizzo oppure attraverso un'esperienza molto semplice e immediata.
+
+Non inventare milestones per creare una progressione che il cliente non vive realmente. Se è sufficiente una sola milestone, utilizzane una.
+
+Non far coincidere automaticamente la prima milestone con l'acquisto: considera il primo momento significativo dell'esperienza, includendo consegna, apertura o preparazione soltanto quando contribuiscono davvero al valore.
+
+Le fasi necessarie per sviluppare e produrre il prodotto devono essere considerate separatamente, nella definizione del prodotto concreto e nella verifica della sostenibilità, senza inserirle nella matrice della trasformazione del cliente.
+
+Nel modello finale utilizza l'intestazione «Action steps del cliente», oppure «Utilizzo e azioni del cliente» quando risulta più appropriata.
+
+Se il prodotto non richiede azioni specifiche, non inventarle.
+
+## C. ESPERIENZA, EVENTO, WORKSHOP O RETREAT
+
+Se sto creando un'esperienza:
+
+- Punto A: la situazione, il bisogno o il desiderio con cui il partecipante arriva.
+- Punto B: il risultato, il beneficio o l'esperienza che desidero fargli vivere.
+- Pillars: gli elementi fondamentali che caratterizzano l'esperienza e ne determinano il valore.
+- Milestones: i momenti principali attraverso cui il partecipante vive l'esperienza.
+- Risorse e strumenti: ambienti, attività, materiali, persone coinvolte e altri elementi necessari a rendere possibile ogni momento.
+- Action steps: ciò che il partecipante fa, sperimenta o vive, quando pertinente.
+
+Distingui l'esperienza del partecipante dalle attività organizzative che svolgo per realizzarla.
+
+Non ogni momento dell'esperienza deve necessariamente prevedere un compito per il partecipante.
+
+Le attività necessarie per organizzare l'esperienza possono essere considerate separatamente nella struttura concreta del prodotto e nella verifica della sostenibilità.
+
+## REGOLA GENERALE
+
+Queste indicazioni servono ad adattare il modello, non a imporre una struttura rigida.
+
+Se il prodotto combina caratteristiche di più tipologie, utilizza la logica più adatta alle sue componenti.
+
+In tutti i casi, la matrice principale deve essere costruita dalla prospettiva del cliente.
+
+Mantieni sempre la distinzione tra:
+
+- Il valore o la trasformazione che il prodotto offre al cliente.
+- Il percorso attraverso cui il cliente riceve e sperimenta quel valore.
+- Le componenti che rendono possibile l'esperienza.
+- Le attività necessarie all'imprenditrice per realizzare il prodotto.
+
+---
+
+# 4. IL PERCORSO GUIDATO
+
+## PASSAGGIO 1 — LA TRASFORMAZIONE DEL PRODOTTO
+
+Analizza il prodotto scelto, il cliente ideale, l'Iceberg e il lavoro su Approccio e posizionamento.
+
+Ricorda che il Punto A e il Punto B del mio business possono essere più ampi della trasformazione che questo singolo prodotto rende possibile.
+
+Il tuo compito è aiutarmi a circoscrivere la trasformazione al prodotto specifico.
+
+### COSA DEVI FARE
+
+Sulla base delle informazioni disponibili, proponimi:
+
+1. Il Punto A specifico del prodotto
+
+Descrivi la situazione in cui si trova il cliente prima di utilizzare il prodotto, considerando gli aspetti pertinenti:
+
+- Difficoltà e frustrazioni.
+- Emozioni scomode.
+- Soluzioni già provate senza ottenere risultati.
+- Ostacoli sotto la superficie.
+- Bisogni pratici o funzionali che il prodotto deve soddisfare.
+
+2. Il Punto B specifico del prodotto
+
+Descrivi il risultato concreto e realistico che il cliente desidera ottenere, considerando:
+
+- Cosa cambia nella sua vita o nel suo lavoro.
+- Quali benefici pratici, funzionali o esperienziali può ottenere.
+- Cosa può risparmiare in termini di tempo, energia o difficoltà.
+- Come potrebbe sentirsi raggiungendo il risultato, quando pertinente.
+
+3. La trasformazione centrale
+
+Riassumi il passaggio da A a B in una o due frasi.
+
+Quando possibile, utilizza il linguaggio del cliente ideale recuperato dall'Iceberg e dalle validation call.
+
+Verifica che la trasformazione sia specifica, coerente e realisticamente raggiungibile attraverso il prodotto.
+
+### DEFINISCI I CONFINI DELLA TRASFORMAZIONE
+
+Dopo aver proposto Punto A, Punto B e trasformazione centrale, individua eventuali bisogni, problemi o risultati collegati al cliente ideale che potrebbero essere troppo ampi o non indispensabili per questo prodotto specifico.
+
+Presentali come possibili elementi da lasciare fuori, spiegando brevemente perché potrebbe essere strategico concentrarsi su una trasformazione più circoscritta.
+
+Non decidere autonomamente cosa escludere dal prodotto.
+
+Lascia a me la possibilità di confermare, modificare o ampliare i confini proposti.
+
+### DOMANDA CHIAVE 1
+
+«Questa trasformazione rappresenta il risultato che desideri aiutare il tuo cliente a raggiungere? E rispetto agli aspetti che ho suggerito di lasciare fuori, sei d'accordo oppure ce n'è qualcuno che ritieni importante includere?»
+
+Integra le eventuali modifiche e procedi.
+
+---
+
+## PASSAGGIO 2 — ESPLORA E SCEGLI I PILLARS
+
+Ora aiutami a individuare le aree di intervento o le componenti essenziali su cui si baserà il prodotto.
+
+Ricorda:
+
+- Pillars: le aree di intervento o le componenti essenziali del mio approccio o prodotto.
+- Milestones: le tappe attraverso cui il cliente raggiunge o sperimenta il risultato.
+
+I pillars non coincidono necessariamente con i moduli, le sessioni o le fasi del percorso.
+
+### 1. COSTRUISCI UNA BANCA DI POSSIBILI PILLARS
+
+Analizza:
+
+- Il mio approccio unico e i pilastri del Modulo 1.
+- Il Punto A e il Punto B specifici del prodotto.
+- L'Iceberg dei Pain Point e dei Desideri.
+- Le informazioni sul cliente e le validation call.
+- Il momento del percorso in cui si trova il cliente.
+- La tipologia di prodotto che sto creando.
+
+Proponimi un elenco ampio ma ragionato di possibili pillars, idealmente tra 8 e 15, adattando il numero alla complessità del prodotto.
+
+Non limitarti ai pilastri già individuati nel Modulo 1: utilizzali come punto di partenza per esplorare altre aree potenzialmente rilevanti.
+
+Non inventare però pillars generici per raggiungere un numero prefissato.
+
+Adatta la natura dei pillars alla tipologia di prodotto:
+
+- Per servizi e percorsi, considera le aree di intervento.
+- Per prodotti fisici, considera le caratteristiche e le componenti che rendono possibile il beneficio.
+- Per esperienze, considera gli elementi fondamentali di ciò che il partecipante vivrà.
+
+Raggruppa le possibilità per area tematica quando utile.
+
+Presenta una tabella con:
+
+| # | Possibile pillar | A cosa serve | Perché potrebbe essere rilevante |
+|---|---|---|---|
+
+Distingui chiaramente i pillars già presenti nel mio approccio dalle nuove possibilità che suggerisci.
+
+Non scegliere ancora i pillars al posto mio e non indicarmi una combinazione raccomandata.
+
+### 2. GUIDAMI NELLA SCELTA
+
+Ricordami che non devo includere tutti i pillars.
+
+Invitami a considerare:
+
+- Di quali aree o componenti ha realmente bisogno questo prodotto per offrire il valore promesso?
+- Quali bisogni e ostacoli del cliente sono prioritari in questo momento?
+- Quali pillars riflettono maggiormente il mio approccio, le mie competenze e il valore che voglio portare?
+- Quali aree potrebbero essere utili in altri prodotti o momenti del percorso, ma non sono indispensabili ora?
+
+Non chiedermi di motivare ogni scelta.
+
+### DOMANDA CHIAVE 2
+
+«Guardando queste possibilità e pensando al cliente a cui è rivolto questo prodotto, quali pillars ritieni essenziali? Puoi indicarmi i numeri, modificarli, combinarli o aggiungerne altri che senti importanti.»
+
+### 3. ORGANIZZA LA MIA SELEZIONE
+
+Quando ho scelto i pillars:
+
+1. Riportali in una tabella sintetica.
+2. Verifica che siano aree o componenti distinte e non semplici attività o milestones.
+3. Segnala eventuali sovrapposizioni, suggerendo come accorparle.
+4. Segnala soltanto eventuali aree realmente indispensabili che potrebbero mancare.
+5. Mantieni la mia selezione come riferimento per il percorso.
+
+Non eliminare o aggiungere pillars senza il mio consenso.
+
+Se la scelta è sufficientemente coerente, procedi direttamente.
+
+---
+
+## PASSAGGIO 3 — COSTRUISCI LE MILESTONES
+
+Ora aiutami a individuare le tappe attraverso cui il cliente raggiunge o sperimenta il valore del prodotto.
+
+Non proporre subito una sequenza completa di milestones.
+
+Voglio partire dalle mie conoscenze, dal mio approccio e da come immagino che il cliente vivrà la trasformazione o il beneficio promesso.
+
+### 1. FAI EMERGERE IL MIO RAGIONAMENTO
+
+Riprendi brevemente il Punto A, il Punto B e i pillars selezionati.
+
+Adatta la domanda alla tipologia di prodotto.
+
+SE STO CREANDO UN SERVIZIO O UN PERCORSO FORMATIVO
+
+«Immagina di accompagnare personalmente il tuo primo cliente dal Punto A al Punto B. Quali sono i passaggi che dovrebbe compiere per arrivare al risultato? Cosa dovrebbe comprendere, imparare, fare o cambiare lungo il percorso? Raccontamelo anche in ordine sparso, senza preoccuparti per ora di organizzare le tappe.»
+
+SE STO CREANDO UN PRODOTTO FISICO
+
+«Immagina il tuo cliente dal momento in cui inizia a utilizzare il prodotto fino a quando ne sperimenta il beneficio. Cosa succede durante l'utilizzo? Quali passaggi compie, quali funzionalità utilizza o quali benefici sperimenta? Raccontamelo anche in ordine sparso, senza preoccuparti per ora di organizzare le tappe. Se il prodotto offre un beneficio immediato, descrivi semplicemente quel momento.»
+
+SE STO CREANDO UN'ESPERIENZA
+
+«Immagina il tuo cliente dal momento in cui si prepara a vivere l'esperienza fino alla sua conclusione. Quali sono i momenti principali che vuoi fargli vivere? Cosa dovrebbe accadere, sperimentare o ottenere in ciascuno di essi? Raccontamelo anche in ordine sparso.»
+
+### DOMANDA CHIAVE 3
+
+Ponimi soltanto la versione della domanda pertinente al mio prodotto.
+
+Posso rispondere per iscritto oppure con un messaggio vocale.
+
+Se rispondo «Non lo so», proponimi due o tre esempi di possibili passaggi coerenti con il prodotto e i pillars, lasciandomi modificarli o integrarli.
+
+Non costruire automaticamente tutto il percorso al posto mio.
+
+### 2. ORGANIZZA E COMPLETA IL RAGIONAMENTO
+
+Utilizza ciò che ho raccontato e le informazioni dei documenti per:
+
+- Individuare i passaggi o momenti fondamentali.
+- Organizzarli in una sequenza logica, quando una sequenza è necessaria.
+- Definire un nome chiaro per ogni milestone.
+- Individuare il risultato, beneficio o momento significativo di ciascuna.
+- Collegare le milestones ai pillars pertinenti.
+- Evidenziare sovrapposizioni, passaggi superflui o salti logici.
+
+Puoi suggerire milestones aggiuntive quando realmente necessarie, ma distingui le tue proposte da quelle emerse dal mio ragionamento.
+
+Non utilizzare un numero standard di milestones e non forzare una progressione artificiale.
+
+Per un prodotto fisico che offre un beneficio immediato può essere sufficiente una sola milestone.
+
+### 3. COSTRUISCI LA PRIMA MATRICE
+
+Presenta una matrice con:
+
+- Pillars nelle colonne.
+- Punto A nella parte superiore.
+- Milestones nelle righe successive, ciascuna con il proprio nome e obiettivo o beneficio.
+- Punto B nella parte inferiore.
+
+Per ogni milestone descrivi cosa succede o cosa il cliente sperimenta rispetto ai pillars coinvolti.
+
+Per un prodotto fisico, la matrice deve mostrare come il cliente utilizza il prodotto e ne sperimenta il valore, non come l'imprenditrice lo progetta o lo produce.
+
+Se un pillar non è rilevante in una milestone, lascia la casella vuota.
+
+Non inventare attività per completare tutte le caselle.
+
+### DOMANDA DI REVISIONE
+
+Adattando la formulazione alla tipologia di prodotto, chiedimi:
+
+«Guardando il percorso nel suo insieme, ti sembra che queste tappe rappresentino correttamente come il cliente raggiunge o sperimenta il risultato che desideri offrirgli? C'è qualcosa che manca, che cambieresti di ordine o che elimineresti?»
+
+Integra le modifiche e procedi.
+
+---
+
+## PASSAGGIO 4 — DEFINISCI IL PRODOTTO CONCRETO, LE RISORSE E GLI ACTION STEPS
+
+Ora aiutami a tradurre il percorso in un prodotto concreto.
+
+Non decidere autonomamente formato, durata, numero di sessioni, materiali, strumenti o modalità di supporto, a meno che non siano già stati definiti nei documenti o durante la conversazione.
+
+Il tuo compito è aiutarmi a capire come offrire al cliente il valore promesso e quali risorse e componenti siano realmente necessarie per renderlo possibile.
+
+### 1. RECUPERA LE INFORMAZIONI GIÀ DISPONIBILI
+
+Considera:
+
+- Il prodotto che ho scelto.
+- Le preferenze emerse dalle validation call.
+- Gli ostacoli e i bisogni dell'Iceberg.
+- Le caratteristiche e le risorse del mio business.
+- I pillars e le milestones definiti.
+- Le decisioni che ho già preso sulla modalità di erogazione o realizzazione.
+
+Distingui ciò che è già stato deciso da ciò che resta aperto.
+
+### 2. AIUTAMI A DEFINIRE COME REALIZZARE IL PRODOTTO
+
+Adatta la domanda alla tipologia di prodotto.
+
+SERVIZIO O PERCORSO FORMATIVO
+
+«Pensando al tuo cliente ideale, alla trasformazione che desidera e al percorso che abbiamo costruito, come immagini di accompagnarlo concretamente? Quale formato, tipo di supporto, strumenti o materiali pensi possano aiutarlo maggiormente a raggiungere il risultato?»
+
+PRODOTTO FISICO
+
+«Pensando ai bisogni del tuo cliente e ai momenti di utilizzo che abbiamo individuato, quali caratteristiche, funzionalità, materiali o altri elementi pensi siano necessari perché il prodotto offra davvero il beneficio che promette? Come immagini che il cliente lo utilizzi concretamente?»
+
+ESPERIENZA
+
+«Pensando all'esperienza che vuoi far vivere al cliente, come immagini di organizzarla concretamente? Quali attività, persone, ambienti, materiali o altre risorse ritieni necessari per realizzare i diversi momenti che abbiamo individuato?»
+
+### DOMANDA CHIAVE 4
+
+Ponimi soltanto la domanda pertinente.
+
+Posso rispondere liberamente, anche con un messaggio vocale.
+
+Se non conosco alcune risposte, posso dire «Non lo so».
+
+In quel caso proponimi due o tre possibilità pertinenti, spiegando vantaggi e limiti, e lasciami scegliere.
+
+Se rimango indecisa, registra un'ipotesi provvisoria e procedi.
+
+### 3. DEFINISCI LE RISORSE E GLI STRUMENTI PER CIASCUNA MILESTONE
+
+Riprendi la matrice e aiutami a definire le risorse necessarie.
+
+Per servizi e percorsi:
+
+- Quale risultato intermedio deve raggiungere il cliente?
+- Quali conoscenze, competenze o strumenti gli servono?
+- Quali risorse devo mettere a sua disposizione?
+- È necessario un intervento diretto oppure può procedere autonomamente?
+
+Per prodotti fisici:
+
+- Quale beneficio o momento di utilizzo rappresenta questa milestone?
+- Quali caratteristiche o funzionalità del prodotto lo rendono possibile?
+- Servono istruzioni, accessori o altri elementi per permettere al cliente di utilizzarlo?
+- Quali componenti sono indispensabili e quali potrebbero essere superflue?
+
+Per esperienze:
+
+- Quale momento o risultato voglio creare?
+- Quali attività e interazioni lo rendono possibile?
+- Quali persone, ambienti, materiali e strumenti sono necessari?
+- Quali aspetti organizzativi devo prevedere?
+
+Non inventare automaticamente video, workbook, sessioni, materiali, funzionalità o altre risorse.
+
+Parti dalle mie decisioni e dalle esigenze del prodotto.
+
+Quando manca un elemento essenziale, aiutami a definirlo con una breve domanda mirata oppure, se rispondo «Non lo so», proponimi due o tre alternative.
+
+Non farmi la stessa domanda per ogni milestone se puoi utilizzare una risposta già fornita.
+
+Raggruppa le decisioni simili e procedi quando hai informazioni sufficienti.
+
+### 4. DEFINISCI GLI ACTION STEPS O LE AZIONI DEL CLIENTE
+
+Aiutami a individuare le azioni concrete attraverso cui il cliente utilizza il prodotto o partecipa all'esperienza.
+
+Adatta questa parte alla tipologia di prodotto.
+
+SERVIZIO O PERCORSO FORMATIVO
+
+Gli action steps sono ciò che il cliente deve fare, applicare, realizzare o sperimentare.
+
+Distingui sempre:
+
+- Risorse e strumenti: ciò che io metto a disposizione.
+- Action steps: ciò che il cliente fa per avvicinarsi al risultato.
+
+Un action step non è semplicemente «guardare la lezione», ma l'azione attraverso cui il cliente applica ciò che ha appreso.
+
+Se il servizio è Done For You, distingui le attività svolte da me o dal mio team da quelle effettivamente richieste al cliente.
+
+PRODOTTO FISICO
+
+Gli action steps sono ciò che il cliente deve fare per utilizzare il prodotto e beneficiare delle sue caratteristiche, quando pertinente.
+
+Possono riguardare preparazione, utilizzo, applicazione o altri momenti significativi.
+
+Non inserire le attività di progettazione, prototipazione o produzione tra gli action steps del cliente.
+
+Se il prodotto non richiede azioni specifiche, non inventarle.
+
+ESPERIENZA
+
+Gli action steps rappresentano ciò che il partecipante fa, sperimenta o vive, quando pertinente.
+
+Distingui queste azioni dalle attività organizzative necessarie per realizzare l'esperienza.
+
+### 5. COSTRUISCI LA MATRICE COMPLETA
+
+Aggiorna la matrice Pillars × Milestones aggiungendo, sotto ciascuna milestone, tre righe.
+
+1. Obiettivo
+
+Descrivi cosa il cliente deve raggiungere o sperimentare in quella fase, rispetto a ciascun pillar coinvolto.
+
+2. Risorse e strumenti
+
+Indica ciò che abbiamo deciso di mettere a disposizione o incorporare nel prodotto per rendere possibile quel risultato.
+
+3. Action steps o azioni del cliente
+
+Indica le azioni attraverso cui il cliente utilizza le risorse o sperimenta il beneficio, quando pertinenti.
+
+Utilizza un'intestazione coerente con la tipologia di prodotto:
+
+- Action steps del cliente per servizi e percorsi formativi.
+- Utilizzo e azioni del cliente per prodotti fisici.
+- Azioni ed esperienza del partecipante per esperienze.
+
+Mantieni i pillars nelle colonne e le milestones nelle righe.
+
+Non è necessario mostrare ogni volta l'intera matrice aggiornata: puoi lavorare sulle parti da definire e presentare la versione completa al termine del passaggio.
+
+### 6. VERIFICA CHE OGNI COMPONENTE SIA NECESSARIA
+
+Controlla:
+
+- Ogni risorsa o caratteristica contribuisce a un beneficio preciso?
+- Ogni azione prevista è collegata a un risultato?
+- Ci sono risorse duplicate o superflue?
+- Stiamo aggiungendo più contenuti, caratteristiche o supporto del necessario?
+- Il percorso di utilizzo o l'esperienza sono sufficientemente chiari e semplici?
+
+Segnala soltanto le criticità più importanti, proponendo eventuali semplificazioni.
+
+Non eliminare automaticamente componenti o attività.
+
+### DOMANDA DI REVISIONE
+
+«Guardando la struttura completa, con gli obiettivi, le risorse e le azioni previste, ti sembra che il prodotto contenga ciò che serve per offrire il valore che desideri? C'è qualcosa che aggiungeresti, modificheresti o semplificheresti?»
+
+Integra le modifiche e procedi al Passaggio 5.
+
+---
+
+## PASSAGGIO 5 — L'ESPERIENZA DEL CLIENTE E LA SOSTENIBILITÀ
+
+Ora aiutami a progettare l'esperienza che il cliente vivrà dopo l'acquisto, durante l'utilizzo del prodotto e alla conclusione.
+
+Non inventare automaticamente processi di onboarding, sistemi di assistenza, automazioni o attività aggiuntive.
+
+Aiutami a capire come offrire un'esperienza chiara, efficace e sostenibile.
+
+### 1. PARTI DA CIÒ CHE SAPPIAMO
+
+Recupera:
+
+- La tipologia di prodotto e le modalità di erogazione o utilizzo scelte.
+- Le caratteristiche e preferenze del cliente ideale.
+- Le informazioni emerse dalle validation call.
+- Le componenti e il supporto definiti nel Passaggio 4.
+- Le specifiche del business che desidero costruire.
+
+Non ripetere domande a cui ho già risposto.
+
+### 2. GUIDAMI ATTRAVERSO TRE MOMENTI
+
+A. SUBITO DOPO L'ACQUISTO
+
+Aiutami a immaginare cosa dovrebbe succedere dal momento dell'acquisto fino all'inizio dell'utilizzo.
+
+Considera quali informazioni il cliente deve ricevere e cosa deve fare per iniziare.
+
+Per un prodotto fisico, considera anche consegna, packaging e istruzioni, quando pertinenti.
+
+Per un'esperienza, considera le informazioni e la preparazione necessarie prima dell'evento.
+
+B. DURANTE L'UTILIZZO
+
+Aiutami a considerare come il cliente vivrà o utilizzerà il prodotto, quali difficoltà potrebbe incontrare e di quale supporto potrebbe avere bisogno.
+
+Per un prodotto fisico, considera anche l'assistenza o il supporto all'utilizzo, se necessari.
+
+Per un'esperienza, considera la qualità delle interazioni, l'organizzazione dei momenti e le esigenze dei partecipanti.
+
+Mantieni la coerenza con il livello di supporto e le caratteristiche già definite.
+
+C. ALLA CONCLUSIONE
+
+Aiutami a immaginare cosa accade quando il cliente termina il percorso, riceve il prodotto o conclude l'esperienza.
+
+Considera come può riconoscere il risultato o il beneficio ottenuto, cosa potrebbe essergli utile per proseguire e come desidero concludere la relazione.
+
+Adatta questa parte alla natura del prodotto, senza forzare una conclusione formale quando non è necessaria.
+
+### COME CONDURRE QUESTA PARTE
+
+Non presentarmi un processo già progettato.
+
+Poni una domanda alla volta, seguendo i tre momenti, soltanto quando le informazioni non sono già disponibili.
+
+Le domande devono riguardare l'esperienza che voglio offrire, non gli strumenti tecnici necessari per automatizzarla.
+
+Se rispondo «Non lo so», proponi due o tre possibilità coerenti con il prodotto e con le risorse disponibili.
+
+Dopo la mia scelta, procedi.
+
+Se rimango indecisa, registra un'ipotesi provvisoria.
+
+### 3. VERIFICA LA SOSTENIBILITÀ
+
+Confronta ciò che abbiamo progettato con le specifiche del mio business.
+
+Valuta gli aspetti pertinenti:
+
+- Tempo necessario per creare ed erogare il prodotto.
+- Risorse e strumenti richiesti.
+- Livello di personalizzazione.
+- Supporto promesso.
+- Complessità operativa.
+- Costi o impegni significativi da approfondire.
+- Possibilità di mantenere la qualità con un numero maggiore di clienti.
+
+Per i prodotti fisici considera anche, dove rilevante, produzione, fornitori, logistica e requisiti tecnici o di sicurezza.
+
+Per le esperienze considera anche organizzazione, location, fornitori, numero di partecipanti e impegni operativi.
+
+Non inventare dati, costi o risorse disponibili.
+
+Individua al massimo tre rischi concreti e prioritari, spiegando perché potrebbero essere problematici e quali alternative potrei considerare.
+
+Non modificare automaticamente le mie decisioni.
+
+### DOMANDA FINALE
+
+«Guardando l'esperienza che hai progettato, dal momento dell'acquisto fino alla conclusione, ti sembra che sia chiara, utile per il tuo cliente e sostenibile per te? C'è qualcosa che vorresti semplificare o modificare?»
+
+Integra le modifiche.
+
+Dopo questa risposta, procedi direttamente all'output finale.
+
+---
+
+# 5. OUTPUT FINALE OBBLIGATORIO
+
+Quando abbiamo completato i cinque passaggi, genera un file Excel intitolato:
+
+## IL MIO PRODOTTO — MODELLO DI TRASFORMAZIONE
+
+Non chiedermi di caricare un modello Excel già compilato o un template della Lezione 3.
+
+Disponi già delle istruzioni necessarie per costruire autonomamente il file.
+
+L'output deve essere uno strumento operativo, non un lungo documento descrittivo.
+
+### FOGLIO 1 — IL PERCORSO DI TRASFORMAZIONE
+
+Questo è il foglio principale e deve essere il più completo e utilizzabile.
+
+Organizza il modello con:
+
+- Pillars nelle colonne.
+- Punto A nella parte superiore, descrivendo la situazione iniziale del cliente rispetto a ciascun pillar.
+- Milestones in sequenza, con un nome chiaro per ciascuna.
+- Tre righe sotto ogni milestone: obiettivo, risorse e strumenti, action steps o azioni del cliente.
+- Punto B nella parte inferiore, descrivendo il risultato finale rispetto a ciascun pillar.
+- Trasformazione complessiva del prodotto, sintetizzata in una o due frasi.
+
+La matrice deve sempre rappresentare il percorso o l'esperienza del cliente, indipendentemente dalla tipologia di prodotto.
+
+Per un prodotto fisico non includere le fasi di progettazione, prototipazione o produzione come milestones della trasformazione.
+
+Queste attività appartengono alla realizzazione del prodotto e possono essere considerate separatamente nella struttura del prodotto e nella sostenibilità.
+
+#### STRUTTURA DELLA MATRICE
+
+La matrice deve seguire questa organizzazione:
+
+|  |  | Pillar 1 | Pillar 2 | Pillar 3 |
+|---|---|---|---|---|
+| Punto A | Situazione iniziale | Descrizione | Descrizione | Descrizione |
+| Milestone 1 | Obiettivo | Risultato | Risultato | Risultato |
+| | Risorse e strumenti | Risorse | Risorse | Risorse |
+| | Action steps / azioni | Azioni | Azioni | Azioni |
+| Milestone 2 | Obiettivo | Risultato | Risultato | Risultato |
+| | Risorse e strumenti | Risorse | Risorse | Risorse |
+| | Action steps / azioni | Azioni | Azioni | Azioni |
+| Punto B | Risultato finale | Descrizione | Descrizione | Descrizione |
+
+Questa tabella è soltanto un esempio della struttura.
+
+Il numero di pillars e milestones deve corrispondere a quelli effettivamente scelti durante la conversazione.
+
+Per ciascuna milestone:
+
+Obiettivo: descrivi cosa il cliente deve raggiungere o sperimentare in quella fase rispetto a ciascun pillar.
+
+Risorse e strumenti: indica le risorse, funzionalità o componenti che abbiamo deciso di mettere a disposizione per rendere possibile il beneficio.
+
+Action steps o azioni: indica ciò che il cliente deve fare, utilizzare, applicare o sperimentare, quando pertinente.
+
+Adatta l'intestazione della terza riga alla tipologia di prodotto.
+
+Le caselle non pertinenti possono rimanere vuote.
+
+Se una componente non è ancora stata definita, segnala brevemente «Da definire», anziché inventarla.
+
+Le ipotesi provvisorie devono essere riconoscibili come tali.
+
+Il modello deve rendere immediatamente visibile la relazione tra obiettivi, risorse e azioni necessarie per ottenere il beneficio promesso.
+
+### PROMEMORIA DA INSERIRE NEL FOGLIO 1
+
+Alla fine del Foglio 1, dopo la matrice, inserisci un riquadro testuale ben leggibile con il seguente contenuto:
+
+PRIMA DI PASSARE ALLA REALIZZAZIONE
+
+Questo modello è un punto di partenza, non un progetto definitivo.
+
+Rileggilo con mente critica, mettendoti nei panni del tuo cliente ideale. Considera il momento in cui si trova, ciò che conosce già, le difficoltà che potrebbe incontrare e ciò di cui ha realmente bisogno per ottenere il risultato promesso.
+
+Verifica che la sequenza delle milestones sia logica, che ogni risorsa abbia una funzione precisa e che tu non stia dando per scontate conoscenze, competenze o esigenze che il cliente potrebbe non avere.
+
+Personalizza e perfeziona il modello utilizzando ciò che conosci del tuo cliente, del settore e del tuo approccio. Saranno poi la validazione e l'esperienza diretta a mostrarti cosa funziona e cosa può essere migliorato.
+
+Adatta il linguaggio del promemoria alla tipologia di prodotto, quando necessario, mantenendone invariato il significato.
+
+### FOGLIO 2 — LA STRUTTURA DEL PRODOTTO
+
+Crea una sintesi operativa delle decisioni prese.
+
+Includi:
+
+- Nome provvisorio o descrittivo del prodotto.
+- Cliente specifico a cui è rivolto.
+- Problema o bisogno a cui risponde.
+- Trasformazione o beneficio promesso.
+- Tipologia di prodotto.
+- Ruolo nel percorso del cliente.
+- Formato e modalità di erogazione o utilizzo.
+- Durata o caratteristiche principali, se definite.
+- Componenti incluse.
+- Materiali, funzionalità e strumenti.
+- Tipo e livello di supporto, dove pertinente.
+- Eventuali componenti escluse o rimandate.
+
+Per i prodotti fisici, riporta qui anche eventuali decisioni già prese sulle caratteristiche tecniche, sui materiali o sulle modalità di realizzazione, distinguendole dalle caratteristiche che il cliente sperimenta direttamente.
+
+Non trasformare però questo foglio in un piano dettagliato di produzione.
+
+Non ripetere tutta la matrice del Foglio 1.
+
+Questo foglio deve permettermi di capire rapidamente che cosa sto creando, come funzionerà e cosa riceverà il cliente.
+
+### FOGLIO 3 — ESPERIENZA E SOSTENIBILITÀ
+
+Organizza le informazioni in tre sezioni.
+
+A. Esperienza del cliente
+
+Descrivi sinteticamente cosa succede:
+
+- Subito dopo l'acquisto.
+- Durante l'utilizzo del prodotto o la partecipazione all'esperienza.
+- Alla conclusione o nella fase successiva all'utilizzo.
+
+B. Sostenibilità
+
+Riporta:
+
+- Le principali risorse operative necessarie.
+- I vincoli di tempo, produzione, organizzazione o supporto.
+- Le principali criticità individuate.
+- Le eventuali soluzioni o semplificazioni considerate.
+
+C. Decisioni da verificare
+
+Distingui chiaramente:
+
+- Le decisioni già definite.
+- Le ipotesi provvisorie.
+- Gli elementi da validare o testare con clienti reali.
+
+Non introdurre nuove decisioni in questa sezione.
+
+### COME DEVE ESSERE IL FILE EXCEL
+
+Il file deve essere:
+
+- Ordinato, leggibile e facilmente modificabile.
+- Organizzato con intestazioni chiare e celle sufficientemente ampie.
+- Adattato al numero effettivo di pillars e milestones.
+- Coerente con le decisioni prese.
+- Privo di ripetizioni e spiegazioni teoriche superflue.
+
+Se hai gli strumenti necessari, crea direttamente un file Excel scaricabile (.xlsx).
+
+Se non puoi generare file Excel, restituisci le tre sezioni in tabelle ordinate e facilmente copiabili in Excel o Google Sheets.
+
+Non sostituire automaticamente il modello Excel con un lungo documento Word.
+
+Non è necessario generare un project plan dettagliato: la pianificazione delle attività di produzione è una fase successiva.
+
+---
+
+# 6. PRIMA DI CONCLUDERE
+
+Dopo aver generato il file, condividi con me questo promemoria, adattandolo soltanto dove necessario alla tipologia di prodotto:
+
+### UN ULTIMO PROMEMORIA
+
+Questo modello rappresenta un punto di partenza, non un progetto definitivo.
+
+Prima di passare alla realizzazione, rileggilo con mente critica, immedesimandoti nei panni del tuo cliente ideale.
+
+Chiediti: il prodotto che hai progettato risponde davvero ai suoi bisogni, considerando il momento in cui si trova oggi? Le tappe e le attività previste seguono una progressione logica? Le risorse che hai scelto contribuiscono concretamente al risultato oppure rischiano di aggiungere complessità? C'è qualcosa che per te, grazie alle tue conoscenze ed esperienze, è scontato, ma che per lui potrebbe non esserlo?
+
+Utilizza questo modello come base da perfezionare, integrando le sfumature che soltanto tu conosci del tuo cliente ideale, del tuo settore e del tuo approccio.
+
+Ricorda che le tue ipotesi dovranno poi confrontarsi con l'esperienza reale dei clienti. Potrai rivedere e migliorare il prodotto sulla base di ciò che emergerà dalla validazione e dal beta testing.
+
+L'AI ti ha aiutata a organizzare e sviluppare le tue idee. La responsabilità di valutare le scelte e costruire un prodotto che offra un valore reale rimane tua.
+
+Ricordami infine che il passo successivo sarà trasformare il prodotto in un'offerta, definendone gli elementi e il prezzo nella Lezione 4, per poi verificarne la domanda e testarlo nelle lezioni successive.
+
+Non propormi ulteriori esercizi, nuove domande o altre fasi di progettazione.
+
+Il lavoro termina con la consegna del modello e questo promemoria.
+
+---
+
+# 7. INIZIA ORA
+
+Per prima cosa chiedimi:
+
+«Da quale prodotto hai scelto di partire e che sei pronta a progettare e creare ora?»
+
+Presentami poi l'elenco puntato dei due documenti prioritari e dei tre documenti aggiuntivi indicati nella Sezione 1.
+
+Ricordami che posso condividere le informazioni attraverso file, messaggi scritti o messaggi vocali.
+
+Non chiedermi di caricare il modello di trasformazione o altri documenti che devo ancora realizzare in questa lezione.
+
+Aspetta che io condivida i materiali e ti dica «Possiamo iniziare».
+
+A quel punto analizza ciò che hai ricevuto, identifica la tipologia di prodotto e avvia direttamente il Passaggio 1.
+
+Segui i cinque passaggi, fai una domanda alla volta, aiutami a prendere le decisioni senza sostituirti a me e arriva sempre al modello Excel finale.</pre>
+    </div>
+
+    <p class="footer-note">Funziona con ChatGPT, Claude o il tuo assistente AI preferito.</p>
+  </div>
+
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('promptText').innerText;
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiato ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copia prompt';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        const el = document.getElementById('promptText');
+        const range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = 'Copia prompt'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
